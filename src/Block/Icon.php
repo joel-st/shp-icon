@@ -75,7 +75,7 @@ class Icon
 	{
 		//var_dump($a);
 		if ($a['icon'] && file_exists(shp_icon()->upload_dir . '/' . $a['icon'])) {
-			return do_shortcode('['.shp_icon()->prefix.' icon="'. str_replace('.svg', '', $a['icon']) .'" ' .$a['boxModel'] . ' scale-factor="'. $a['scaleFactor'] .'" top-shift="'. $a['topShift'] .'" color="'. $a['color'] .'" background-color="'. $a['backgroundColor'] .'" align="'.$a['align'].'" gutenberg]');
+			return do_shortcode('['.shp_icon()->prefix.' icon="'. str_replace('.svg', '', $a['icon']) .'" ' .$a['boxModel'] . ' scale-factor="'. $a['scaleFactor'] .'" top-shift="'. $a['topShift'] .'" color="'. $a['color'] .'" background-color="'. $a['backgroundColor'] .'" align="'.$a['align'].'" gutenberg block]');
 		} else {
 			if (shp_icon()->Package->Helpers->isContextEdit()) {
 				return '<div class="shp-icon shp-icon--block"><div class="shp-icon__notice">'._x('Choose Icon', 'Block rendering notice', 'shp-icon').'</div></div>';

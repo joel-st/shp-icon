@@ -14,7 +14,6 @@ Install and activate the plugin.
 
 * Initial working version
 
-
 ## Contributors
 
 * Joel Stüdle (joel@sayhello.ch)

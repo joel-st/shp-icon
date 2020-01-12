@@ -33,7 +33,7 @@ class Shortcode
 	{
 		$attr = shortcode_atts([
 			'icon' => false,
-			'inline' => (in_array('inline', $attr)) ? true : false,
+			'box-model' => (in_array('block', $attr)) ? true : false,
 			'top-shift' => get_option(shp_icon()->prefix . '-display-inline-top-shift'),
 			'scale-factor' => get_option(shp_icon()->prefix . '-display-inline-scale-factor'),
 			'color' => 'inherit',
@@ -84,7 +84,7 @@ class Shortcode
 				$svg->attributes()->style = $svg_style;
 			}
 
-			if ($attr['inline'] && $height && $width) {
+			if (!$attr['box-model'] && $height && $width) {
 				$style_width = (1 * $width / $height) * $attr['scale-factor'];
 				$style_height = 1 * $attr['scale-factor'];
 				$style = 'width:' . $style_width . 'em;height:' . $style_height . 'em;';
@@ -120,7 +120,7 @@ class Shortcode
 			$svg = preg_replace("/<\\?xml.*\\?>/", '', $svg, 1);
 
 			$el = $attr['gutenberg'] ? 'div' : 'i';
-			$class_list = ($attr['inline']) ? shp_icon()->prefix . ' ' . shp_icon()->prefix . '--inline' : shp_icon()->prefix;
+			$class_list = (!$attr['box-model']) ? shp_icon()->prefix . ' ' . shp_icon()->prefix . '--inline' : shp_icon()->prefix;
 			if ($attr['gutenberg']) {
 				$class_list .= ' ' . shp_icon()->prefix . '--block align' . $attr['align'];
 			}
