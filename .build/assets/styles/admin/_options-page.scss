@@ -1,0 +1,250 @@
+.wrap-shp-icon {
+
+	.page-title-action {
+		&[disabled="disabled"] {
+			opacity: .3;
+			cursor: not-allowed;
+		}
+	}
+
+	.media-toolbar {
+		display: block;
+
+		@media (min-width: 500px) {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.media-search-input-label {
+			@media (max-width: 499px) {
+				margin-bottom: .5rem;
+				display: block;
+			}
+		}
+	}
+
+	.shp-icon-list {
+		width: calc(100% + .5rem);
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+		list-style-type: none;
+		margin-left: -.5rem;
+
+		&__actions {
+			z-index: 100;
+			position: absolute;
+			//background-color: red;
+			right: 5px;
+			top: 5px;
+		}
+
+		&__actions-toggle {
+			padding: .5rem;
+			cursor: pointer;
+
+			span {
+				width: 3px;
+				height: 3px;
+				display: block;
+				background-color: #ddd;
+				transition: background-color .1s ease;
+
+				+ span {
+					margin-top: 3px;
+				}
+			}
+
+			&:hover span {
+				background-color: #444;
+			}
+
+			// &:hover + .shp-icon-list__action-list {
+			// 	display: block;
+			// }
+		}
+
+		&__action-list {
+			z-index: 100;
+			display: none;
+			background-color: #fff;
+			border: 1px solid #ccd0d4;
+			//box-shadow: 0 0 .2rem rgba(0,0,0,.5);
+			padding: .5rem 1rem;
+			right: 0;
+			position: absolute;
+
+			// &:hover {
+			// 	display: block;
+			// }
+		}
+
+		&__item {
+			margin: .5rem;
+			background-color: white;
+			box-shadow: 0 1px 1px rgba(0,0,0,.04);
+			border: 1px solid #ccd0d4;
+			padding: 2rem 1rem 1rem;
+			position: relative;
+
+			&--actions-visible {
+				&:after {
+					content: '';
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: rgba(100,100,100,.4);
+					z-index: 50;
+				}
+			}
+
+			&--no-results {
+				border-style: dashed;
+				opacity: .8;
+				transition: .1s ease;
+				padding: 3rem 1rem 1rem;
+
+				.shp-icon-list__icon {
+					font-size: 4rem;
+					transform: translateX(-.5rem) rotate(90deg);
+				}
+
+				.shp-icon-list__name {
+					opacity: .5;
+					transition: all .1s ease;
+				}
+
+				&:only-child {
+					display: block !important;
+				}
+			}
+		}
+
+		&__icon {
+			width: 100%;
+			height: 3rem;
+			text-align: center;
+			margin-bottom: 2rem;
+		}
+
+		&__icon svg {
+			height: 3rem;
+			margin: 0 auto;
+			box-sizing: border-box;
+			border: 1px dashed transparent;
+			transition: border .1s ease;
+
+			&:hover {
+				border: 1px dashed #ddd;
+			}
+		}
+
+		&__meta {
+			text-align: center;
+		}
+
+		&__name {
+			display: block;
+			margin-bottom: .25rem;
+		}
+
+		&__shortcode {
+			display: block;
+			overflow: auto;
+		}
+
+		&__shortcode input {
+			font-size: .85em;
+			display: inline-block;
+			font-family: Consolas,Monaco,monospace;
+			direction: ltr;
+			unicode-bidi: embed;
+			background: #eaeaea;
+			background: rgba(0,0,0,.07);
+			display: block;
+			padding: .3rem .5rem;
+			border: none;
+			width: 12rem;
+			margin: 0 auto;
+			text-align: center;
+		}
+	}
+
+	.shp-icon-upload {
+		&__form {
+			height: 0;
+		}
+
+		&__status {
+			//background-color: red;
+
+			.notice {
+				margin-bottom: 5px;
+			}
+		}
+
+		&__upload-input {
+			position: absolute;
+		}
+	}
+
+	.notice {
+		position: relative;
+
+		.spinner {
+			position: absolute;
+			right: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			margin-top: 0;
+		}
+
+		&__filename {
+			background-color: #f1f1f1;
+			padding: 2px 5px;
+			border-radius: 2px;
+			margin-right: 10px;
+		}
+	}
+
+	.shp-icon-help {
+		margin-top: .5em;
+
+		&--left {
+			@media (min-width: 768px) {
+				float: left;
+				width: calc(100% - 300px - 2rem);
+			}
+		}
+
+		&--right {
+			margin-top: 1.5em;
+			background-color: white;
+			box-shadow: 0 1px 1px rgba(0,0,0,.04);
+			border: 1px solid #ccd0d4;
+			padding: 1rem;
+			box-sizing: border-box;
+
+			@media (min-width: 768px) {
+				float: right;
+				width: 300px;
+			}
+
+			h2 {
+				margin: 0;
+			}
+		}
+	}
+
+	.accordion {
+		&__item {
+			input[type="checkbox"]:checked + .accordion__content {
+				display: block;
+			}
+		}
+		&__content {
+			display: none;
+		}
+	}
+}

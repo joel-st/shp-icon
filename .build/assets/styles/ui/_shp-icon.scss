@@ -1,0 +1,33 @@
+.shp-icon {
+	display: block;
+	font-size: inherit;
+	position: relative;
+	color: inherit;
+	background-color: transparent;
+
+	svg {
+		display: block;
+		vertical-align: top;
+		font-size: inherit;
+		position: relative;
+		width: 100%;
+		height: auto;
+	}
+
+	&--inline {
+		vertical-align: baseline;
+		display: inline-block;
+
+		svg {
+			height: 1em;
+			width: auto;
+		}
+	}
+
+	&--block.aligncenter {
+		svg {
+			width: 10vw;
+			margin: 0 auto;
+		}
+	}
+}
