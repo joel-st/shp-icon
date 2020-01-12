@@ -4,7 +4,7 @@ Plugin Name: SVG Icons for WordPress & Gutenberg
 Plugin URI: https://bitbucket.org/sayhellogmbh/shp-icons/
 Description: This plugin allows you to use SVG icons within WordPress & Gutenberg.
 Author: Joel Stüdle (joel@sayhello.ch)
-Version: 0.0.1
+Version: 1.0.0
 Author URI: https://sayhello.ch
 Text Domain: shp-icon
 Domain Path: /languages
