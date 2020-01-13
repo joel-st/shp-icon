@@ -2,7 +2,7 @@
 
 ## Description
 
-This plugin allows you to use SVG icons within WordPress as Shortcode and/or as Gutenberg Block.
+This plugin allows you to use SVG icons within WordPress as shortcode and/or as Gutenberg Block.
 
 ## Usage
 
