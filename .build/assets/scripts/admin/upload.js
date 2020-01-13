@@ -16,7 +16,7 @@ const { _x } = wp.i18n;
 				let uploadId = 1;
 
 				Object.keys(fileList).forEach(key => {
-					$status = $('<div class="notice notice-info" data-id="' + uploadId + '"><p><b class="notice__filename">' + fileList[key]['name'] + '</b> <span>' + _x('processing', 'Admin Notice processing [filename] if file is selected for upload', 'shp-icon') + '</span></p><div class="spinner is-active"></div></div>');
+					$status = $('<div class="notice notice-info" data-id="' + uploadId + '"><p><b class="notice__filename">' + fileList[key]['name'] + '</b> <span>' + _x('processing', 'Admin notice processing [Filename] if file is selected for upload', 'shp-icon') + '</span></p><div class="spinner is-active"></div></div>');
 					$statusElement.append($status);
 
 					const formData = new FormData();
@@ -40,10 +40,10 @@ const { _x } = wp.i18n;
 							$notice.find('.spinner').remove();
 							if(response.upload.error) {
 								$notice.addClass('notice-error');
-								$notice.find('p span').html(_x('Something went wrong while processing the file', 'Admin Notice response.upload.error returns true', 'shp-icon'));
+								$notice.find('p span').html(_x('Something went wrong while processing the file.', 'Admin notice response.upload.error returns true', 'shp-icon'));
 							} else {
 								$notice.addClass('notice-success');
-								$notice.find('p span').html('<b>' + response.name + '</b> ' + _x('added successfully!', 'Admin Notice [icon] added successfully', 'shp-icon'));
+								$notice.find('p span').html('<b>' + response.name + '</b> ' + _x('Added successfully!', 'Admin notice [Icon] added successfully', 'shp-icon'));
 								insertIcon(response.fileName);
 							}
 						},
@@ -54,7 +54,7 @@ const { _x } = wp.i18n;
 							$notice.find('.spinner').remove();
 
 							$notice.addClass('notice-error');
-							$notice.find('p span').html(_x('Upload Failed!', 'Admin Notice upload failed', 'shp-icon') + ' <i class="notice__error">' + XMLHttpRequest.responseJSON.message + '</i>');
+							$notice.find('p span').html(_x('Upload failed!', 'Admin notice upload failed', 'shp-icon') + ' <i class="notice__error">' + XMLHttpRequest.responseJSON.message + '</i>');
 
 							console.log(XMLHttpRequest);
 						}

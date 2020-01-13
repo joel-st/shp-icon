@@ -103,8 +103,11 @@ class Plugin
 		// Create rest route
 		add_action('rest_api_init', [$this, 'registerRoute']);
 
-		// load the textdomain
+		// Load the textdomain
 		add_action('init', [ $this, 'loadTextdomain' ]);
+
+		// Add the settings link to the plugin list
+		add_filter('plugin_action_links_' . basename($this->base_path) . '/' . basename($this->file), [ $this, 'addSettingsLink' ]);
 	}
 
 	/**
@@ -125,7 +128,7 @@ class Plugin
 			}
 
 			if (property_exists(shp_icon()->{$class_set}, $class_short)) {
-				wp_die(sprintf(_x('There was a problem with the Plugin. Nur eine PHP Klasse mit dem Namen “%1$s” kann im Theme-Objekt “%2$s” verwendet werden.', 'Theme instance loadClasses() error message', 'shp-icon'), $class_short, $class_set), 500);
+				wp_die(sprintf(_x('There was a problem with the Plugin. Only one class with name “%1$s” can be use used in “%2$s”.', 'Theme instance loadClasses() error message', 'shp-icon'), $class_short, $class_set), 500);
 			}
 
 			shp_icon()->{$class_set}->{$class_short} = new $class();
@@ -197,5 +200,28 @@ class Plugin
 			fwrite($initialIcon, '<svg viewBox="0 0 33 30" data-shp-icon="heart" xmlns="http://www.w3.org/2000/svg"><path d="M16.5 30l-2.393-2.158C5.61 20.207 0 15.172 0 8.992 0 3.956 3.993 0 9.075 0c2.871 0 5.627 1.324 7.425 3.417C18.299 1.324 21.054 0 23.925 0 29.007 0 33 3.956 33 8.992c0 6.18-5.61 11.215-14.108 18.866L16.5 30z" fill="currentColor" fill-rule="evenodd"/></svg>');
 			fclose($initialIcon);
 		}
+	}
+
+	/**
+	 * Add a Link to Plugin Settings Page in The WordPress Plugin List
+	 *
+	 * @since 1.0.0
+	 */
+	public function addSettingsLink($links)
+	{
+		// Build and escape the URL.
+		$url = esc_url(add_query_arg(
+			'page',
+			$this->prefix,
+			get_admin_url() . 'themes.php'
+		));
+		// Create the link.
+		$settings_link = "<a href='$url'>" . _x('Settings', 'Settings link in WordPress plugin list', 'shp-icon') . '</a>';
+		// Adds the link to the end of the array.
+		array_push(
+			$links,
+			$settings_link
+		);
+		return $links;
 	}
 }

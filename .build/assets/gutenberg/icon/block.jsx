@@ -14,8 +14,8 @@ import icon from './icon.jsx';
  */
 export default registerBlockType(
 	'shp-icon/icon', {
-		title: _x( 'SVG Icon', 'SVG Icon Block Title', 'shp-icon' ),
-		description: __( 'Use your SVG Icons as Gutenberg Block', 'shp-icon' ),
+		title: _x( 'SVG Icon', 'SVG icon block title', 'shp-icon' ),
+		description: __( 'Use your SVG icons as Gutenberg block', 'shp-icon' ),
 		icon: icon,
 		category: 'embed',
 		keywords: [
@@ -84,7 +84,7 @@ export default registerBlockType(
 					/> */}
 				</BlockControls>,
 				<InspectorControls className="shp-icon-controls">
-					<PanelBody title={_x( 'Icon Collection', 'SVG Icon Block Panel Title', 'shp-icon' )} initialOpen={true}>
+					<PanelBody title={_x( 'Icon Collection', 'SVG icon block panel title', 'shp-icon' )} initialOpen={true}>
 						<div className="shp-icon-controls__icon-list">
 							<RadioControl
 								selected={ icon }
@@ -93,49 +93,20 @@ export default registerBlockType(
 							/>
 						</div>
 					</PanelBody>
-					{/* <PanelBody title={_x( 'Settings', 'SVG Icon Block Panel Title', 'shp-icon' )} initialOpen={true}>
-						<RadioControl
-							label={_x( 'Choose Icon Box-Model', 'SVG Icon Block RadioControl Label', 'shp-icon' )}
-							help={_x( 'Inline fits to font-size of the parent element, Block uses the full available space.', 'SVG Icon Block RadioControl Label', 'shp-icon' )}
-							selected={ boxModel }
-							options={ [
-						{ label: 'Inline', value: 'inline' },
-						{ label: 'Block', value: 'block' },
-							] }
-							onChange={ ( boxModel ) => { setAttributes( { boxModel } ) } }
-						/>
-						{ boxModel === 'inline' &&
-							<TextControl
-						label={_x( 'Scale Factor', 'SVG Icon Block TextControl Label', 'shp-icon' )}
-						type={'number'}
-						value={ scaleFactor }
-						onChange={ ( scaleFactor ) => { setAttributes( { scaleFactor } ) } }
-							/>
-						}
-						{ boxModel === 'inline' &&
-							<TextControl
-						label={_x( 'Top Shift', 'SVG Icon Block TextControl Label', 'shp-icon' )}
-						type={ 'number' }
-						step={ 0.01 }
-						value={ topShift }
-						onChange={ ( topShift ) => { setAttributes( { topShift } ) } }
-							/>
-						}
-					</PanelBody> */}
 					<PanelColorSettings
-						title={ _x( 'Color Settings', 'SVG Icon Block PanelColorSettings Label', 'shp-icon' ) }
+						title={ _x( 'Color Settings', 'SVG icon block PanelColorSettings label', 'shp-icon' ) }
 						colorSettings={[{
 							value: color,
 							onChange: ( color ) => { if (typeof color !== "undefined") { setAttributes( { color } )} else {setAttributes( { color: 'inherit' } ) }; },
-							label: _x( 'Color', 'SVG Icon Block colorSettings abel', 'shp-icon' ),
+							label: _x( 'Color', 'SVG icon block colorSettings label', 'shp-icon' ),
 
 						},{
 							value: backgroundColor,
 							onChange: ( backgroundColor ) => { if (typeof backgroundColor !== "undefined") { setAttributes( { backgroundColor } )} else {setAttributes( { backgroundColor: 'transparent' } ) }; },
-							label: _x( 'Background Color', 'SVG Icon Block colorSettings label', 'shp-icon' ),
+							label: _x( 'Background Color', 'SVG icon block colorSettings label', 'shp-icon' ),
 						}]}
 					>
-						<i>{ _x( 'The color feature only works with SVG’s using currentColor.', 'SVG Icon Block colorSettings notice', 'shp-icon' ) }</i>
+						<i>{ _x( 'The color feature only works with SVG’s using currentColor.', 'SVG icon block colorSettings notice', 'shp-icon' ) }</i>
 					</PanelColorSettings>
 				</InspectorControls>,
 				<ServerSideRender block="shp-icon/icon" attributes={attributes}/>

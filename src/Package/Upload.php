@@ -72,7 +72,7 @@ class Upload
 		if (!$upload_id) {
 			header('HTTP/1.1 400 Bad Request');
 			header('Content-type: application/json');
-			die(json_encode(['message' => _x('No Upload ID specified', 'Upload without id', 'shp-icon'), 'id' => $upload_id]));
+			die(json_encode(['message' => _x('No upload ID specified', 'Upload without id', 'shp-icon'), 'id' => $upload_id]));
 		}
 
 		if (!isset($_POST['_wpnonce']) || !wp_verify_nonce($_POST['_wpnonce'], $this->upload_nonce_name)) {

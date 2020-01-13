@@ -19,7 +19,9 @@ class Shortcode
 	public function run()
 	{
 		add_shortcode(shp_icon()->prefix, [$this, 'shortcode']);
-		//add_filter('wp_nav_menu_items', 'do_shortcode');
+		// add_filter('wp_nav_menu_items', 'do_shortcode');
+		// add_filter('widget_text', 'do_shortcode');
+		// add_filter('widget_title', 'do_shortcode');
 	}
 
 	/**
@@ -132,4 +134,38 @@ class Shortcode
 			}
 		}
 	}
+
+	// /**
+	//  * Apply the plugins shortcode to specific areas.
+	//  *
+	//  * @link http://wordpress.stackexchange.com/q/137725/1685
+	//  *
+	//  * @param string $text
+	//  * @return string
+	//  */
+	// public function doShortcode($text)
+	// {
+	// 	$whitelist = [ shp_icon()->prefix ];
+	//
+	// 	global $shortcode_tags;
+	//
+	// 	// Store original copy of registered tags.
+	// 	$_shortcode_tags = $shortcode_tags;
+	//
+	// 	// Remove any tags not in whitelist.
+	// 	foreach ($shortcode_tags as $tag => $function) {
+	// 		if (! in_array($tag, $whitelist)) {
+	// 			unset($shortcode_tags[ $tag ]);
+	// 		}
+	// 	}
+	//
+	// 	// Apply shortcode.
+	// 	$text = shortcode_unautop($text);
+	// 	$text = do_shortcode($text);
+	//
+	// 	// Restore tags.
+	// 	$shortcode_tags = $_shortcode_tags;
+	//
+	// 	return $text;
+	// }
 }

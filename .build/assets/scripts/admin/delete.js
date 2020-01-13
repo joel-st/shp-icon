@@ -11,7 +11,7 @@ const { _x } = wp.i18n;
 			const fileName = $item.find('.shp-icon-list__icon svg').attr('data-shp-icon');
 			const iconName = $item.find('.shp-icon-list__name').text();
 
-			if(confirm(_x('Confirm deletion of', 'Delete icon confirm deletion. Confirm deletion of [IconName]', 'shp-icon') + ' ' + iconName)) {
+			if(confirm(_x('Confirm Deletion of', 'Confirm deletion. Confirm deletion of [IconName]', 'shp-icon') + ' ' + iconName)) {
 				deleteIcon(fileName);
 			}
 		});
@@ -38,7 +38,7 @@ export function deleteIcon(icon) {
 					const $item = $icon.closest('.shp-icon-list__item');
 					const $statusElement = $('.shp-icon-upload__status');
 
-					const $status = $('<div class="notice notice-success"><p><b class="notice__filename">' + response.name + '</b> <span>' + _x('deleted', 'Admin Notice delete file sucessfully', 'shp-icon') + '</span></p></div>');
+					const $status = $('<div class="notice notice-success"><p><b class="notice__filename">' + response.name + '</b> <span>' + _x('deleted', 'Admin notice delete file sucessfully', 'shp-icon') + '</span></p></div>');
 					$statusElement.append($status);
 
 					if($item) {

@@ -167,7 +167,6 @@
 			border: none;
 			width: 12rem;
 			margin: 0 auto;
-			text-align: center;
 		}
 	}
 
@@ -215,6 +214,11 @@
 			@media (min-width: 768px) {
 				float: left;
 				width: calc(100% - 300px - 2rem);
+				max-width: 800px;
+			}
+
+			@media (min-width: 1024px) {
+				width: calc(100% - 400px - 2rem);
 			}
 		}
 
@@ -231,20 +235,113 @@
 				width: 300px;
 			}
 
-			h2 {
-				margin: 0;
+			@media (min-width: 1024px) {
+				width: 400px;
+			}
+
+			> *:first-child {
+				margin-top: 0;
+			}
+			> *:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		h4 {
+			margin: 1.5em 0 .5em;
+		}
+
+		.form-table {
+			margin-top: 0;
+
+			th {
+				padding: .5em .5em .5em 0;
+			}
+
+			td {
+				padding: .5em;
 			}
 		}
 	}
 
 	.accordion {
+
 		&__item {
-			input[type="checkbox"]:checked + .accordion__content {
-				display: block;
+			background-color: white;
+			box-shadow: 0 1px 1px rgba(0,0,0,.04);
+			border: 1px solid #ccd0d4;
+			box-sizing: border-box;
+			position: relative;
+
+			&:hover {
+				.accordion__item-state-indicator {
+					border-color: #444;
+				}
+			}
+
+			+ .accordion__item {
+				margin-top: .5rem;
+			}
+
+			> h4 {
+				margin: 0;
 			}
 		}
+
+		&__item-head {
+			width: 100%;
+			display: block;
+			padding: 1rem 3rem 1rem 1rem;
+			box-sizing: border-box;
+			position: relative;
+			font-size: 1.2em;
+		}
+
+		&__item-checkbox {
+			position: absolute;
+			right: 1rem;
+			top: 1rem;
+			appearance: none;
+			width: 0;
+			height: 0;
+			opacity: 0;
+
+			&:checked + .accordion__item-state-indicator {
+				transform: translateY(.15em) rotate(45deg) scale(-1);
+				border-color: #444;
+
+				+ .accordion__content {
+					display: block;
+				}
+			}
+		}
+
+		&__item-state-indicator {
+			position: absolute;
+			right: 1rem;
+			top: 1.2rem;
+			width: .6rem;
+			height: .6rem;
+			display: inline;
+			border: solid #aaa;
+			border-width: 0 .15em .15em 0;
+			transform: translateY(-.3em) rotate(45deg) scale(1);
+			pointer-events: none;
+			transition: transform .3s ease, border-color .3s ease;
+		}
+
 		&__content {
 			display: none;
+			padding: 0 1rem;
+
+			> *:first-child {
+				margin-top: 0;
+			}
+
+			ul {
+				list-style-type: disc;
+				margin-left: 1rem;
+			}
 		}
 	}
 }
