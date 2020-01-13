@@ -55,10 +55,7 @@ class Plugin
 			self::$instance->base_path = self::$instance->prefix;
 			self::$instance->upload_dir =  untrailingslashit(wp_upload_dir()['basedir'])  . '/' . self::$instance->base_path;
 			self::$instance->upload_url =  untrailingslashit(wp_upload_dir()['baseurl'])  . '/' . self::$instance->base_path;
-			self::$instance->icons = scandir(self::$instance->upload_dir);
-			self::$instance->icons = array_filter(self::$instance->icons, function ($icon) {
-				return (strpos($icon, '.svg') !== false);
-			});
+			self::$instance->icons = [];
 			self::$instance->debug = true;
 
 			if (! isset($_SERVER[ 'HTTP_HOST' ]) || strpos($_SERVER[ 'HTTP_HOST' ], '.site') === false && ! in_array($_SERVER[ 'REMOTE_ADDR' ], [ '127.0.0.1', '::1' ])) {
@@ -79,6 +76,11 @@ class Plugin
 	{
 		// Recursive directory creation based on full path.
 		wp_mkdir_p($this->upload_dir);
+		
+		$this->icons = scandir($this->upload_dir);
+		$this->icons = array_filter($this->icons, function ($icon) {
+			return (strpos($icon, '.svg') !== false);
+		});
 
 		// Create default icon on plugin activation
 		register_activation_hook(plugin_dir_path(__DIR__) . $this->prefix . '.php', [$this, 'generateDefaultIcons']);
@@ -195,7 +197,7 @@ class Plugin
 	 */
 	public function generateDefaultIcons()
 	{
-		if (empty(shp_icon()->Package->Icon->icons)) {
+		if (empty(shp_icon()->icons)) {
 			$initialIcon = fopen(shp_icon()->upload_dir . '/' . 'heart.svg', 'w');
 			fwrite($initialIcon, '<svg viewBox="0 0 33 30" data-shp-icon="heart" xmlns="http://www.w3.org/2000/svg"><path d="M16.5 30l-2.393-2.158C5.61 20.207 0 15.172 0 8.992 0 3.956 3.993 0 9.075 0c2.871 0 5.627 1.324 7.425 3.417C18.299 1.324 21.054 0 23.925 0 29.007 0 33 3.956 33 8.992c0 6.18-5.61 11.215-14.108 18.866L16.5 30z" fill="currentColor" fill-rule="evenodd"/></svg>');
 			fclose($initialIcon);

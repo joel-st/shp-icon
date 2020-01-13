@@ -74,8 +74,8 @@ if ($wp_compatibility || $php_compatibility) {
  *
  * @since    1.0.0
  */
+
 require_once 'vendor/autoload.php';
-//require_once 'src/Plugin.php';
 
 /*
  * This lot auto-loads a class or trait just when you need it. You don't need to
