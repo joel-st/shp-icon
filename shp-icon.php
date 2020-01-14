@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: SVG Icons for WordPress & Gutenberg
+Plugin Name: SVG Icons for WordPress
 Plugin URI: https://github.com/joel-st/shp-icon
 Description: This plugin allows you to use SVG icons within WordPress as shortcodes and/or as Gutenberg block.
 Author: Joel Stüdle (joel@sayhello.ch)

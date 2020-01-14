@@ -1,4 +1,4 @@
-=== SVG Icons for WordPress & Gutenberg ===
+=== SVG Icons for WordPress ===
 Contributors: joelmelon
 Donate link: https://joelstuedle.ch/
 Tags: SVG, Icons
@@ -13,7 +13,7 @@ This plugin allows you to use SVG icons within WordPress as shortcode and/or as 
 
 == Installation ==
 
-1. Upload the `shp-icon` folder to the `/wp-content/plugins/` directory
+1. Upload the `svg-icons-for-wordpress` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Read the plugins help page how to prepare your icons the right way.
 
