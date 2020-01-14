@@ -9,7 +9,7 @@ Stable tag: trunk
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-This plugin allows you to use SVG icons within WordPress as shortcode and/or as Gutenberg Block.
+This plugin allows you to use SVG icons within WordPress as shortcode and/or as Gutenberg Block. In addition the plugin adds SVG support for WordPress with the SVG-Sanitizer library.
 
 == Installation ==
 
