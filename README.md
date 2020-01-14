@@ -1,24 +1,27 @@
-# SVG Icons for WordPress & Gutenberg
-
-## Description
+=== SVG Icons for WordPress & Gutenberg ===
+Contributors: joelmelon
+Donate link: https://joelstuedle.ch/
+Tags: SVG, Icons
+Requires at least: 5
+Requires PHP: 7.1
+Tested up to: 5.3.2
+Stable tag: trunk
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 This plugin allows you to use SVG icons within WordPress as shortcode and/or as Gutenberg Block.
 
-## Usage
+== Installation ==
 
-Install and activate the plugin. Read the plugins help page how to prepare your icons the right way.
+1. Upload the `shp-icon` folder to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. Read the plugins help page how to prepare your icons the right way.
 
-## Changelog
+== Changelog ==
 
-### 1.0.0
+= 1.0.0 =
+* Initial version.
 
-* Initial working version
-
-## Contributors
-
-* Joel Stüdle (joel@sayhello.ch)
-
-## License
+== License ==
 Use this code freely, widely and for free. Provision of this code provides and implies no guarantee.
-
 Please respect the GPL v3 licence, which is available via http://www.gnu.org/licenses/gpl-3.0.html
