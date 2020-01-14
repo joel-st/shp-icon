@@ -2,7 +2,7 @@ import gulp from 'gulp';
 import livereload from 'gulp-livereload';
 
 const config = {
-	name: 'SVG Icons for WordPress',
+	name: 'SVG Icons',
 	key: 'shp-icon',
 	assetsDir: 'assets/',
 	gulpDir: './.build/gulp/',

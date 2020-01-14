@@ -1,4 +1,4 @@
-=== SVG Icons for WordPress ===
+=== SVG Icons ===
 Contributors: joelmelon
 Donate link: https://joelstuedle.ch/
 Tags: SVG, Icons
