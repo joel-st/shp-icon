@@ -1,11 +1,11 @@
 {
-	"name": "shp-icons",
+	"name": "shp-icon",
 	"version": "0.0.0",
 	"description": "This is a boilerplate package. It has an object oriented php architecture and comes with some very handy build workflows.",
 	"main": "gulpfile.babel.js",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/SayHelloGmbH/hello-roots.git"
+		"url": "git+https:/https://github.com/joel-st/shp-icon"
 	},
 	"keywords": [
 		"hello",
@@ -13,9 +13,9 @@
 		"plugin"
 	],
 	"bugs": {
-		"url": "https://github.com/SayHelloGmbH/hello-roots/issues"
+		"url": "https://github.com/joel-st/shp-icon/issues"
 	},
-	"homepage": "https://github.com/SayHelloGmbH/hello-roots#readme",
+	"homepage": "https://github.com/joel-st/shp-icon#readme",
 	"dependencies": {
 		"jquery-easing": "0.0.1",
 		"verge": "^1.9.1"

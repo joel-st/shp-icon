@@ -381,7 +381,7 @@ class OptionsPage
 
 		// introduction
 		echo '<p>';
-		echo _x('Feel free to upload any SVG file to the plugin. To use SVG’s on websites is always a pain. But hey – good news – this plugin tries to support a porper use of SVG icons on your website. Any SVG uploaded to the plugin can be used with a shortcode or with a Gutenberg block.', 'Options page help introduction', 'shp-icon');
+		echo _x('Feel free to upload any SVG file to the plugin. To use SVG’s on websites is always a pain. But hey – good news – this plugin tries to support a proper use of SVG icons on your website. Any SVG uploaded to the plugin can be used with a shortcode or with a Gutenberg block.', 'Options page help introduction', 'shp-icon');
 		echo '</p>';
 		echo '<br/>';
 		echo '<hr/>';
@@ -447,7 +447,7 @@ class OptionsPage
 		echo '<code style="'.$style.'">color=""</code>';
 		echo '</th>';
 		echo '<td>';
-		echo sprintf(_x('Use the <i>color</i> attribute to colorize an icon. The colorisation only works, if your SVG is using %s.', 'Options page help use as shortcode', 'shp-icon'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#currentColor" target="_blank">'._x('fill="currentColor"', 'Options page help use as shortcode').'</a>');
+		echo sprintf(_x('Use the <i>color</i> attribute to colorize an icon. The coloration only works, if your SVG is using %s.', 'Options page help use as shortcode', 'shp-icon'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#currentColor" target="_blank">'._x('fill="currentColor"', 'Options page help use as shortcode').'</a>');
 		echo '</td>';
 		echo '</tr>';
 
@@ -456,7 +456,7 @@ class OptionsPage
 		echo '<code style="'.$style.'">background-color=""</code>';
 		echo '</th>';
 		echo '<td>';
-		echo _x('Use the <i>background-color</i> attribute to colorize the icons parent background. Should work everywhere *touching wood* huh.', 'Options page help use as shortcode', 'shp-icon');
+		echo _x('Use the <i>background-color</i> attribute to colorize the icons parent background. Should work everywhere.', 'Options page help use as shortcode', 'shp-icon');
 		echo '</td>';
 		echo '</tr>';
 
@@ -524,7 +524,7 @@ class OptionsPage
 		echo '<span class="accordion__item-state-indicator"></span>';
 		echo '<div class="accordion__content">';
 		echo '<p>'.sprintf(
-			_x('While uploading an SVG, it will be sanitised by %s and renamed based on the filename. Other changes to the SVG wont happen.', 'Options page help FAQ answer', 'shp-icon'),
+			_x('While uploading an SVG, it will be sanitised by %s and renamed based on the filename. Other changes to the SVG won’t happen.', 'Options page help FAQ answer', 'shp-icon'),
 			'<a target="_blank" href="https://github.com/darylldoyle/svg-sanitizer">'._x('a PHP SVG/XML Sanitizer', 'Options page help FAQ answer', 'shp-icon').'</a>'
 		).'</p>';
 		echo '</div>';
@@ -553,7 +553,7 @@ class OptionsPage
 		echo '<input type="checkbox" class="accordion__item-checkbox" id="ie-support" />';
 		echo '<span class="accordion__item-state-indicator"></span>';
 		echo '<div class="accordion__content">';
-		echo '<p>'._x('Yes there is a small script watching out for Internet Explorer users to bea… just kidding, to fix a few problems with IE11. If you discover any problems displaying your icons in other browsers too, let us know!', 'Options page help FAQ answer', 'shp-icon').'</p>';
+		echo '<p>'._x('Yes there is a small script watching out for Internet Explorer users to fix a few problems with IE11. If you discover any problems displaying your icons in other browsers too, submit the issue in the plugin repository!', 'Options page help FAQ answer', 'shp-icon').'</p>';
 		echo '</div>';
 		echo '</div>'; // .accordion__item
 
@@ -562,7 +562,7 @@ class OptionsPage
 		echo '<input type="checkbox" class="accordion__item-checkbox" id="migrate" />';
 		echo '<span class="accordion__item-state-indicator"></span>';
 		echo '<div class="accordion__content">';
-		echo '<p>'.sprintf(_x('The uploaded SVG’s are saved in <code>/wp-content/uploads/%s</code>. So dont forget to migrate this folder too.', 'Options page help FAQ answer', 'shp-icon'), shp_icon()->prefix).'</p>';
+		echo '<p>'.sprintf(_x('The uploaded SVG’s are saved in <code>/wp-content/uploads/%s</code>. Migrate this folder too to keep the your icons working.', 'Options page help FAQ answer', 'shp-icon'), shp_icon()->prefix).'</p>';
 		echo '</div>';
 		echo '</div>'; // .accordion__item
 
@@ -571,8 +571,7 @@ class OptionsPage
 
 		echo '<div class="'.shp_icon()->prefix.'-help '.shp_icon()->prefix.'-help--right">';
 		echo '<h3>'._x('That’s it, peace.', 'Options page help title', 'shp-icon').'</h3>';
-		echo sprintf(_x('Get help: %s', 'Options page help', 'shp-icon'), '<a href="mailto:joel@sayhello.ch">joel@sayhello.ch</a>').'</p>';
-		echo '<p>'.sprintf(_x('Contribute: %s', 'Options page help', 'shp-icon'), '<a target="_blank" href="'.shp_icon()->plugin_header['PluginURI'].'">'._x('Plugin Repository', 'Options page help FAQ answer', 'shp-icon').'</a>').'</p>';
+		echo '<p>'.sprintf(_x('Contribute or get help: %s', 'Options page help', 'shp-icon'), '<a target="_blank" href="'.shp_icon()->plugin_header['PluginURI'].'">'._x('Plugin Repository', 'Options page help FAQ answer', 'shp-icon').'</a>').'</p>';
 		echo '<p>'.sprintf(_x('Report issues: %s', 'Options page help', 'shp-icon'), '<a target="_blank" href="'.shp_icon()->plugin_header['PluginURI'].'/issues">'._x('Plugin Repository', 'Options page help FAQ answer', 'shp-icon').'</a>').'</p>';
 		echo '<h3>'._x('Say Thank You With A Donation', 'Options page help title', 'shp-icon').'</h3>';
 		echo '<p><a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CM27FZ8UYJCGJ&source=url">Paypal</a></p>';

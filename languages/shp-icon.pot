@@ -1,0 +1,410 @@
+# Copyright (C) 2020 SVG Icons for WordPress & Gutenberg
+# This file is distributed under the same license as the SVG Icons for WordPress & Gutenberg package.
+msgid ""
+msgstr ""
+"Project-Id-Version: SVG Icons for WordPress & Gutenberg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. translators: Compatibility-Check failed Warning
+#: shp-icon.php:46
+msgctxt "Compatibility-Check failed Warning"
+msgid "%1$s requires PHP %2$s (or newer) and WordPress %3$s (or newer) to function properly. Your Site is using PHP %4$s and WordPress %5$s. Please upgrade. The Plugin has been deactivated automatically. Don’t hesitate to ask for Help @%6$s."
+msgstr ""
+
+#: src/Plugin.php:133
+msgctxt "Theme instance loadClasses() error message"
+msgid "There was a problem with the Plugin. Only one class with name “%1$s” can be use used in “%2$s”."
+msgstr ""
+
+#: src/Plugin.php:221
+msgctxt "Settings link in WordPress plugin list"
+msgid "Settings"
+msgstr ""
+
+#: src/Block/Icon.php:81
+msgctxt "Block rendering notice"
+msgid "Choose Icon"
+msgstr ""
+
+#: src/Package/Delete.php:48
+msgctxt "Delete without filename"
+msgid "No filename provided"
+msgstr ""
+
+#: src/Package/Delete.php:54
+msgctxt "Delete no icon found"
+msgid "Icon not found"
+msgstr ""
+
+#: src/Package/Delete.php:68
+msgctxt "Delete icon failed"
+msgid "Deletion failed"
+msgstr ""
+
+#: src/Package/OptionsPage.php:30
+msgctxt "Options page tab title"
+msgid "Icon Collection"
+msgstr ""
+
+#: src/Package/OptionsPage.php:31
+msgctxt "Options page tab title"
+msgid "Settings"
+msgstr ""
+
+#: src/Package/OptionsPage.php:32
+msgctxt "Options page tab title"
+msgid "Information & Help"
+msgstr ""
+
+#: src/Package/OptionsPage.php:39
+msgctxt "Options page setting label"
+msgid "em (default top shift of inline icons)."
+msgstr ""
+
+#: src/Package/OptionsPage.php:40
+msgctxt "Options page setting label"
+msgid "Top Shift"
+msgstr ""
+
+#: src/Package/OptionsPage.php:45
+msgctxt "Options page setting label"
+msgid "Default scale factor for inline icons related to font-size of parent element."
+msgstr ""
+
+#: src/Package/OptionsPage.php:46
+msgctxt "Options page setting label"
+msgid "Scale Factor"
+msgstr ""
+
+#: src/Package/OptionsPage.php:74
+msgctxt "Plugins option page title"
+msgid "SVG Icons"
+msgstr ""
+
+#: src/Package/OptionsPage.php:75
+msgctxt "Plugins option menu title"
+msgid "SVG Icons"
+msgstr ""
+
+#: src/Package/OptionsPage.php:138
+msgctxt "Options page heading"
+msgid "Icons"
+msgstr ""
+
+#: src/Package/OptionsPage.php:140
+msgctxt "Options page title action"
+msgid "Add Icons"
+msgstr ""
+
+#: src/Package/OptionsPage.php:153
+msgctxt "Options page tab-nav aria-label"
+msgid "Second menu"
+msgstr ""
+
+#: src/Package/OptionsPage.php:184
+msgctxt "Options page media-toolbar title"
+msgid "Icon Collection"
+msgstr ""
+
+#: src/Package/OptionsPage.php:188
+msgctxt "Options page media-toolbar action input label"
+msgid "Search by name"
+msgstr ""
+
+#: src/Package/OptionsPage.php:212
+msgctxt "Options page no results"
+msgid "No results"
+msgstr ""
+
+#: src/Package/OptionsPage.php:242
+msgctxt "Options page icon action"
+msgid "Delete"
+msgstr ""
+
+#: src/Package/OptionsPage.php:282
+msgctxt "Options page settings title"
+msgid "Display Options for inline icons"
+msgstr ""
+
+#: src/Package/OptionsPage.php:285
+msgctxt "Options page settings description"
+msgid "This options only adapts to inline icons without the <code>block</code> attribute. Example <code>[shp-icon icon=\"heart\"]</code>.<br/> This options takes no effect for icons insertet with the Gutenberg block."
+msgstr ""
+
+#: src/Package/OptionsPage.php:380
+msgctxt "Options page help title. %1$s = plugin name."
+msgid "Thank you for using %1$s"
+msgstr ""
+
+#: src/Package/OptionsPage.php:384
+msgctxt "Options page help introduction"
+msgid "Feel free to upload any SVG file to the plugin. To use SVG’s on websites is always a pain. But hey – good news – this plugin tries to support a proper use of SVG icons on your website. Any SVG uploaded to the plugin can be used with a shortcode or with a Gutenberg block."
+msgstr ""
+
+#: src/Package/OptionsPage.php:393
+msgctxt "Options page help how to use title"
+msgid "Use Icons as a Shortcode"
+msgstr ""
+
+#: src/Package/OptionsPage.php:396
+msgctxt "Options page help use as shortcode"
+msgid "It is best to use the shortcode in text elements. The icon will adapt to the font size to give an excellent combination."
+msgstr ""
+
+#: src/Package/OptionsPage.php:404
+msgctxt "Options page help use as shortcode"
+msgid "Shortcode Options"
+msgstr ""
+
+#: src/Package/OptionsPage.php:414
+msgctxt "Options page help use as shortcode"
+msgid "%s. Use the <i>icon</i> attribute to define which icon to display. You will find the icon name in your %s."
+msgstr ""
+
+#: src/Package/OptionsPage.php:414
+msgctxt "Options page help use as shortcode"
+msgid "Required"
+msgstr ""
+
+#: src/Package/OptionsPage.php:423
+msgctxt "Options page help use as shortcode"
+msgid "Use the <i>block</i> attribute to let a shortcode icon act like a block icon."
+msgstr ""
+
+#: src/Package/OptionsPage.php:432
+msgctxt "Options page help use as shortcode"
+msgid "Use the <i>top-shift</i> attribute to fine tune the vertical align of an inline icon. This is useful if the visual align of an inline icon isn’t perfect. Set the attribute to a number, the number uses then the <i>em</i> unit. You can also set a default top shift for all inline icons under the %s."
+msgstr ""
+
+#: src/Package/OptionsPage.php:441
+msgctxt "Options page help use as shortcode"
+msgid "Use the <i>scale-factor</i> attribute to fine tune the rendered size of an inline icon. Set the attribute to a number, the number uses then the <i>em</i> unit. You can also set a default scale factor for all inline icons under the %s."
+msgstr ""
+
+#: src/Package/OptionsPage.php:450
+msgctxt "Options page help use as shortcode"
+msgid "Use the <i>color</i> attribute to colorize an icon. The coloration only works, if your SVG is using %s."
+msgstr ""
+
+#: src/Package/OptionsPage.php:459
+msgctxt "Options page help use as shortcode"
+msgid "Use the <i>background-color</i> attribute to colorize the icons parent background. Should work everywhere."
+msgstr ""
+
+#: src/Package/OptionsPage.php:470
+msgctxt "Options page help how to use title"
+msgid "Use Icons as a Gutenberg Block"
+msgstr ""
+
+#: src/Package/OptionsPage.php:473
+msgctxt "Options page help use as Gutenberg block"
+msgid "Icons inserted with the Gutenberg block will fill the available space. Find the block in the Gutenberg editor in the <b>common</b> section as <b>SVG Icon</b>."
+msgstr ""
+
+#: src/Package/OptionsPage.php:480
+msgctxt "Options page help FAQ"
+msgid "FAQ"
+msgstr ""
+
+#: src/Package/OptionsPage.php:486
+msgctxt "Options page help FAQ"
+msgid "What can I do to optimize my SVG’s before uploading to the plugin?"
+msgstr ""
+
+#: src/Package/OptionsPage.php:490
+msgctxt "Options page help FAQ answer"
+msgid "SVGO is sick! Props to all the developers of SVGO!"
+msgstr ""
+
+#: src/Package/OptionsPage.php:492
+msgctxt "Options page help FAQ answer"
+msgid "According to SVGO, SVG files, especially those exported from various editors, usually contain a lot of redundant and useless information. This can include editor metadata, comments, hidden elements, default or non-optimal values and other stuff that can be safely removed or converted without affecting the SVG rendering result. To do so you can use the %s which perfectly optimises your SVG’s. "
+msgstr ""
+
+#: src/Package/OptionsPage.php:493
+msgctxt "Options page help FAQ answer"
+msgid "SVGO (SVG Optimizer)"
+msgstr ""
+
+#: src/Package/OptionsPage.php:497
+msgctxt "Options page help FAQ answer"
+msgid "Use SVGO as a web app – %s"
+msgstr ""
+
+#: src/Package/OptionsPage.php:497
+msgctxt "Options page help FAQ answer"
+msgid "SVGOMG"
+msgstr ""
+
+#: src/Package/OptionsPage.php:500
+msgctxt "Options page help FAQ answer"
+msgid "Use SVGO as a Sketch plugin – %s"
+msgstr ""
+
+#: src/Package/OptionsPage.php:500
+msgctxt "Options page help FAQ answer"
+msgid "svgo-compressor"
+msgstr ""
+
+#: src/Package/OptionsPage.php:503
+msgctxt "Options page help FAQ answer"
+msgid "Use SVGO as macOS app – %s"
+msgstr ""
+
+#: src/Package/OptionsPage.php:503
+msgctxt "Options page help FAQ answer"
+msgid "Image Shrinker"
+msgstr ""
+
+#: src/Package/OptionsPage.php:506
+msgctxt "Options page help FAQ answer"
+msgid "Use SVGO as an OSX Folder Action – %s"
+msgstr ""
+
+#: src/Package/OptionsPage.php:506
+msgctxt "Options page help FAQ answer"
+msgid "svgo-osx-folder-action"
+msgstr ""
+
+#: src/Package/OptionsPage.php:509
+msgctxt "Options page help FAQ answer"
+msgid "Further you can read the following articles to optimize your SVG’s manually."
+msgstr ""
+
+#: src/Package/OptionsPage.php:512
+msgctxt "Options page help FAQ answer"
+msgid "A Guide to Getting Sharp and Crisp SVG Images on Screen."
+msgstr ""
+
+#: src/Package/OptionsPage.php:515
+msgctxt "Options page help FAQ answer"
+msgid "I set out to create pixel perfect icons. Here’s what I discovered along the way."
+msgstr ""
+
+#: src/Package/OptionsPage.php:522
+msgctxt "Options page help FAQ"
+msgid "Is there any change on my files trough the upload?"
+msgstr ""
+
+#: src/Package/OptionsPage.php:527
+msgctxt "Options page help FAQ answer"
+msgid "While uploading an SVG, it will be sanitised by %s and renamed based on the filename. Other changes to the SVG won’t happen."
+msgstr ""
+
+#: src/Package/OptionsPage.php:528
+msgctxt "Options page help FAQ answer"
+msgid "a PHP SVG/XML Sanitizer"
+msgstr ""
+
+#: src/Package/OptionsPage.php:534
+msgctxt "Options page help FAQ"
+msgid "Where can I use the shortcode?"
+msgstr ""
+
+#: src/Package/OptionsPage.php:539
+msgctxt "Options page help FAQ answer"
+msgid "The shortcode works within the content section (editor). By default there is no additional shortcode support. You can add shortcode support via WordPress %s or do the shortcode directly in your template files with %s. Read the following article for further information."
+msgstr ""
+
+#: src/Package/OptionsPage.php:540
+msgctxt "Options page help FAQ answer"
+msgid "add_filter()"
+msgstr ""
+
+#: src/Package/OptionsPage.php:541
+msgctxt "Options page help FAQ answer"
+msgid "do_shortcode()"
+msgstr ""
+
+#: src/Package/OptionsPage.php:545
+msgctxt "Options page help FAQ answer"
+msgid "Using Shortcodes everywhere."
+msgstr ""
+
+#: src/Package/OptionsPage.php:552
+msgctxt "Options page help FAQ"
+msgid "SVG support for Internet Explorer?"
+msgstr ""
+
+#: src/Package/OptionsPage.php:556
+msgctxt "Options page help FAQ answer"
+msgid "Yes there is a small script watching out for Internet Explorer users to fix a few problems with IE11. If you discover any problems displaying your icons in other browsers too, submit the issue in the plugin repository!"
+msgstr ""
+
+#: src/Package/OptionsPage.php:561
+msgctxt "Options page help FAQ"
+msgid "What do I have to consider when migrating the website?"
+msgstr ""
+
+#: src/Package/OptionsPage.php:565
+msgctxt "Options page help FAQ answer"
+msgid "The uploaded SVG’s are saved in <code>/wp-content/uploads/%s</code>. Migrate this folder too to keep the your icons working."
+msgstr ""
+
+#: src/Package/OptionsPage.php:573
+msgctxt "Options page help title"
+msgid "That’s it, peace."
+msgstr ""
+
+#: src/Package/OptionsPage.php:574
+msgctxt "Options page help"
+msgid "Contribute or get help: %s"
+msgstr ""
+
+#: src/Package/OptionsPage.php:574, src/Package/OptionsPage.php:575
+msgctxt "Options page help FAQ answer"
+msgid "Plugin Repository"
+msgstr ""
+
+#: src/Package/OptionsPage.php:575
+msgctxt "Options page help"
+msgid "Report issues: %s"
+msgstr ""
+
+#: src/Package/OptionsPage.php:576
+msgctxt "Options page help title"
+msgid "Say Thank You With A Donation"
+msgstr ""
+
+#: src/Package/Upload.php:75
+msgctxt "Upload without id"
+msgid "No upload ID specified"
+msgstr ""
+
+#: src/Package/Upload.php:81
+msgctxt "Upload without nonce"
+msgid "No _wpnonce provided"
+msgstr ""
+
+#: src/Package/Upload.php:87
+msgctxt "Upload without files"
+msgid "No files provided"
+msgstr ""
+
+#: src/Package/Upload.php:93
+msgctxt "Upload false amount of files"
+msgid "Invalid amount of files"
+msgstr ""
+
+#: src/Package/Upload.php:104
+msgctxt "Upload fals amount of files"
+msgid "Invalid file"
+msgstr ""
+
+#: src/Package/Upload.php:110
+msgctxt "Upload fals amount of files"
+msgid "Invalid file type"
+msgstr ""
+
+#: src/Package/Upload.php:118
+msgctxt "Upload sanitation failed"
+msgid "Sanitation failed"
+msgstr ""
