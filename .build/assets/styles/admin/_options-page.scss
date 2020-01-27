@@ -9,6 +9,10 @@
 
 	.media-toolbar {
 		display: block;
+		position: relative;
+		background-color: #fff;
+		border: 1px solid #ccd0d4;
+		//box-shadow: 0 0 .2rem rgba(0,0,0,.5);
 
 		@media (min-width: 500px) {
 			display: flex;
@@ -203,7 +207,7 @@
 			background-color: #f1f1f1;
 			padding: 2px 5px;
 			border-radius: 2px;
-			margin-right: 10px;
+			margin-right: 0;
 		}
 	}
 

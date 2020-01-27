@@ -72,6 +72,14 @@ export default registerBlockType(
 				);
 			}
 
+			let hasCurrentColor = false;
+			if ( icon ) {
+				const index = iconList.findIndex( x => x.filename === icon );
+				if ( -1 !== index && ( -1 !== iconList[ index ][ 'svg' ].toLowerCase().search( 'currentcolor' ) ) ) {
+					hasCurrentColor = true;
+				}
+			}
+
 			return [
 				<BlockControls>
 					{/* <AlignmentToolbar
@@ -106,7 +114,7 @@ export default registerBlockType(
 							label: _x( 'Background Color', 'SVG icon block colorSettings label', 'shp-icon' ),
 						}]}
 					>
-						<i>{ _x( 'The color feature only works with SVG’s using currentColor.', 'SVG icon block colorSettings notice', 'shp-icon' ) }</i>
+						{ !hasCurrentColor && <i style={{color: 'red'}}>{ _x( 'The color feature only works with SVG’s using currentColor. No currentColor value found in the selected SVG.', 'SVG icon block colorSettings notice', 'shp-icon' ) }</i>}
 					</PanelColorSettings>
 				</InspectorControls>,
 				<ServerSideRender block="shp-icon/icon" attributes={attributes}/>

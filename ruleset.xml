@@ -1,13 +1,23 @@
 <?xml version="1.0"?>
-<ruleset name="PSRWithTabs">
-    <description>PSR2 with tabs instead of spaces, as used for projects by sayhello.ch.</description>
-    <arg name="tab-width" value="4"/>
-    <rule ref="PSR2">
+<ruleset name="Davon">
+    <description>Custom Ruleset</description>
+
+    <!-- Use WPCS as a base -->
+    <rule ref="WordPress-Core">
         <exclude name="Generic.WhiteSpace.DisallowTabIndent"/>
-        <exclude name="Generic.Files.LineLength.TooLong"/>
+		<exclude name="WordPress.WP.I18n.NonSingularStringLiteralDomain" />
+		<exclude name="WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar" />
+		<exclude name="WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase" />
+		<exclude name="WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid" />
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
+		<exclude name="WordPress.WP.I18n.MissingTranslatorsComment" />
     </rule>
+
+    <!-- Disallow spaces as tabs -->
     <rule ref="Generic.WhiteSpace.DisallowSpaceIndent"/>
-    <rule ref="Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed"/>
+
+    <!-- Define 4 spaces as a tab -->
     <rule ref="Generic.WhiteSpace.ScopeIndent">
         <properties>
             <property name="indent" value="4"/>
