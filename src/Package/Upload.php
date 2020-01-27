@@ -116,7 +116,7 @@ class Upload {
 		}
 
 		$file          = ( isset( $_FILES['file'] ) ) ? $_FILES['file'] : false;
-		$file_name     = $file ? ( isset( $file['name'] ) ) ? $file['name'] : false : false;
+		$file_name     = $file ? ( isset( $file['name'] ) ) ? sanitize_file_name( $file['name'] ) : false : false;
 		$file_type     = $file ? ( isset( $file['type'] ) ) ? $file['type'] : false : false;
 		$file_tmp_name = $file ? ( isset( $file['tmp_name'] ) ) ? $file['tmp_name'] : false : false;
 
@@ -229,7 +229,7 @@ class Upload {
 	 * @since 1.0.0
 	 */
 	public function pushIcon() {
-		shp_icon()->Package->OptionsPage->renderIcon( $_POST['icon'], shp_icon()->prefix . '-list' );
+		shp_icon()->Package->OptionsPage->renderIcon( sanitize_text_field( $_POST['icon'] ), shp_icon()->prefix . '-list' );
 		exit();
 	}
 }

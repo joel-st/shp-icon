@@ -37,7 +37,7 @@ class Delete {
 	 * @since 1.0.0
 	 */
 	public function delete() {
-		if ( ! isset( $_POST['file_name'] ) ) {
+		if ( ! isset( $_POST['file_name'] ) && ! sanitize_file_name( $_POST['file_name'] ) ) {
 			header( 'HTTP/1.1 404 Bad Request' );
 			header( 'Content-type: application/json' );
 			die( json_encode( array( 'message' => _x( 'No filename provided', 'Delete without filename', 'shp-icon' ) ) ) );

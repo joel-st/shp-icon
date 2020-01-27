@@ -29,7 +29,7 @@ class OptionsPage {
 			'settings'         => _x( 'Settings', 'Options page tab title', 'shp-icon' ),
 			'help'             => _x( 'Information & Help', 'Options page tab title', 'shp-icon' ),
 		);
-		$this->current_tab    = ( isset( $_GET['tab'] ) ) ? $_GET['tab'] : $this->default_tab;
+		$this->current_tab    = ( isset( $_GET['tab'] ) && sanitize_text_field( $_GET['tab'] ) ) ? sanitize_text_field( $_GET['tab'] ) : $this->default_tab;
 		$this->settings_group = shp_icon()->prefix . '-settings-group';
 
 		$this->display_settings = array(
