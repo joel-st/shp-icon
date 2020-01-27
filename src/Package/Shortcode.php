@@ -34,8 +34,8 @@ class Shortcode {
 			array(
 				'icon'             => false,
 				'box-model'        => ( in_array( 'block', $attr, true ) ) ? true : false,
-				'top-shift'        => get_option( shp_icon()->prefix . '-display-inline-top-shift' ),
-				'scale-factor'     => get_option( shp_icon()->prefix . '-display-inline-scale-factor' ),
+				'top-shift'        => sanitize_option( shp_icon()->prefix . '-display-inline-top-shift', get_option( shp_icon()->prefix . '-display-inline-top-shift' ) ),
+				'scale-factor'     => sanitize_option( shp_icon()->prefix . '-display-inline-scale-factor', get_option( shp_icon()->prefix . '-display-inline-scale-factor' ) ),
 				'color'            => 'inherit',
 				'background-color' => 'transparent',
 				'align'            => 'normal', // used in icon block
@@ -90,8 +90,8 @@ class Shortcode {
 			if ( ! $attr['box-model'] && $height && $width ) {
 				$style_width  = ( 1 * $width / $height ) * $attr['scale-factor'];
 				$style_height = 1 * $attr['scale-factor'];
-				$style        = 'width:' . $style_width . 'em;height:' . $style_height . 'em;';
-				$style       .= 'top:' . $attr['top-shift'] . 'em;';
+				$style        = 'width:' . esc_attr( $style_width ) . 'em;height:' . esc_attr( $style_height ) . 'em;';
+				$style       .= 'top:' . esc_attr( $attr['top-shift'] ) . 'em;';
 				if ( $svg_style ) {
 					$style                    = $svg_style . $style;
 					$svg->attributes()->style = $style;
@@ -102,12 +102,12 @@ class Shortcode {
 
 			$color_style = '';
 			if ( 'inherit' !== $attr['color'] ) {
-				$color_style = 'color:' . $attr['color'] . ';';
+				$color_style = 'color:' . esc_attr( $attr['color'] ) . ';';
 			}
 
 			$shift_style = '';
 			if ( 'transparent' !== $attr['background-color'] ) {
-				$shift_style = 'background-color:' . $attr['background-color'] . ';';
+				$shift_style = 'background-color:' . esc_attr( $attr['background-color'] ) . ';';
 			}
 
 			$parent_style = '';
@@ -125,48 +125,14 @@ class Shortcode {
 			$el         = $attr['gutenberg'] ? 'div' : 'i';
 			$class_list = ( ! $attr['box-model'] ) ? shp_icon()->prefix . ' ' . shp_icon()->prefix . '--inline' : shp_icon()->prefix;
 			if ( $attr['gutenberg'] ) {
-				$class_list .= ' ' . shp_icon()->prefix . '--block align' . $attr['align'];
+				$class_list .= ' ' . shp_icon()->prefix . '--block align' . esc_attr( $attr['align'] );
 			}
 
 			if ( ! empty( $color_style ) || ! empty( $shift_style ) ) {
-				return '<' . $el . ' class="' . $class_list . '" style="' . $parent_style . '">' . $svg . '</' . $el . '>';
+				return '<' . esc_attr( $el ) . ' class="' . esc_attr( $class_list ) . '" style="' . esc_attr( $parent_style ) . '">' . $svg . '</' . esc_attr( $el ) . '>';
 			} else {
-				return '<' . $el . ' class="' . $class_list . '">' . $svg . '</' . $el . '>';
+				return '<' . esc_attr( $el ) . ' class="' . esc_attr( $class_list ) . '">' . $svg . '</' . esc_attr( $el ) . '>';
 			}
 		}
 	}
-
-	// /**
-	//  * Apply the plugins shortcode to specific areas.
-	//  *
-	//  * @link http://wordpress.stackexchange.com/q/137725/1685
-	//  *
-	//  * @param string $text
-	//  * @return string
-	//  */
-	// public function doShortcode($text)
-	// {
-	// 	$whitelist = [ shp_icon()->prefix ];
-	//
-	// 	global $shortcode_tags;
-	//
-	// 	// Store original copy of registered tags.
-	// 	$_shortcode_tags = $shortcode_tags;
-	//
-	// 	// Remove any tags not in whitelist.
-	// 	foreach ($shortcode_tags as $tag => $function) {
-	// 		if (! in_array($tag, $whitelist)) {
-	// 			unset($shortcode_tags[ $tag ]);
-	// 		}
-	// 	}
-	//
-	// 	// Apply shortcode.
-	// 	$text = shortcode_unautop($text);
-	// 	$text = do_shortcode($text);
-	//
-	// 	// Restore tags.
-	// 	$shortcode_tags = $_shortcode_tags;
-	//
-	// 	return $text;
-	// }
 }

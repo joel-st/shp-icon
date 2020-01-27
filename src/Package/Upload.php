@@ -199,9 +199,9 @@ class Upload {
 			$sanitized_svg = $sanitiser->sanitize( $dirty_svg );
 
 			global $wp_filesystem;
-			$credentials = request_filesystem_credentials( site_url() . '/wp-admin/', '', false, false, array() );
+			$credentials = request_filesystem_credentials( esc_url( site_url() ) . '/wp-admin/', '', false, false, array() );
 			if ( ! WP_Filesystem( $credentials ) ) {
-				request_filesystem_credentials( site_url() . '/wp-admin/', '', true, false, null );
+				request_filesystem_credentials( esc_url( site_url() ) . '/wp-admin/', '', true, false, null );
 			}
 
 			return $sanitized_svg;

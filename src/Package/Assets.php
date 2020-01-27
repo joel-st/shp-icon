@@ -88,8 +88,8 @@ class Assets {
 			wp_enqueue_script( shp_icon()->prefix . '-gutenberg-script', shp_icon()->plugin_url . '/assets/gutenberg/blocks' . ( shp_icon()->debug ? '' : '.min' ) . '.js', array( 'wp-blocks', 'wp-element', 'wp-edit-post', 'lodash' ), shp_icon()->version );
 
 			$data = array(
-				'topShift'    => get_option( shp_icon()->prefix . '-display-inline-top-shift' ),
-				'scaleFactor' => get_option( shp_icon()->prefix . '-display-inline-scale-factor' ),
+				'topShift'    => sanitize_text_field( get_option( shp_icon()->prefix . '-display-inline-top-shift' ) ),
+				'scaleFactor' => sanitize_text_field( get_option( shp_icon()->prefix . '-display-inline-scale-factor' ) ),
 			);
 
 			wp_localize_script( shp_icon()->prefix . '-gutenberg-script', str_replace( '-', '_', shp_icon()->prefix . '-data' ), $data );

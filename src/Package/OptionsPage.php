@@ -130,7 +130,7 @@ class OptionsPage {
 	public function renderOptionsPageHead() {
 		echo '<h1 class="wp-heading-inline">' . _x( 'Icons', 'Options page heading', 'shp-icon' ) . '</h1>';
 		if ( 'manage' === $this->current_tab ) {
-			echo '<input type="button" class="page-title-action aria-button-if-js" role="button" value="' . _x( 'Add Icons', 'Options page title action', 'shp-icon' ) . '" onclick="document.getElementById(`' . shp_icon()->Package->Upload->upload_input_id . '`).click()" />';
+			echo '<input type="button" class="page-title-action aria-button-if-js" role="button" value="' . _x( 'Add Icons', 'Options page title action', 'shp-icon' ) . '" onclick="' . esc_js( 'document.getElementById(`' . shp_icon()->Package->Upload->upload_input_id . '`).click()' ) . '" />';
 			shp_icon()->Package->Upload->renderUpload();
 		}
 		echo '<hr class="wp-header-end">';
@@ -237,7 +237,7 @@ class OptionsPage {
 		echo '<div class="' . $base_class . '__meta">';
 		echo '<b class="' . $base_class . '__name">' . shp_icon()->Package->Helpers->getIconNameFromFileName( $icon ) . '</b>';
 		echo '<div class="' . $base_class . '__shortcode">';
-		echo "<input onClick='this.setSelectionRange(0, this.value.length)' value='" . $shortcode . "' style='" . $style . "' />";
+		echo "<input onClick='" . esc_js( 'this.setSelectionRange(0, this.value.length)' ) . "' value='" . $shortcode . "' style='" . $style . "' />";
 		echo '</div>';
 		echo '</div>';
 		echo '</li>';
@@ -520,8 +520,8 @@ class OptionsPage {
 		echo '<div class="accordion__content">';
 		echo '<p>' . sprintf(
 			_x( 'The shortcode works within the content section (editor). By default there is no additional shortcode support. You can add shortcode support via WordPress %1$s or do the shortcode directly in your template files with %2$s. Read the following article for further information.', 'Options page help FAQ answer', 'shp-icon' ),
-			'<a target="_blank" href="https://developer.wordpress.org/reference/functions/add_filter/"><code>' . _x( 'add_filter()', 'Options page help FAQ answer', 'shp-icon' ) . '</code></a>',
-			'<a target="_blank" href="https://developer.wordpress.org/reference/functions/do_shortcode/"><code>' . _x( 'do_shortcode()', 'Options page help FAQ answer', 'shp-icon' ) . '</code></a>'
+			'<a target="_blank" href="https://developer.wordpress.org/reference/functions/add_filter/"><code>add_filter()</code></a>',
+			'<a target="_blank" href="https://developer.wordpress.org/reference/functions/do_shortcode/"><code>do_shortcode()</code></a>'
 		) . '</p>';
 		echo '<ul>';
 		echo '<li>';
