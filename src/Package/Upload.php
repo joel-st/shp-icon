@@ -115,8 +115,8 @@ class Upload {
 			);
 		}
 
-		$file          = ( isset( $_FILES['file'] ) ) ? $_FILES['file'] : false;
-		$file_name     = $file ? ( isset( $file['name'] ) ) ? sanitize_file_name( $file['name'] ) : false : false;
+		$file          = ( isset( $_FILES['file'] ) && sanitize_file_name( $_FILES['file']['name'] ) ) ? $_FILES['file'] : false;
+		$file_name     = $file ? ( isset( $file['name'] ) ) ? $file['name'] : false : false;
 		$file_type     = $file ? ( isset( $file['type'] ) ) ? $file['type'] : false : false;
 		$file_tmp_name = $file ? ( isset( $file['tmp_name'] ) ) ? $file['tmp_name'] : false : false;
 
