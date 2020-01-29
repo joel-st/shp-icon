@@ -1,4 +1,5 @@
-const { _x } = wp.i18n;
+import { _x } from 'wp.i18n';
+import { __ } from 'wp.i18n';
 
 (function ($) {
 	$(function () {

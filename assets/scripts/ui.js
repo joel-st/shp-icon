@@ -1,3 +1,238 @@
-!function(e){var t={};function n(o){if(t[o])return t[o].exports;var r=t[o]={i:o,l:!1,exports:{}};return e[o].call(r.exports,r,r.exports,n),r.l=!0,r.exports}n.m=e,n.c=t,n.d=function(e,t,o){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:o})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var r in e)n.d(o,r,function(t){return e[t]}.bind(null,r));return o},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=5)}({3:function(e,t){function n(e){return(n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}
+window["wp"] = window["wp"] || {}; window["wp"]["i18n"] =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["i18n"]; }());
+
+/***/ }),
+/* 1 */,
+/* 2 */
+/***/ (function(module, exports) {
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 /*! modernizr 3.6.0 (Custom Build) | MIT *
- * https://modernizr.com/download/?-svgforeignobject-setclasses !*/!function(e,t,o){function r(e,t){return n(e)===t}var i=[],s=[],a={_version:"3.6.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,t){var n=this;setTimeout((function(){t(n[e])}),0)},addTest:function(e,t,n){s.push({name:e,fn:t,options:n})},addAsyncTest:function(e){s.push({name:null,fn:e})}},l=function(){};l.prototype=a,l=new l;var u=t.documentElement,f="svg"===u.nodeName.toLowerCase(),c={}.toString;l.addTest("svgforeignobject",(function(){return!!t.createElementNS&&/SVGForeignObject/.test(c.call(t.createElementNS("http://www.w3.org/2000/svg","foreignObject")))})),function(){var e,t,n,o,a,u;for(var f in s)if(s.hasOwnProperty(f)){if(e=[],(t=s[f]).name&&(e.push(t.name.toLowerCase()),t.options&&t.options.aliases&&t.options.aliases.length))for(n=0;n<t.options.aliases.length;n++)e.push(t.options.aliases[n].toLowerCase());for(o=r(t.fn,"function")?t.fn():t.fn,a=0;a<e.length;a++)1===(u=e[a].split(".")).length?l[u[0]]=o:(!l[u[0]]||l[u[0]]instanceof Boolean||(l[u[0]]=new Boolean(l[u[0]])),l[u[0]][u[1]]=o),i.push((o?"":"no-")+u.join("-"))}}(),function(e){var t=u.className,n=l._config.classPrefix||"";if(f&&(t=t.baseVal),l._config.enableJSClass){var o=new RegExp("(^|\\s)"+n+"no-js(\\s|$)");t=t.replace(o,"$1"+n+"js$2")}l._config.enableClasses&&(t+=" "+n+e.join(" "+n),f?u.className.baseVal=t:u.className=t)}(i),delete a.addTest,delete a.addAsyncTest;for(var p=0;p<l._q.length;p++)l._q[p]();e.Modernizr=l}(window,document)},5:function(e,t,n){"use strict";n.r(t);n(3);!function(){if(!Modernizr.svgforeignobject){var e=document.querySelectorAll(".shp-icon--block");e.length&&Array.prototype.forEach.call(e,(function(e){var t=e.getElementsByTagName("svg");if(t){var n=!!(t=t[0]).getAttribute("viewBox")&&(4===t.getAttribute("viewBox").split(" ").length&&t.getAttribute("viewBox").split(" ").map(Number)),o=e.clientWidth,r=window.getComputedStyle(e,null).getPropertyValue("font-size");if(r=!!parseFloat(r)&&parseFloat(r),n&&o&&r){var i=n[2],s=o/r,a=o*n[3]/i/r;t.style.cssText=t.style.cssText+"width:"+s+"em;height:"+a+"em;"}}}))}}()}});
+ * https://modernizr.com/download/?-svgforeignobject-setclasses !*/
+!function (e, n, s) {
+  function o(e) {
+    var n = f.className,
+        s = Modernizr._config.classPrefix || "";
+
+    if (c && (n = n.baseVal), Modernizr._config.enableJSClass) {
+      var o = new RegExp("(^|\\s)" + s + "no-js(\\s|$)");
+      n = n.replace(o, "$1" + s + "js$2");
+    }
+
+    Modernizr._config.enableClasses && (n += " " + s + e.join(" " + s), c ? f.className.baseVal = n : f.className = n);
+  }
+
+  function t(e, n) {
+    return _typeof(e) === n;
+  }
+
+  function a() {
+    var e, n, s, o, a, l, f;
+
+    for (var c in r) {
+      if (r.hasOwnProperty(c)) {
+        if (e = [], n = r[c], n.name && (e.push(n.name.toLowerCase()), n.options && n.options.aliases && n.options.aliases.length)) for (s = 0; s < n.options.aliases.length; s++) {
+          e.push(n.options.aliases[s].toLowerCase());
+        }
+
+        for (o = t(n.fn, "function") ? n.fn() : n.fn, a = 0; a < e.length; a++) {
+          l = e[a], f = l.split("."), 1 === f.length ? Modernizr[f[0]] = o : (!Modernizr[f[0]] || Modernizr[f[0]] instanceof Boolean || (Modernizr[f[0]] = new Boolean(Modernizr[f[0]])), Modernizr[f[0]][f[1]] = o), i.push((o ? "" : "no-") + f.join("-"));
+        }
+      }
+    }
+  }
+
+  var i = [],
+      r = [],
+      l = {
+    _version: "3.6.0",
+    _config: {
+      classPrefix: "",
+      enableClasses: !0,
+      enableJSClass: !0,
+      usePrefixes: !0
+    },
+    _q: [],
+    on: function on(e, n) {
+      var s = this;
+      setTimeout(function () {
+        n(s[e]);
+      }, 0);
+    },
+    addTest: function addTest(e, n, s) {
+      r.push({
+        name: e,
+        fn: n,
+        options: s
+      });
+    },
+    addAsyncTest: function addAsyncTest(e) {
+      r.push({
+        name: null,
+        fn: e
+      });
+    }
+  },
+      Modernizr = function Modernizr() {};
+
+  Modernizr.prototype = l, Modernizr = new Modernizr();
+  var f = n.documentElement,
+      c = "svg" === f.nodeName.toLowerCase(),
+      u = {}.toString;
+  Modernizr.addTest("svgforeignobject", function () {
+    return !!n.createElementNS && /SVGForeignObject/.test(u.call(n.createElementNS("http://www.w3.org/2000/svg", "foreignObject")));
+  }), a(), o(i), delete l.addTest, delete l.addAsyncTest;
+
+  for (var d = 0; d < Modernizr._q.length; d++) {
+    Modernizr._q[d]();
+  }
+
+  e.Modernizr = Modernizr;
+}(window, document);
+
+/***/ }),
+/* 3 */,
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+// EXTERNAL MODULE: external {"window":["wp","i18n"]}
+var external_window_wp_i18n_ = __webpack_require__(0);
+
+// EXTERNAL MODULE: ./.build/assets/scripts/modernizr-svgforeignobject.js
+var modernizr_svgforeignobject = __webpack_require__(2);
+
+// CONCATENATED MODULE: ./.build/assets/scripts/ui/ie-polyfill.js
+function iePolyfill() {
+  //only IE has no support for svgforeignobject
+  if (!Modernizr.svgforeignobject) {
+    var iconBlocks = document.querySelectorAll('.shp-icon--block');
+
+    if (iconBlocks.length) {
+      // IE 11 compatible loop => https://developer.mozilla.org/en-US/docs/Web/API/NodeList
+      Array.prototype.forEach.call(iconBlocks, function (iconBlock) {
+        var icon = iconBlock.getElementsByTagName("svg");
+
+        if (icon) {
+          icon = icon[0];
+          var viewBox = icon.getAttribute('viewBox') ? icon.getAttribute('viewBox').split(' ').length === 4 ? icon.getAttribute('viewBox').split(' ').map(Number) : false : false;
+          var parentWidth = iconBlock.clientWidth;
+          var fontSize = window.getComputedStyle(iconBlock, null).getPropertyValue('font-size');
+          fontSize = parseFloat(fontSize) ? parseFloat(fontSize) : false;
+
+          if (viewBox && parentWidth && fontSize) {
+            var viewBoxWidth = viewBox[2];
+            var viewBoxHeight = viewBox[3];
+            var width = parentWidth / fontSize;
+            var height = parentWidth * viewBoxHeight / viewBoxWidth / fontSize;
+            icon.style.cssText = icon.style.cssText + 'width:' + width + 'em;height:' + height + 'em;';
+          }
+        }
+      });
+    }
+  }
+}
+// CONCATENATED MODULE: ./.build/assets/scripts/ui/index.js
+/**
+ * Scripts for WordPress FrontEnd
+ */
+
+
+
+iePolyfill();
+
+/***/ })
+/******/ ]);

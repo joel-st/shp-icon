@@ -14,6 +14,10 @@ function getDirectories(path) {
 	});
 }
 
+const wplib = [
+	'i18n',
+];
+
 export const task = config => {
 	return new Promise(resolve => {
 		const bundles = getDirectories(`${config.assetsBuild}scripts/`);
@@ -41,11 +45,22 @@ export const task = config => {
 						}]
 					},
 					output: {
-						filename: '[name].js'
+						filename: '[name].js',
+						library: ['wp', 'i18n'],
+						libraryTarget: 'window'
 					},
 					externals: {
 						"jquery": "jQuery"
-					}
+					},
+					optimization: {
+						minimize: false //Update this to true or false
+					},
+					externals: wplib.reduce((externals, lib) => {
+						externals[`wp.${lib}`] = {
+							window: ['wp', lib],
+						};
+						return externals;
+					}, {}),
 				})
 			)
 			.on('error', config.errorLog)

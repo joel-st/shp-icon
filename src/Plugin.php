@@ -130,6 +130,7 @@ class Plugin {
 			}
 
 			if ( property_exists( shp_icon()->{$class_set}, $class_short ) ) {
+				/* translators: %1$s = already used class name, %2$s = plugin class */
 				wp_die( sprintf( _x( 'There was a problem with the Plugin. Only one class with name “%1$s” can be use used in “%2$s”.', 'Theme instance loadClasses() error message', 'shp-icon' ), $class_short, $class_set ), 500 );
 			}
 

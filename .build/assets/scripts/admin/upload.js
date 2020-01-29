@@ -1,4 +1,4 @@
-const { _x } = wp.i18n;
+import { _x } from 'wp.i18n';
 
 (function ($) {
 	$(function () {
@@ -16,7 +16,7 @@ const { _x } = wp.i18n;
 				let uploadId = 1;
 
 				Object.keys(fileList).forEach(key => {
-					$status = $('<div class="notice notice-info" data-id="' + uploadId + '"><p><b class="notice__filename">' + fileList[key]['name'] + '</b> <span>' + _x('processing', 'Admin notice processing [Filename] if file is selected for upload', 'shp-icon') + '</span></p><div class="spinner is-active"></div></div>');
+					const $status = $('<div class="notice notice-info" data-id="' + uploadId + '"><p><b class="notice__filename">' + fileList[key]['name'] + '</b> <span>' + _x('processing', 'Admin notice processing [Filename] if file is selected for upload', 'shp-icon') + '</span></p><div class="spinner is-active"></div></div>');
 					$statusElement.append($status);
 
 					const formData = new FormData();
@@ -34,7 +34,7 @@ const { _x } = wp.i18n;
 						cache: false,
 						success: function (response) {
 							console.log(response);
-							$notice = $('[data-id="' + response.id + '"]');
+							let $notice = $('[data-id="' + response.id + '"]');
 
 							$notice.removeClass('notice-info');
 							$notice.find('.spinner').remove();

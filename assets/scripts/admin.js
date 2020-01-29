@@ -1,1 +1,306 @@
-!function(n){var e={};function i(o){if(e[o])return e[o].exports;var t=e[o]={i:o,l:!1,exports:{}};return n[o].call(t.exports,t,t.exports,i),t.l=!0,t.exports}i.m=n,i.c=e,i.d=function(n,e,o){i.o(n,e)||Object.defineProperty(n,e,{enumerable:!0,get:o})},i.r=function(n){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(n,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(n,"__esModule",{value:!0})},i.t=function(n,e){if(1&e&&(n=i(n)),8&e)return n;if(4&e&&"object"==typeof n&&n&&n.__esModule)return n;var o=Object.create(null);if(i.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:n}),2&e&&"string"!=typeof n)for(var t in n)i.d(o,t,function(e){return n[e]}.bind(null,t));return o},i.n=function(n){var e=n&&n.__esModule?function(){return n.default}:function(){return n};return i.d(e,"a",e),e},i.o=function(n,e){return Object.prototype.hasOwnProperty.call(n,e)},i.p="",i(i.s=4)}([function(n,e){var i;(i=jQuery)((function(){i(".shp-icon-list__actions-toggle").on("click",(function(){$toggle=i(this),$item=$toggle.parent().parent(),$actions=$item.find(".shp-icon-list__action-list"),$icon=$item.find(".shp-icon-list__icon > svg"),$actions.slideToggle("fast"),$item.toggleClass("shp-icon-list__item--actions-visible")}))}))},function(n,e){var i;wp.i18n._x;(i=jQuery)((function(){i("#media-search-input").on("input",(function(n){var e=i(this).val();$icons=i(".shp-icon-list__item").not(".shp-icon-list__item--no-results"),i(".shp-icon-list__item--no-results").hide(),e&&""!==e?(e=e.replace(" ","-").toLowerCase(),$results=i('svg[data-shp-icon*="'+e+'"]'),$icons.hide(),$results.length?$results.parent().parent().parent().show():i(".shp-icon-list__item--no-results").show()):$icons.show()}))}))},function(n,e){var i,o=wp.i18n._x;(i=jQuery)((function(){var n=i("#shp-icon-upload-input");if(i("#shp-icon-upload .shp-icon-upload__form"),i(".page-title-action"),n){var e=i(".shp-icon-upload__status");n.change((function(){var t=n[0].files,s=1;Object.keys(t).forEach((function(n){$status=i('<div class="notice notice-info" data-id="'+s+'"><p><b class="notice__filename">'+t[n].name+"</b> <span>"+o("processing","Admin notice processing [Filename] if file is selected for upload","shp-icon")+'</span></p><div class="spinner is-active"></div></div>'),e.append($status);var c=new FormData;c.append("action",shp_icon_data.action),c.append("_wpnonce",shp_icon_data.ajaxNonce),c.append("file",t[n]),c.append("id",s),i.ajax({type:"POST",url:shp_icon_data.ajaxUrl,data:c,processData:!1,contentType:!1,cache:!1,success:function(n){var e;console.log(n),$notice=i('[data-id="'+n.id+'"]'),$notice.removeClass("notice-info"),$notice.find(".spinner").remove(),n.upload.error?($notice.addClass("notice-error"),$notice.find("p span").html(o("Something went wrong while processing the file.","Admin notice response.upload.error returns true","shp-icon"))):($notice.addClass("notice-success"),$notice.find("p span").html("<b>"+n.name+"</b> "+o("Added successfully!","Admin notice [Icon] added successfully","shp-icon")),e=n.fileName,i.ajax({type:"POST",url:shp_icon_data.ajaxUrl,data:{action:"shp_icon_push_icon",icon:e},success:function(n){i(".shp-icon-list").prepend(n),$toggle=i(i(".shp-icon-list__item")[0]).find(".shp-icon-list__actions-toggle"),$toggle.on("click",(function(){$item=$toggle.parent().parent(),$actions=$item.find(".shp-icon-list__action-list"),$icon=$item.find(".shp-icon-list__icon > svg"),$actions.slideToggle("fast"),$item.toggleClass("shp-icon-list__item--actions-visible")})),console.log(n)},error:function(n,e,i){console.log(n)}}))},error:function(n,e,t){$notice=i('[data-id="'+n.responseJSON.id+'"]'),$notice.removeClass("notice-info"),$notice.find(".spinner").remove(),$notice.addClass("notice-error"),$notice.find("p span").html(o("Upload failed!","Admin notice upload failed","shp-icon")+' <i class="notice__error">'+n.responseJSON.message+"</i>"),console.log(n)}}),s++}))}))}}))},,function(n,e,i){"use strict";i.r(e);i(0),i(1),i(2);var o,t=wp.i18n._x;(o=jQuery)((function(){o(".shp-icon-list__action-remove").on("click",(function(n){n.preventDefault();var e,i=o(this).closest(".shp-icon-list__item"),s=i.find(".shp-icon-list__icon svg").attr("data-shp-icon"),c=i.find(".shp-icon-list__name").text();confirm(t("Confirm Deletion of","Confirm deletion. Confirm deletion of [IconName]","shp-icon")+" "+c)&&(e=s,function(n){e&&(e.includes(".svg")||(e+=".svg"),n.ajax({type:"POST",url:shp_icon_data.ajaxUrl,data:{action:"shp_icon_delete",file_name:e},success:function(e){var i=n('[data-shp-icon="'+e.fileName.replace(".svg","")+'"]').closest(".shp-icon-list__item"),o=n(".shp-icon-upload__status"),s=n('<div class="notice notice-success"><p><b class="notice__filename">'+e.name+"</b> <span>"+t("deleted","Admin notice delete file sucessfully","shp-icon")+"</span></p></div>");o.append(s),i&&i.remove(),console.log(e)},error:function(n,e,i){console.log(n)}}))}(jQuery))}))}))}]);
+window["wp"] = window["wp"] || {}; window["wp"]["i18n"] =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports) {
+
+(function() { module.exports = window["wp"]["i18n"]; }());
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+(function ($) {
+  $(function () {
+    var $actionToggle = $('.shp-icon-list__actions-toggle');
+    $actionToggle.on('click', function () {
+      $toggle = $(this);
+      $item = $toggle.parent().parent();
+      $actions = $item.find('.shp-icon-list__action-list');
+      $icon = $item.find('.shp-icon-list__icon > svg');
+      $actions.slideToggle('fast');
+      $item.toggleClass('shp-icon-list__item--actions-visible');
+    });
+  });
+})(jQuery);
+
+/***/ }),
+/* 2 */,
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+// EXTERNAL MODULE: external {"window":["wp","i18n"]}
+var external_window_wp_i18n_ = __webpack_require__(0);
+
+// EXTERNAL MODULE: ./.build/assets/scripts/admin/icon-actions.js
+var icon_actions = __webpack_require__(1);
+
+// CONCATENATED MODULE: ./.build/assets/scripts/admin/search-icon.js
+
+
+(function ($) {
+  $(function () {
+    var $search = $('#media-search-input');
+    $search.on('input', function (event) {
+      var $input = $(this);
+      var value = $input.val();
+      var $icons = $('.shp-icon-list__item').not('.shp-icon-list__item--no-results');
+      $('.shp-icon-list__item--no-results').hide();
+
+      if (value && value !== '') {
+        value = value.replace(' ', '-').toLowerCase();
+        var $results = $('svg[data-shp-icon*="' + value + '"]');
+        $icons.hide();
+
+        if ($results.length) {
+          $results.parent().parent().parent().show();
+        } else {
+          $('.shp-icon-list__item--no-results').show();
+        }
+      } else {
+        $icons.show();
+      }
+    });
+  });
+})(jQuery);
+// CONCATENATED MODULE: ./.build/assets/scripts/admin/upload.js
+
+
+(function ($) {
+  $(function () {
+    var $fileInput = $('#shp-icon-upload-input');
+    var $form = $('#shp-icon-upload .shp-icon-upload__form');
+    var $pageTitleActionElement = $('.page-title-action');
+
+    if ($fileInput) {
+      var $statusElement = $('.shp-icon-upload__status');
+      $fileInput.change(function () {
+        //$pageTitleActionElement.attr('disabled', 'true');
+        var fileList = $fileInput[0].files;
+        var uploadId = 1;
+        Object.keys(fileList).forEach(function (key) {
+          var $status = $('<div class="notice notice-info" data-id="' + uploadId + '"><p><b class="notice__filename">' + fileList[key]['name'] + '</b> <span>' + Object(external_window_wp_i18n_["_x"])('processing', 'Admin notice processing [Filename] if file is selected for upload', 'shp-icon') + '</span></p><div class="spinner is-active"></div></div>');
+          $statusElement.append($status);
+          var formData = new FormData();
+          formData.append('action', shp_icon_data.action);
+          formData.append('_wpnonce', shp_icon_data.ajaxNonce);
+          formData.append('file', fileList[key]);
+          formData.append('id', uploadId);
+          $.ajax({
+            type: 'POST',
+            url: shp_icon_data.ajaxUrl,
+            data: formData,
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function success(response) {
+              console.log(response);
+              var $notice = $('[data-id="' + response.id + '"]');
+              $notice.removeClass('notice-info');
+              $notice.find('.spinner').remove();
+
+              if (response.upload.error) {
+                $notice.addClass('notice-error');
+                $notice.find('p span').html(Object(external_window_wp_i18n_["_x"])('Something went wrong while processing the file.', 'Admin notice response.upload.error returns true', 'shp-icon'));
+              } else {
+                $notice.addClass('notice-success');
+                $notice.find('p span').html('<b>' + response.name + '</b> ' + Object(external_window_wp_i18n_["_x"])('Added successfully!', 'Admin notice [Icon] added successfully', 'shp-icon'));
+                insertIcon(response.fileName);
+              }
+            },
+            error: function error(XMLHttpRequest, textStatus, errorThrown) {
+              $notice = $('[data-id="' + XMLHttpRequest.responseJSON.id + '"]');
+              $notice.removeClass('notice-info');
+              $notice.find('.spinner').remove();
+              $notice.addClass('notice-error');
+              $notice.find('p span').html(Object(external_window_wp_i18n_["_x"])('Upload failed!', 'Admin notice upload failed', 'shp-icon') + ' <i class="notice__error">' + XMLHttpRequest.responseJSON.message + '</i>');
+              console.log(XMLHttpRequest);
+            }
+          });
+          uploadId++;
+        });
+      });
+
+      function insertIcon(icon) {
+        $.ajax({
+          type: 'POST',
+          url: shp_icon_data.ajaxUrl,
+          data: {
+            action: 'shp_icon_push_icon',
+            icon: icon
+          },
+          success: function success(response) {
+            $('.shp-icon-list').prepend(response);
+            $toggle = $($('.shp-icon-list__item')[0]).find('.shp-icon-list__actions-toggle');
+            $toggle.on('click', function () {
+              $item = $toggle.parent().parent();
+              $actions = $item.find('.shp-icon-list__action-list');
+              $icon = $item.find('.shp-icon-list__icon > svg');
+              $actions.slideToggle('fast');
+              $item.toggleClass('shp-icon-list__item--actions-visible');
+            });
+            console.log(response);
+          },
+          error: function error(XMLHttpRequest, textStatus, errorThrown) {
+            console.log(XMLHttpRequest);
+          }
+        });
+      }
+    }
+  });
+})(jQuery);
+// CONCATENATED MODULE: ./.build/assets/scripts/admin/delete.js
+
+
+
+(function ($) {
+  $(function () {
+    var $deleteAction = $('.shp-icon-list__action-remove');
+    $deleteAction.on('click', function (event) {
+      event.preventDefault();
+      var $item = $(this).closest('.shp-icon-list__item');
+      var fileName = $item.find('.shp-icon-list__icon svg').attr('data-shp-icon');
+      var iconName = $item.find('.shp-icon-list__name').text();
+
+      if (confirm(Object(external_window_wp_i18n_["_x"])('Confirm Deletion of', 'Confirm deletion. Confirm deletion of [IconName]', 'shp-icon') + ' ' + iconName)) {
+        deleteIcon(fileName);
+      }
+    });
+  });
+})(jQuery);
+
+function deleteIcon(icon) {
+  (function ($) {
+    if (icon) {
+      if (!icon.includes('.svg')) {
+        icon = icon + '.svg';
+      }
+
+      $.ajax({
+        type: 'POST',
+        url: shp_icon_data.ajaxUrl,
+        data: {
+          action: 'shp_icon_delete',
+          file_name: icon
+        },
+        success: function success(response) {
+          var $icon = $('[data-shp-icon="' + response.fileName.replace('.svg', '') + '"]');
+          var $item = $icon.closest('.shp-icon-list__item');
+          var $statusElement = $('.shp-icon-upload__status');
+          var $status = $('<div class="notice notice-success"><p><b class="notice__filename">' + response.name + '</b> <span>' + Object(external_window_wp_i18n_["_x"])('deleted', 'Admin notice delete file sucessfully', 'shp-icon') + '</span></p></div>');
+          $statusElement.append($status);
+
+          if ($item) {
+            $item.remove();
+          }
+
+          console.log(response);
+        },
+        error: function error(XMLHttpRequest, textStatus, errorThrown) {
+          console.log(XMLHttpRequest);
+        }
+      });
+    }
+  })(jQuery);
+}
+// CONCATENATED MODULE: ./.build/assets/scripts/admin/index.js
+/**
+ * Scripts for WordPress Admin (not Gutenberg)
+ */
+ // import './toggle-upload';
+
+
+
+
+ //import { iconFallback } from '../ui/icon';
+
+/***/ })
+/******/ ]);

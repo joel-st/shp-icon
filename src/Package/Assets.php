@@ -17,9 +17,43 @@ class Assets {
 	 * @since 1.0.0
 	 */
 	public function run() {
+		add_action( 'init', array( $this, 'registerScripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'registerAssets' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'registerAdminAssets' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'registerGutenbergAssets' ) );
+	}
+
+	/**
+	 * Register scripts for the front end
+	 * Register Gutenberg scripts here to be able to use i18n in Gutenberg JavaScript
+	 * https://krautpress.de/2020/gutenberg-bloecke-uebersetzen/
+	 *
+	 * @since 1.0.0
+	 */
+	public function registerScripts() {
+		if ( file_exists( shp_icon()->plugin_dir . '/assets/gutenberg/blocks.js' ) ) {
+			wp_register_script(
+				shp_icon()->prefix . '-gutenberg-script',
+				shp_icon()->plugin_url . '/assets/gutenberg/blocks' . ( shp_icon()->debug ? '' : '.min' ) . '.js',
+				array( 'lodash', 'wp-blocks', 'wp-element', 'wp-edit-post', 'wp-i18n' ),
+				shp_icon()->version,
+				true
+			);
+		}
+
+		wp_set_script_translations( shp_icon()->prefix . '-gutenberg-script', 'shp-icon', shp_icon()->plugin_dir . '/languages' );
+
+		if ( file_exists( shp_icon()->plugin_dir . '/assets/scripts/admin.js' ) ) {
+			wp_register_script(
+				shp_icon()->prefix . '-admin-script',
+				shp_icon()->plugin_url . '/assets/scripts/admin' . ( shp_icon()->debug ? '' : '.min' ) . '.js',
+				array( 'jquery', 'wp-i18n' ),
+				shp_icon()->version,
+				true
+			);
+		}
+
+		wp_set_script_translations( shp_icon()->prefix . '-admin-script', 'shp-icon', shp_icon()->plugin_dir . '/languages' );
 	}
 
 	/**
@@ -57,7 +91,7 @@ class Assets {
 			 * Javascript
 			 */
 			if ( file_exists( shp_icon()->plugin_dir . '/assets/scripts/admin.js' ) ) {
-				wp_enqueue_script( shp_icon()->prefix . '-admin-script', shp_icon()->plugin_url . '/assets/scripts/admin' . ( shp_icon()->debug ? '' : '.min' ) . '.js', array( 'jquery', 'wp-i18n' ), shp_icon()->version, true );
+				wp_enqueue_script( shp_icon()->prefix . '-admin-script' );
 
 				$data = array(
 					'uploadUrl' => shp_icon()->upload_dir,
@@ -85,7 +119,7 @@ class Assets {
 	 */
 	public function registerGutenbergAssets() {
 		if ( file_exists( shp_icon()->plugin_dir . '/assets/gutenberg/blocks.js' ) ) {
-			wp_enqueue_script( shp_icon()->prefix . '-gutenberg-script', shp_icon()->plugin_url . '/assets/gutenberg/blocks' . ( shp_icon()->debug ? '' : '.min' ) . '.js', array( 'wp-blocks', 'wp-element', 'wp-edit-post', 'lodash' ), shp_icon()->version );
+			wp_enqueue_script( shp_icon()->prefix . '-gutenberg-script' );
 
 			$data = array(
 				'topShift'    => sanitize_text_field( get_option( shp_icon()->prefix . '-display-inline-top-shift' ) ),

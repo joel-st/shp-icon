@@ -1,4 +1,4 @@
-const { _x } = wp.i18n;
+import { _x } from 'wp.i18n';
 
 (function ($) {
 	$(function () {
@@ -8,12 +8,12 @@ const { _x } = wp.i18n;
 			const $input = $(this);
 			let value = $input.val();
 
-			$icons = $('.shp-icon-list__item').not('.shp-icon-list__item--no-results');
+			const $icons = $('.shp-icon-list__item').not('.shp-icon-list__item--no-results');
 			$('.shp-icon-list__item--no-results').hide();
 
 			if(value && value !== '') {
 				value = value.replace(' ', '-').toLowerCase();
-				$results = $('svg[data-shp-icon*="' + value + '"]');
+				const $results = $('svg[data-shp-icon*="' + value + '"]');
 				$icons.hide();
 
 				if($results.length) {

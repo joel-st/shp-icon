@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-01-27T12:17:34+00:00\n"
+"POT-Creation-Date: 2020-01-29T10:55:08+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: shp-icon\n"
@@ -45,17 +45,17 @@ msgctxt "Block rendering notice"
 msgid "Choose Icon"
 msgstr ""
 
-#: src/Package/Delete.php:43
+#: src/Package/Delete.php:44
 msgctxt "Delete without filename"
 msgid "No filename provided"
 msgstr ""
 
-#: src/Package/Delete.php:49
+#: src/Package/Delete.php:52
 msgctxt "Delete no icon found"
 msgid "Icon not found"
 msgstr ""
 
-#: src/Package/Delete.php:67
+#: src/Package/Delete.php:70
 msgctxt "Delete icon failed"
 msgid "Deletion failed"
 msgstr ""
@@ -150,238 +150,270 @@ msgctxt "Options page settings description"
 msgid "This options only adapts to inline icons without the <code>block</code> attribute. Example <code>[shp-icon icon=\"heart\"]</code>.<br/> This options takes no effect for icons insertet with the Gutenberg block."
 msgstr ""
 
-#: src/Package/OptionsPage.php:363
+#. translators: %1$s = plugin name
+#: src/Package/OptionsPage.php:364
 msgctxt "Options page help title. %1$s = plugin name."
 msgid "Thank you for using %1$s"
 msgstr ""
 
-#: src/Package/OptionsPage.php:367
+#: src/Package/OptionsPage.php:368
 msgctxt "Options page help introduction"
 msgid "Feel free to upload any SVG file to the plugin. To use SVG’s on websites is always a pain. But hey – good news – this plugin tries to support a proper use of SVG icons on your website. Any SVG uploaded to the plugin can be used with a shortcode or with a Gutenberg block."
 msgstr ""
 
-#: src/Package/OptionsPage.php:376
+#: src/Package/OptionsPage.php:377
 msgctxt "Options page help how to use title"
 msgid "Use Icons as a Shortcode"
 msgstr ""
 
-#: src/Package/OptionsPage.php:379
+#: src/Package/OptionsPage.php:380
 msgctxt "Options page help use as shortcode"
 msgid "It is best to use the shortcode in text elements. The icon will adapt to the font size to give an excellent combination."
 msgstr ""
 
-#: src/Package/OptionsPage.php:387
+#: src/Package/OptionsPage.php:388
 msgctxt "Options page help use as shortcode"
 msgid "Shortcode Options"
 msgstr ""
 
-#: src/Package/OptionsPage.php:397
+#. translators: %1$s = 'Required' (other translation), %2$s = 'icon collection' (other translation)
+#: src/Package/OptionsPage.php:399
 msgctxt "Options page help use as shortcode"
 msgid "%1$s. Use the <i>icon</i> attribute to define which icon to display. You will find the icon name in your %2$s."
 msgstr ""
 
-#: src/Package/OptionsPage.php:397
+#. translators: %1$s = 'Required' (other translation), %2$s = 'icon collection' (other translation)
+#: src/Package/OptionsPage.php:399
 msgctxt "Options page help use as shortcode"
 msgid "Required"
 msgstr ""
 
-#: src/Package/OptionsPage.php:406
+#. translators: %1$s = 'Required' (other translation), %2$s = 'icon collection' (other translation)
+#: src/Package/OptionsPage.php:399
+msgctxt "Options page help use as shortcode"
+msgid "icon collection"
+msgstr ""
+
+#: src/Package/OptionsPage.php:408
 msgctxt "Options page help use as shortcode"
 msgid "Use the <i>block</i> attribute to let a shortcode icon act like a block icon."
 msgstr ""
 
-#: src/Package/OptionsPage.php:415
+#. translators: %s = Link to settings tab (other translation)
+#: src/Package/OptionsPage.php:418
 msgctxt "Options page help use as shortcode"
 msgid "Use the <i>top-shift</i> attribute to fine tune the vertical align of an inline icon. This is useful if the visual align of an inline icon isn’t perfect. Set the attribute to a number, the number uses then the <i>em</i> unit. You can also set a default top shift for all inline icons under the %s."
 msgstr ""
 
-#: src/Package/OptionsPage.php:424
+#. translators: %s = Link to settings tab (other translation)
+#: src/Package/OptionsPage.php:418
+#: src/Package/OptionsPage.php:428
+msgctxt "Options page help use as shortcode"
+msgid "settings tab"
+msgstr ""
+
+#. translators: %s = Link to settings tab (other translation)
+#: src/Package/OptionsPage.php:428
 msgctxt "Options page help use as shortcode"
 msgid "Use the <i>scale-factor</i> attribute to fine tune the rendered size of an inline icon. Set the attribute to a number, the number uses then the <i>em</i> unit. You can also set a default scale factor for all inline icons under the %s."
 msgstr ""
 
-#: src/Package/OptionsPage.php:433
+#. translators: %s = fill="currentColor" (other translation)
+#: src/Package/OptionsPage.php:438
 msgctxt "Options page help use as shortcode"
 msgid "Use the <i>color</i> attribute to colorize an icon. The coloration only works, if your SVG is using %s."
 msgstr ""
 
-#: src/Package/OptionsPage.php:442
+#. translators: %s = fill="currentColor" (other translation)
+#: src/Package/OptionsPage.php:438
+msgctxt "Options page help use as shortcode"
+msgid "fill=\"currentColor\""
+msgstr ""
+
+#: src/Package/OptionsPage.php:447
 msgctxt "Options page help use as shortcode"
 msgid "Use the <i>background-color</i> attribute to colorize the icons parent background. Should work everywhere."
 msgstr ""
 
-#: src/Package/OptionsPage.php:453
+#: src/Package/OptionsPage.php:458
 msgctxt "Options page help how to use title"
 msgid "Use Icons as a Gutenberg Block"
 msgstr ""
 
-#: src/Package/OptionsPage.php:456
+#: src/Package/OptionsPage.php:461
 msgctxt "Options page help use as Gutenberg block"
 msgid "Icons inserted with the Gutenberg block will fill the available space. Find the block in the Gutenberg editor in the <b>common</b> section as <b>SVG Icon</b>."
 msgstr ""
 
-#: src/Package/OptionsPage.php:463
+#: src/Package/OptionsPage.php:468
 msgctxt "Options page help FAQ"
 msgid "FAQ"
 msgstr ""
 
-#: src/Package/OptionsPage.php:469
+#: src/Package/OptionsPage.php:474
 msgctxt "Options page help FAQ"
 msgid "What can I do to optimize my SVG’s before uploading to the plugin?"
 msgstr ""
 
-#: src/Package/OptionsPage.php:473
+#: src/Package/OptionsPage.php:478
 msgctxt "Options page help FAQ answer"
 msgid "SVGO is sick! Props to all the developers of SVGO!"
 msgstr ""
 
-#: src/Package/OptionsPage.php:475
+#. translators: %s = SVGO (SVG Optimizer) (other translation)
+#: src/Package/OptionsPage.php:480
 msgctxt "Options page help FAQ answer"
 msgid "According to SVGO, SVG files, especially those exported from various editors, usually contain a lot of redundant and useless information. This can include editor metadata, comments, hidden elements, default or non-optimal values and other stuff that can be safely removed or converted without affecting the SVG rendering result. To do so you can use the %s which perfectly optimises your SVG’s. "
 msgstr ""
 
-#: src/Package/OptionsPage.php:476
+#. translators: %s = SVGO (SVG Optimizer) (other translation)
+#: src/Package/OptionsPage.php:480
 msgctxt "Options page help FAQ answer"
 msgid "SVGO (SVG Optimizer)"
 msgstr ""
 
-#: src/Package/OptionsPage.php:480
+#. translators: %s = SVGOMG (other translation)
+#: src/Package/OptionsPage.php:484
 msgctxt "Options page help FAQ answer"
 msgid "Use SVGO as a web app – %s"
 msgstr ""
 
-#: src/Package/OptionsPage.php:480
+#. translators: %s = SVGOMG (other translation)
+#: src/Package/OptionsPage.php:484
 msgctxt "Options page help FAQ answer"
 msgid "SVGOMG"
 msgstr ""
 
-#: src/Package/OptionsPage.php:483
+#. translators: %s = svgo-compressor (other translation)
+#: src/Package/OptionsPage.php:488
 msgctxt "Options page help FAQ answer"
 msgid "Use SVGO as a Sketch plugin – %s"
 msgstr ""
 
-#: src/Package/OptionsPage.php:483
+#. translators: %s = svgo-compressor (other translation)
+#: src/Package/OptionsPage.php:488
 msgctxt "Options page help FAQ answer"
 msgid "svgo-compressor"
 msgstr ""
 
-#: src/Package/OptionsPage.php:486
+#. translators: %s = Image Shrinker (other translation)
+#: src/Package/OptionsPage.php:492
 msgctxt "Options page help FAQ answer"
 msgid "Use SVGO as macOS app – %s"
 msgstr ""
 
-#: src/Package/OptionsPage.php:486
+#. translators: %s = Image Shrinker (other translation)
+#: src/Package/OptionsPage.php:492
 msgctxt "Options page help FAQ answer"
 msgid "Image Shrinker"
 msgstr ""
 
-#: src/Package/OptionsPage.php:489
+#. translators: %s = svgo-osx-folder-action (other translation)
+#: src/Package/OptionsPage.php:496
 msgctxt "Options page help FAQ answer"
 msgid "Use SVGO as an OSX Folder Action – %s"
 msgstr ""
 
-#: src/Package/OptionsPage.php:489
+#. translators: %s = svgo-osx-folder-action (other translation)
+#: src/Package/OptionsPage.php:496
 msgctxt "Options page help FAQ answer"
 msgid "svgo-osx-folder-action"
 msgstr ""
 
-#: src/Package/OptionsPage.php:492
+#: src/Package/OptionsPage.php:499
 msgctxt "Options page help FAQ answer"
 msgid "Further you can read the following articles to optimize your SVG’s manually."
 msgstr ""
 
-#: src/Package/OptionsPage.php:495
+#: src/Package/OptionsPage.php:502
 msgctxt "Options page help FAQ answer"
 msgid "A Guide to Getting Sharp and Crisp SVG Images on Screen."
 msgstr ""
 
-#: src/Package/OptionsPage.php:498
+#: src/Package/OptionsPage.php:505
 msgctxt "Options page help FAQ answer"
 msgid "I set out to create pixel perfect icons. Here’s what I discovered along the way."
 msgstr ""
 
-#: src/Package/OptionsPage.php:505
+#: src/Package/OptionsPage.php:512
 msgctxt "Options page help FAQ"
 msgid "Is there any change on my files trough the upload?"
 msgstr ""
 
-#: src/Package/OptionsPage.php:510
+#. translators: %s = a PHP SVG/XML Sanitizer (other translation)
+#: src/Package/OptionsPage.php:517
 msgctxt "Options page help FAQ answer"
 msgid "While uploading an SVG, it will be sanitised by %s and renamed based on the filename. Other changes to the SVG won’t happen."
 msgstr ""
 
-#: src/Package/OptionsPage.php:511
+#. translators: %s = a PHP SVG/XML Sanitizer (other translation)
+#: src/Package/OptionsPage.php:517
 msgctxt "Options page help FAQ answer"
 msgid "a PHP SVG/XML Sanitizer"
 msgstr ""
 
-#: src/Package/OptionsPage.php:517
+#: src/Package/OptionsPage.php:522
 msgctxt "Options page help FAQ"
 msgid "Where can I use the shortcode?"
 msgstr ""
 
-#: src/Package/OptionsPage.php:522
+#. translators: %1$ss = link to wp ref add_filter(), %2$s = link to wp ref do_shortcode()
+#: src/Package/OptionsPage.php:527
 msgctxt "Options page help FAQ answer"
 msgid "The shortcode works within the content section (editor). By default there is no additional shortcode support. You can add shortcode support via WordPress %1$s or do the shortcode directly in your template files with %2$s. Read the following article for further information."
 msgstr ""
 
-#: src/Package/OptionsPage.php:523
-msgctxt "Options page help FAQ answer"
-msgid "add_filter()"
-msgstr ""
-
-#: src/Package/OptionsPage.php:524
-msgctxt "Options page help FAQ answer"
-msgid "do_shortcode()"
-msgstr ""
-
-#: src/Package/OptionsPage.php:528
+#: src/Package/OptionsPage.php:530
 msgctxt "Options page help FAQ answer"
 msgid "Using Shortcodes everywhere."
 msgstr ""
 
-#: src/Package/OptionsPage.php:535
+#: src/Package/OptionsPage.php:537
 msgctxt "Options page help FAQ"
 msgid "SVG support for Internet Explorer?"
 msgstr ""
 
-#: src/Package/OptionsPage.php:539
+#: src/Package/OptionsPage.php:541
 msgctxt "Options page help FAQ answer"
 msgid "Yes there is a small script watching out for Internet Explorer users to fix a few problems with IE11. If you discover any problems displaying your icons in other browsers too, submit the issue in the plugin repository!"
 msgstr ""
 
-#: src/Package/OptionsPage.php:544
+#: src/Package/OptionsPage.php:546
 msgctxt "Options page help FAQ"
 msgid "What do I have to consider when migrating the website?"
 msgstr ""
 
-#: src/Package/OptionsPage.php:548
+#. translators: %s = plugin textomain
+#: src/Package/OptionsPage.php:551
 msgctxt "Options page help FAQ answer"
 msgid "The uploaded SVG’s are saved in <code>/wp-content/uploads/%s</code>. Migrate this folder too to keep the your icons working."
 msgstr ""
 
-#: src/Package/OptionsPage.php:556
+#: src/Package/OptionsPage.php:559
 msgctxt "Options page help title"
 msgid "That’s it, peace."
 msgstr ""
 
-#: src/Package/OptionsPage.php:557
+#. translators: %s = Plugin Repository (other translation)
+#: src/Package/OptionsPage.php:561
 msgctxt "Options page help"
 msgid "Contribute or get help: %s"
 msgstr ""
 
-#: src/Package/OptionsPage.php:557
-#: src/Package/OptionsPage.php:558
+#. translators: %s = Plugin Repository (other translation)
+#: src/Package/OptionsPage.php:561
+#: src/Package/OptionsPage.php:563
 msgctxt "Options page help FAQ answer"
 msgid "Plugin Repository"
 msgstr ""
 
-#: src/Package/OptionsPage.php:558
+#. translators: %s = Plugin Repository (other translation)
+#: src/Package/OptionsPage.php:563
 msgctxt "Options page help"
 msgid "Report issues: %s"
 msgstr ""
 
-#: src/Package/OptionsPage.php:559
+#: src/Package/OptionsPage.php:564
 msgctxt "Options page help title"
 msgid "Say Thank You With A Donation"
 msgstr ""
@@ -421,42 +453,83 @@ msgctxt "Upload sanitation failed"
 msgid "Sanitation failed"
 msgstr ""
 
-#: src/Plugin.php:133
+#. translators: %1$s = already used class name, %2$s = plugin class
+#: src/Plugin.php:134
 msgctxt "Theme instance loadClasses() error message"
 msgid "There was a problem with the Plugin. Only one class with name “%1$s” can be use used in “%2$s”."
 msgstr ""
 
-#: src/Plugin.php:226
+#: src/Plugin.php:227
 msgctxt "Settings link in WordPress plugin list"
 msgid "Settings"
 msgstr ""
 
-#: .build/assets/scripts/admin/delete.js:14
+#: .build/assets/scripts/admin/delete.js:15
+#: assets/scripts/admin.js:253
 msgctxt "Confirm deletion. Confirm deletion of [IconName]"
 msgid "Confirm Deletion of"
 msgstr ""
 
-#: .build/assets/scripts/admin/delete.js:41
+#: .build/assets/scripts/admin/delete.js:42
+#: assets/scripts/admin.js:278
 msgctxt "Admin notice delete file sucessfully"
 msgid "deleted"
 msgstr ""
 
 #: .build/assets/scripts/admin/upload.js:19
+#: assets/scripts/admin.js:170
 msgctxt "Admin notice processing [Filename] if file is selected for upload"
 msgid "processing"
 msgstr ""
 
 #: .build/assets/scripts/admin/upload.js:43
+#: assets/scripts/admin.js:192
 msgctxt "Admin notice response.upload.error returns true"
 msgid "Something went wrong while processing the file."
 msgstr ""
 
 #: .build/assets/scripts/admin/upload.js:46
+#: assets/scripts/admin.js:195
 msgctxt "Admin notice [Icon] added successfully"
 msgid "Added successfully!"
 msgstr ""
 
 #: .build/assets/scripts/admin/upload.js:57
+#: assets/scripts/admin.js:204
 msgctxt "Admin notice upload failed"
 msgid "Upload failed!"
+msgstr ""
+
+#: assets/gutenberg/blocks.js:156
+msgctxt "SVG icon block title"
+msgid "SVG Icon"
+msgstr ""
+
+#: assets/gutenberg/blocks.js:157
+msgid "Use your SVG icons as Gutenberg block"
+msgstr ""
+
+#: assets/gutenberg/blocks.js:237
+msgctxt "SVG icon block panel title"
+msgid "Icon Collection"
+msgstr ""
+
+#: assets/gutenberg/blocks.js:260
+msgctxt "SVG icon block PanelColorSettings label"
+msgid "Color Settings"
+msgstr ""
+
+#: assets/gutenberg/blocks.js:276
+msgctxt "SVG icon block colorSettings label"
+msgid "Color"
+msgstr ""
+
+#: assets/gutenberg/blocks.js:292
+msgctxt "SVG icon block colorSettings label"
+msgid "Background Color"
+msgstr ""
+
+#: assets/gutenberg/blocks.js:298
+msgctxt "SVG icon block colorSettings notice"
+msgid "The color feature only works with SVG’s using currentColor. No currentColor value found in the selected SVG."
 msgstr ""

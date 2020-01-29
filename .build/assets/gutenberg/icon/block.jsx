@@ -1,4 +1,4 @@
-const { _x, __ } = wp.i18n;
+import { _x, __ } from 'wp.i18n';
 const ServerSideRender = wp.serverSideRender;
 const { registerBlockType } = wp.blocks;
 const { apiFetch } = wp;

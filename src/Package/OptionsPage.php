@@ -360,6 +360,7 @@ class OptionsPage {
 	 */
 	public function renderHelpPage() {
 		echo '<div class="' . shp_icon()->prefix . '-help ' . shp_icon()->prefix . '-help--left">';
+		/* translators: %1$s = plugin name */
 		echo '<h2>' . sprintf( _x( 'Thank you for using %1$s', 'Options page help title. %1$s = plugin name.', 'shp-icon' ), shp_icon()->plugin_header['Name'] ) . '</h2>';
 
 		// introduction
@@ -394,7 +395,8 @@ class OptionsPage {
 		echo '<code style="' . $style . '">icon=""</code>';
 		echo '</th>';
 		echo '<td>';
-		echo sprintf( _x( '%1$s. Use the <i>icon</i> attribute to define which icon to display. You will find the icon name in your %2$s.', 'Options page help use as shortcode', 'shp-icon' ), '<b style="color:red;">' . _x( 'Required', 'Options page help use as shortcode', 'shp-icon' ) . '</b>', '<a href="' . admin_url( 'themes.php?page=' . shp_icon()->prefix . '&tab=manage' ) . '">' . _x( 'icon collection', 'Options page help use as shortcode' ) . '</a>' );
+		/* translators: %1$s = 'Required' (other translation), %2$s = 'icon collection' (other translation) */
+		echo sprintf( _x( '%1$s. Use the <i>icon</i> attribute to define which icon to display. You will find the icon name in your %2$s.', 'Options page help use as shortcode', 'shp-icon' ), '<b style="color:red;">' . _x( 'Required', 'Options page help use as shortcode', 'shp-icon' ) . '</b>', '<a href="' . admin_url( 'themes.php?page=' . shp_icon()->prefix . '&tab=manage' ) . '">' . _x( 'icon collection', 'Options page help use as shortcode', 'shp-icon' ) . '</a>' );
 		echo '</td>';
 		echo '</tr>';
 
@@ -412,7 +414,8 @@ class OptionsPage {
 		echo '<code style="' . $style . '">top-shift=""</code>';
 		echo '</th>';
 		echo '<td>';
-		echo sprintf( _x( 'Use the <i>top-shift</i> attribute to fine tune the vertical align of an inline icon. This is useful if the visual align of an inline icon isn’t perfect. Set the attribute to a number, the number uses then the <i>em</i> unit. You can also set a default top shift for all inline icons under the %s.', 'Options page help use as shortcode', 'shp-icon' ), '<a href="' . admin_url( 'themes.php?page=' . shp_icon()->prefix . '&tab=settings' ) . '">' . _x( 'settings tab', 'Options page help use as shortcode' ) . '</a>' );
+		/* translators: %s = Link to settings tab (other translation) */
+		echo sprintf( _x( 'Use the <i>top-shift</i> attribute to fine tune the vertical align of an inline icon. This is useful if the visual align of an inline icon isn’t perfect. Set the attribute to a number, the number uses then the <i>em</i> unit. You can also set a default top shift for all inline icons under the %s.', 'Options page help use as shortcode', 'shp-icon' ), '<a href="' . admin_url( 'themes.php?page=' . shp_icon()->prefix . '&tab=settings' ) . '">' . _x( 'settings tab', 'Options page help use as shortcode', 'shp-icon' ) . '</a>' );
 		echo '</td>';
 		echo '</tr>';
 
@@ -421,7 +424,8 @@ class OptionsPage {
 		echo '<code style="' . $style . '">scale-factor=""</code>';
 		echo '</th>';
 		echo '<td>';
-		echo sprintf( _x( 'Use the <i>scale-factor</i> attribute to fine tune the rendered size of an inline icon. Set the attribute to a number, the number uses then the <i>em</i> unit. You can also set a default scale factor for all inline icons under the %s.', 'Options page help use as shortcode', 'shp-icon' ), '<a href="' . admin_url( 'themes.php?page=' . shp_icon()->prefix . '&tab=settings' ) . '">' . _x( 'settings tab', 'Options page help use as shortcode' ) . '</a>' );
+		/* translators: %s = Link to settings tab (other translation) */
+		echo sprintf( _x( 'Use the <i>scale-factor</i> attribute to fine tune the rendered size of an inline icon. Set the attribute to a number, the number uses then the <i>em</i> unit. You can also set a default scale factor for all inline icons under the %s.', 'Options page help use as shortcode', 'shp-icon' ), '<a href="' . admin_url( 'themes.php?page=' . shp_icon()->prefix . '&tab=settings' ) . '">' . _x( 'settings tab', 'Options page help use as shortcode', 'shp-icon' ) . '</a>' );
 		echo '</td>';
 		echo '</tr>';
 
@@ -430,7 +434,8 @@ class OptionsPage {
 		echo '<code style="' . $style . '">color=""</code>';
 		echo '</th>';
 		echo '<td>';
-		echo sprintf( _x( 'Use the <i>color</i> attribute to colorize an icon. The coloration only works, if your SVG is using %s.', 'Options page help use as shortcode', 'shp-icon' ), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#currentColor" target="_blank">' . _x( 'fill="currentColor"', 'Options page help use as shortcode' ) . '</a>' );
+		/* translators: %s = fill="currentColor" (other translation) */
+		echo sprintf( _x( 'Use the <i>color</i> attribute to colorize an icon. The coloration only works, if your SVG is using %s.', 'Options page help use as shortcode', 'shp-icon' ), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#currentColor" target="_blank">' . _x( 'fill="currentColor"', 'Options page help use as shortcode', 'shp-icon' ) . '</a>' );
 		echo '</td>';
 		echo '</tr>';
 
@@ -471,21 +476,23 @@ class OptionsPage {
 		echo '<span class="accordion__item-state-indicator"></span>';
 		echo '<div class="accordion__content">';
 		echo '<p><b>' . _x( 'SVGO is sick! Props to all the developers of SVGO!', 'Options page help FAQ answer', 'shp-icon' ) . '</b></p>';
-		echo '<p>' . sprintf(
-			_x( 'According to SVGO, SVG files, especially those exported from various editors, usually contain a lot of redundant and useless information. This can include editor metadata, comments, hidden elements, default or non-optimal values and other stuff that can be safely removed or converted without affecting the SVG rendering result. To do so you can use the %s which perfectly optimises your SVG’s. ', 'Options page help FAQ answer', 'shp-icon' ),
-			'<a target="_blank" href="https://github.com/svg/svgo">' . _x( 'SVGO (SVG Optimizer)', 'Options page help FAQ answer', 'shp-icon' ) . '</a>'
-		) . '</p>';
+		/* translators: %s = SVGO (SVG Optimizer) (other translation) */
+		echo '<p>' . sprintf( _x( 'According to SVGO, SVG files, especially those exported from various editors, usually contain a lot of redundant and useless information. This can include editor metadata, comments, hidden elements, default or non-optimal values and other stuff that can be safely removed or converted without affecting the SVG rendering result. To do so you can use the %s which perfectly optimises your SVG’s. ', 'Options page help FAQ answer', 'shp-icon' ), '<a target="_blank" href="https://github.com/svg/svgo">' . _x( 'SVGO (SVG Optimizer)', 'Options page help FAQ answer', 'shp-icon' ) . '</a>' ) . '</p>';
 		echo '<ul>';
 		echo '<li>';
+		/* translators: %s = SVGOMG (other translation) */
 		echo sprintf( _x( 'Use SVGO as a web app – %s', 'Options page help FAQ answer', 'shp-icon' ), '<a target="_blank" href="https://jakearchibald.github.io/svgomg/">' . _x( 'SVGOMG', 'Options page help FAQ answer', 'shp-icon' ) . '</a>' );
 		echo '</li>';
 		echo '<li>';
+		/* translators: %s = svgo-compressor (other translation) */
 		echo sprintf( _x( 'Use SVGO as a Sketch plugin – %s', 'Options page help FAQ answer', 'shp-icon' ), '<a target="_blank" href="https://github.com/BohemianCoding/svgo-compressor">' . _x( 'svgo-compressor', 'Options page help FAQ answer', 'shp-icon' ) . '</a>' );
 		echo '</li>';
 		echo '<li>';
+		/* translators: %s = Image Shrinker (other translation) */
 		echo sprintf( _x( 'Use SVGO as macOS app – %s', 'Options page help FAQ answer', 'shp-icon' ), '<a target="_blank" href="https://image-shrinker.com/">' . _x( 'Image Shrinker', 'Options page help FAQ answer', 'shp-icon' ) . '</a>' );
 		echo '</li>';
 		echo '<li>';
+		/* translators: %s = svgo-osx-folder-action (other translation) */
 		echo sprintf( _x( 'Use SVGO as an OSX Folder Action – %s', 'Options page help FAQ answer', 'shp-icon' ), '<a target="_blank" href="https://github.com/svg/svgo-osx-folder-action">' . _x( 'svgo-osx-folder-action', 'Options page help FAQ answer', 'shp-icon' ) . '</a>' );
 		echo '</li>';
 		echo '</ul>';
@@ -506,10 +513,8 @@ class OptionsPage {
 		echo '<input type="checkbox" class="accordion__item-checkbox" id="file-changes" />';
 		echo '<span class="accordion__item-state-indicator"></span>';
 		echo '<div class="accordion__content">';
-		echo '<p>' . sprintf(
-			_x( 'While uploading an SVG, it will be sanitised by %s and renamed based on the filename. Other changes to the SVG won’t happen.', 'Options page help FAQ answer', 'shp-icon' ),
-			'<a target="_blank" href="https://github.com/darylldoyle/svg-sanitizer">' . _x( 'a PHP SVG/XML Sanitizer', 'Options page help FAQ answer', 'shp-icon' ) . '</a>'
-		) . '</p>';
+		/* translators: %s = a PHP SVG/XML Sanitizer (other translation) */
+		echo '<p>' . sprintf( _x( 'While uploading an SVG, it will be sanitised by %s and renamed based on the filename. Other changes to the SVG won’t happen.', 'Options page help FAQ answer', 'shp-icon' ), '<a target="_blank" href="https://github.com/darylldoyle/svg-sanitizer">' . _x( 'a PHP SVG/XML Sanitizer', 'Options page help FAQ answer', 'shp-icon' ) . '</a>' ) . '</p>';
 		echo '</div>';
 		echo '</div>'; // .accordion__item
 
@@ -518,11 +523,8 @@ class OptionsPage {
 		echo '<input type="checkbox" class="accordion__item-checkbox" id="where-to-use-the-shortcode" />';
 		echo '<span class="accordion__item-state-indicator"></span>';
 		echo '<div class="accordion__content">';
-		echo '<p>' . sprintf(
-			_x( 'The shortcode works within the content section (editor). By default there is no additional shortcode support. You can add shortcode support via WordPress %1$s or do the shortcode directly in your template files with %2$s. Read the following article for further information.', 'Options page help FAQ answer', 'shp-icon' ),
-			'<a target="_blank" href="https://developer.wordpress.org/reference/functions/add_filter/"><code>add_filter()</code></a>',
-			'<a target="_blank" href="https://developer.wordpress.org/reference/functions/do_shortcode/"><code>do_shortcode()</code></a>'
-		) . '</p>';
+		/* translators: %1$ss = link to wp ref add_filter(), %2$s = link to wp ref do_shortcode() */
+		echo '<p>' . sprintf( _x( 'The shortcode works within the content section (editor). By default there is no additional shortcode support. You can add shortcode support via WordPress %1$s or do the shortcode directly in your template files with %2$s. Read the following article for further information.', 'Options page help FAQ answer', 'shp-icon' ), '<a target="_blank" href="https://developer.wordpress.org/reference/functions/add_filter/"><code>add_filter()</code></a>', '<a target="_blank" href="https://developer.wordpress.org/reference/functions/do_shortcode/"><code>do_shortcode()</code></a>' ) . '</p>';
 		echo '<ul>';
 		echo '<li>';
 		echo '<a target="_blank" href="http://stephanieleary.com/2010/02/using-shortcodes-everywhere/">' . _x( 'Using Shortcodes everywhere.', 'Options page help FAQ answer', 'shp-icon' ) . '</a>';
@@ -545,6 +547,7 @@ class OptionsPage {
 		echo '<input type="checkbox" class="accordion__item-checkbox" id="migrate" />';
 		echo '<span class="accordion__item-state-indicator"></span>';
 		echo '<div class="accordion__content">';
+		/* translators: %s = plugin textomain */
 		echo '<p>' . sprintf( _x( 'The uploaded SVG’s are saved in <code>/wp-content/uploads/%s</code>. Migrate this folder too to keep the your icons working.', 'Options page help FAQ answer', 'shp-icon' ), shp_icon()->prefix ) . '</p>';
 		echo '</div>';
 		echo '</div>'; // .accordion__item
@@ -554,7 +557,9 @@ class OptionsPage {
 
 		echo '<div class="' . shp_icon()->prefix . '-help ' . shp_icon()->prefix . '-help--right">';
 		echo '<h3>' . _x( 'That’s it, peace.', 'Options page help title', 'shp-icon' ) . '</h3>';
+		/* translators: %s = Plugin Repository (other translation) */
 		echo '<p>' . sprintf( _x( 'Contribute or get help: %s', 'Options page help', 'shp-icon' ), '<a target="_blank" href="' . shp_icon()->plugin_header['PluginURI'] . '">' . _x( 'Plugin Repository', 'Options page help FAQ answer', 'shp-icon' ) . '</a>' ) . '</p>';
+		/* translators: %s = Plugin Repository (other translation) */
 		echo '<p>' . sprintf( _x( 'Report issues: %s', 'Options page help', 'shp-icon' ), '<a target="_blank" href="' . shp_icon()->plugin_header['PluginURI'] . '/issues">' . _x( 'Plugin Repository', 'Options page help FAQ answer', 'shp-icon' ) . '</a>' ) . '</p>';
 		echo '<h3>' . _x( 'Say Thank You With A Donation', 'Options page help title', 'shp-icon' ) . '</h3>';
 		echo '<p><a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CM27FZ8UYJCGJ&source=url">Paypal</a></p>';

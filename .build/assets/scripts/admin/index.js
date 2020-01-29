@@ -2,6 +2,8 @@
  * Scripts for WordPress Admin (not Gutenberg)
  */
 
+import { _x, __ } from 'wp.i18n';
+
 // import './toggle-upload';
 import './icon-actions';
 import './search-icon';
