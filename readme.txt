@@ -5,7 +5,7 @@ Tags: SVG, Icons
 Requires at least: 5
 Requires PHP: 7.1
 Tested up to: 5.3.2
-Stable tag: 1.0.1
+Stable tag: trunk
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
