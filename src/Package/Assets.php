@@ -10,6 +10,7 @@ namespace SayHello\Plugin\Icon\Plugin\Package;
  */
 class Assets {
 
+
 	/**
 	 * Execution function which is called after the class has been initialized.
 	 * This contains hook and filter assignments, etc.
@@ -32,11 +33,16 @@ class Assets {
 	 */
 	public function registerScripts() {
 		if ( file_exists( shp_icon()->plugin_dir . '/assets/gutenberg/blocks.js' ) ) {
+			$script_asset_path = shp_icon()->plugin_dir . '/assets/gutenberg/blocks.asset.php';
+			$script_asset      = file_exists( $script_asset_path ) ? require( $script_asset_path ) : array(
+				'dependencies' => array(),
+				'version'      => shp_icon()->version,
+			);
 			wp_register_script(
 				shp_icon()->prefix . '-gutenberg-script',
 				shp_icon()->plugin_url . '/assets/gutenberg/blocks' . ( shp_icon()->debug ? '' : '.min' ) . '.js',
-				array( 'lodash', 'wp-blocks', 'wp-element', 'wp-edit-post', 'wp-i18n' ),
-				shp_icon()->version,
+				$script_asset['dependencies'],
+				$script_asset['version'],
 				true
 			);
 		}

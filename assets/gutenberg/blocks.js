@@ -1,4 +1,3 @@
-window["wp"] = window["wp"] || {}; window["wp"]["i18n"] =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -82,24 +81,89 @@ window["wp"] = window["wp"] || {}; window["wp"]["i18n"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports) {
 
-(function() { module.exports = window["wp"]["i18n"]; }());
+(function() { module.exports = this["wp"]["i18n"]; }());
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["blockEditor"]; }());
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["data"]; }());
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["components"]; }());
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["serverSideRender"]; }());
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["blocks"]; }());
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["apiFetch"]; }());
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["compose"]; }());
+
+/***/ }),
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 
-// EXTERNAL MODULE: external {"window":["wp","i18n"]}
-var external_window_wp_i18n_ = __webpack_require__(0);
+// EXTERNAL MODULE: external {"this":["wp","i18n"]}
+var external_this_wp_i18n_ = __webpack_require__(0);
+
+// EXTERNAL MODULE: external {"this":["wp","serverSideRender"]}
+var external_this_wp_serverSideRender_ = __webpack_require__(4);
+var external_this_wp_serverSideRender_default = /*#__PURE__*/__webpack_require__.n(external_this_wp_serverSideRender_);
+
+// EXTERNAL MODULE: external {"this":["wp","blocks"]}
+var external_this_wp_blocks_ = __webpack_require__(5);
+
+// EXTERNAL MODULE: external {"this":["wp","apiFetch"]}
+var external_this_wp_apiFetch_ = __webpack_require__(6);
+var external_this_wp_apiFetch_default = /*#__PURE__*/__webpack_require__.n(external_this_wp_apiFetch_);
+
+// EXTERNAL MODULE: external {"this":["wp","data"]}
+var external_this_wp_data_ = __webpack_require__(2);
+
+// EXTERNAL MODULE: external {"this":["wp","components"]}
+var external_this_wp_components_ = __webpack_require__(3);
+
+// EXTERNAL MODULE: external {"this":["wp","blockEditor"]}
+var external_this_wp_blockEditor_ = __webpack_require__(1);
+
+// EXTERNAL MODULE: external {"this":["wp","compose"]}
+var external_this_wp_compose_ = __webpack_require__(7);
 
 // CONCATENATED MODULE: ./.build/assets/gutenberg/icon/icon.jsx
 // wanna use dashicon icons?
@@ -127,37 +191,24 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
-var ServerSideRender = wp.serverSideRender;
-var registerBlockType = wp.blocks.registerBlockType;
-var _wp = wp,
-    apiFetch = _wp.apiFetch;
-var _wp$data = wp.data,
-    registerStore = _wp$data.registerStore,
-    withSelect = _wp$data.withSelect;
-var block_wp$components = wp.components,
-    Spinner = block_wp$components.Spinner,
-    PanelBody = block_wp$components.PanelBody,
-    PanelRow = block_wp$components.PanelRow,
-    RadioControl = block_wp$components.RadioControl,
-    TextControl = block_wp$components.TextControl;
-var _wp$blockEditor = wp.blockEditor,
-    InspectorControls = _wp$blockEditor.InspectorControls,
-    PanelColorSettings = _wp$blockEditor.PanelColorSettings,
-    BlockControls = _wp$blockEditor.BlockControls,
-    AlignmentToolbar = _wp$blockEditor.AlignmentToolbar,
-    BlockAlignmentToolbar = _wp$blockEditor.BlockAlignmentToolbar;
-var withState = wp.compose.withState;
+
+
+
+
+
+
+
 
 /**
  * Register secure block
  */
 
-/* harmony default export */ var block = (registerBlockType('shp-icon/icon', {
-  title: Object(external_window_wp_i18n_["_x"])('SVG Icon', 'SVG icon block title', 'shp-icon'),
-  description: Object(external_window_wp_i18n_["__"])('Use your SVG icons as Gutenberg block', 'shp-icon'),
+/* harmony default export */ var block = (Object(external_this_wp_blocks_["registerBlockType"])('shp-icon/icon', {
+  title: Object(external_this_wp_i18n_["_x"])('SVG Icon', 'SVG icon block title', 'shp-icon'),
+  description: Object(external_this_wp_i18n_["__"])('Use your SVG icons as Gutenberg block', 'shp-icon'),
   icon: icon_icon,
   category: 'embed',
-  keywords: [Object(external_window_wp_i18n_["__"])('Icons'), Object(external_window_wp_i18n_["__"])('SVG')],
+  keywords: [Object(external_this_wp_i18n_["__"])('Icons'), Object(external_this_wp_i18n_["__"])('SVG')],
   supports: {
     align: true
   },
@@ -191,7 +242,7 @@ var withState = wp.compose.withState;
       default: 'normal'
     }
   },
-  edit: withSelect(function (select) {
+  edit: Object(external_this_wp_data_["withSelect"])(function (select) {
     return {
       iconList: select('shp-icon/icon-list').recieveIcons()
     };
@@ -231,14 +282,14 @@ var withState = wp.compose.withState;
       }
     }
 
-    return [React.createElement(BlockControls, null), React.createElement(InspectorControls, {
+    return [React.createElement(external_this_wp_blockEditor_["BlockControls"], null), React.createElement(external_this_wp_blockEditor_["InspectorControls"], {
       className: "shp-icon-controls"
-    }, React.createElement(PanelBody, {
-      title: Object(external_window_wp_i18n_["_x"])('Icon Collection', 'SVG icon block panel title', 'shp-icon'),
+    }, React.createElement(external_this_wp_components_["PanelBody"], {
+      title: Object(external_this_wp_i18n_["_x"])('Icon Collection', 'SVG icon block panel title', 'shp-icon'),
       initialOpen: true
     }, React.createElement("div", {
       className: "shp-icon-controls__icon-list"
-    }, React.createElement(RadioControl, {
+    }, React.createElement(external_this_wp_components_["RadioControl"], {
       selected: icon,
       options: iconList.map(function (icon) {
         return {
@@ -256,8 +307,8 @@ var withState = wp.compose.withState;
           icon: icon
         });
       }
-    }))), React.createElement(PanelColorSettings, {
-      title: Object(external_window_wp_i18n_["_x"])('Color Settings', 'SVG icon block PanelColorSettings label', 'shp-icon'),
+    }))), React.createElement(external_this_wp_blockEditor_["PanelColorSettings"], {
+      title: Object(external_this_wp_i18n_["_x"])('Color Settings', 'SVG icon block PanelColorSettings label', 'shp-icon'),
       colorSettings: [{
         value: color,
         onChange: function onChange(color) {
@@ -273,7 +324,7 @@ var withState = wp.compose.withState;
 
           ;
         },
-        label: Object(external_window_wp_i18n_["_x"])('Color', 'SVG icon block colorSettings label', 'shp-icon')
+        label: Object(external_this_wp_i18n_["_x"])('Color', 'SVG icon block colorSettings label', 'shp-icon')
       }, {
         value: backgroundColor,
         onChange: function onChange(backgroundColor) {
@@ -289,13 +340,13 @@ var withState = wp.compose.withState;
 
           ;
         },
-        label: Object(external_window_wp_i18n_["_x"])('Background Color', 'SVG icon block colorSettings label', 'shp-icon')
+        label: Object(external_this_wp_i18n_["_x"])('Background Color', 'SVG icon block colorSettings label', 'shp-icon')
       }]
     }, !hasCurrentColor && React.createElement("i", {
       style: {
         color: 'red'
       }
-    }, Object(external_window_wp_i18n_["_x"])('The color feature only works with SVG’s using currentColor. No currentColor value found in the selected SVG.', 'SVG icon block colorSettings notice', 'shp-icon')))), React.createElement(ServerSideRender, {
+    }, Object(external_this_wp_i18n_["_x"])('The color feature only works with SVG’s using currentColor. No currentColor value found in the selected SVG.', 'SVG icon block colorSettings notice', 'shp-icon')))), React.createElement(external_this_wp_serverSideRender_default.a, {
       block: "shp-icon/icon",
       attributes: attributes
     })];
@@ -318,7 +369,7 @@ var actions = {
     };
   }
 };
-var store = registerStore('shp-icon/icon-list', {
+var store = Object(external_this_wp_data_["registerStore"])('shp-icon/icon-list', {
   reducer: function reducer() {
     var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
       icons: {}
@@ -343,7 +394,7 @@ var store = registerStore('shp-icon/icon-list', {
   },
   controls: {
     RECIEVE_ICONS: function RECIEVE_ICONS(action) {
-      return apiFetch({
+      return external_this_wp_apiFetch_default()({
         path: action.path
       });
     }

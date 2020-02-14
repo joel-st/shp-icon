@@ -1,11 +1,11 @@
-import { _x, __ } from 'wp.i18n';
-const ServerSideRender = wp.serverSideRender;
-const { registerBlockType } = wp.blocks;
-const { apiFetch } = wp;
-const { registerStore, withSelect } = wp.data;
-const { Spinner, PanelBody, PanelRow, RadioControl, TextControl } = wp.components;
-const { InspectorControls, PanelColorSettings, BlockControls, AlignmentToolbar, BlockAlignmentToolbar } = wp.blockEditor;
-const { withState } = wp.compose;
+import { __, _x } from '@wordpress/i18n';
+import ServerSideRender from '@wordpress/server-side-render';
+import { registerBlockType } from '@wordpress/blocks';
+import apiFetch from '@wordpress/api-fetch';
+import { registerStore, withSelect } from '@wordpress/data';
+import { Spinner, PanelBody, PanelRow, RadioControl, TextControl } from '@wordpress/components';
+import { InspectorControls, PanelColorSettings, BlockControls, AlignmentToolbar, BlockAlignmentToolbar } from '@wordpress/block-editor';
+import { withState } from '@wordpress/compose';
 
 import icon from './icon.jsx';
 

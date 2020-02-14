@@ -1,23 +1,13 @@
-import gulp from 'gulp';
+const filter = require('gulp-filter');
 
+import gulp from 'gulp';
 import webpack from 'webpack';
 import gulpWebpack from 'webpack-stream';
 import livereload from 'gulp-livereload';
 import rename from 'gulp-rename';
 import uglify from 'gulp-uglify';
 
-//import babelloader from 'babel-loader';
-
-const wplib = [
-	'blocks',
-	'components',
-	'date',
-	'editor',
-	'element',
-	'i18n',
-	'utils',
-	'data',
-];
+const DependencyExtractionWebpackPlugin = require('@wordpress/dependency-extraction-webpack-plugin');
 
 export const task = config => {
 	return gulp.src([
@@ -38,24 +28,20 @@ export const task = config => {
 					poll: true,
 					ignored: /node_modules/
 				},
-				output: {
-					filename: 'blocks.js',
-					library: ['wp', 'i18n'],
-					libraryTarget: 'window'
-				},
 				optimization: {
 					minimize: false //Update this to true or false
 				},
-				externals: wplib.reduce((externals, lib) => {
-					externals[`wp.${lib}`] = {
-						window: ['wp', lib],
-					};
-					return externals;
-				}, {}),
+				output: {
+					filename: 'blocks.js',
+				},
+				plugins: [
+					new DependencyExtractionWebpackPlugin(),
+				],
 			}, webpack)
 		)
 		.on('error', config.errorLog)
 		.pipe(gulp.dest(config.assetsDir + 'gutenberg/'))
+		.pipe(filter(['**/*.js']))
 
 		// Minify
 		.pipe(uglify())
