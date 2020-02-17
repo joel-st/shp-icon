@@ -242,6 +242,8 @@ class Plugin {
 	 * @param  Array $file Uploaded file.
 	 *
 	 * @return Array        Cleaned file if type is SVG.
+	 *
+	 * @since    1.0.2
 	 */
 	public function sanitizeSvg( $file ) {
 		if ( 'image/svg+xml' === $file['type'] ) {
