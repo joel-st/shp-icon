@@ -232,4 +232,33 @@ class Plugin {
 		);
 		return $links;
 	}
+
+	/**
+	 * Sanitizes a SVG file before it's saved to the server storage.
+	 * This removes unallowed tags and scripts.
+	 *
+	 * @see    enshrined\svgSanitize\Sanitizer
+	 *
+	 * @param  Array $file Uploaded file.
+	 *
+	 * @return Array        Cleaned file if type is SVG.
+	 */
+	public function sanitizeSvg( $file ) {
+		if ( 'image/svg+xml' === $file['type'] ) {
+			$sanitizer    = new Sanitizer();
+			$dirty_svg    = file_get_contents( $file['tmp_name'] );
+			$santized_svg = $sanitizer->sanitize( $dirty_svg );
+
+			global $wp_filesystem;
+			$credentials = request_filesystem_credentials( site_url() . '/wp-admin/', '', false, false, array() );
+			if ( ! WP_Filesystem( $credentials ) ) {
+				request_filesystem_credentials( site_url() . '/wp-admin/', '', true, false, null );
+			}
+
+			// Using the filesystem API provided by WordPress, we replace the contents of the temporary file and then let the process continue as normal.
+			$wp_filesystem->put_contents( $file['tmp_name'], $santized_svg, FS_CHMOD_FILE );
+		}
+
+		return $file;
+	}
 }
