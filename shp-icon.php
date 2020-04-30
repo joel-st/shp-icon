@@ -76,13 +76,13 @@ if ( $wp_compatibility || $php_compatibility ) {
 require_once 'vendor/autoload.php';
 
 /*
- * This lot auto-loads a class or trait just when you need it. You don't need to
- * use require, include or anything to get the class/trait files, as long
- * as they are stored in the correct folder and use the correct namespaces.
- *
- * See http://www.php-fig.org/psr/psr-4/ for an explanation of the file structure
- * and https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md for usage examples.
- */
+* This lot auto-loads a class or trait just when you need it. You don't need to
+* use require, include or anything to get the class/trait files, as long
+* as they are stored in the correct folder and use the correct namespaces.
+*
+* See http://www.php-fig.org/psr/psr-4/ for an explanation of the file structure
+* and https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader-examples.md for usage examples.
+*/
 
 spl_autoload_register(
 	function ( $class ) {
@@ -115,16 +115,10 @@ spl_autoload_register(
 	}
 );
 
-/**
-* Returns the Plugin Instance
-*
-* @return Object Plugin Object
-*/
-if ( ! function_exists( 'shp_icon' ) ) {
-	function shp_icon() {
-		return SayHello\Plugin\Icon\Plugin::getInstance( __FILE__ );
-	}
-}
+require_once 'src/Plugin.php';
 
+function shp_icon()
+{
+	return SayHello\Plugin\Icon\Plugin::getInstance(__FILE__);
+}
 shp_icon();
-shp_icon()->run();
