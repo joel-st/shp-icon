@@ -64,7 +64,7 @@ class OptionsPage {
 	 *
 	 * @since 1.0.0
 	 */
-	public static function registerSubmenuOptionsPage() {
+	public function registerSubmenuOptionsPage() {
 		add_submenu_page(
 			$this->parent_slug,
 			_x( 'SVG Icons', 'Plugins option page title', 'shp-icon' ),
