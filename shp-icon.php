@@ -12,7 +12,7 @@ Domain Path: /languages
 
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+if (! defined('WPINC')) {
 	die;
 }
 
@@ -20,19 +20,20 @@ if ( ! defined( 'WPINC' ) ) {
 global $wp_version;
 
 // Get the File-Data from this File to reuse it in the Compatibility-Check on Plugin-Activation
-require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-$shp_icon_headers = (object) get_plugin_data( __FILE__, true, true );
+require_once(ABSPATH . 'wp-admin/includes/plugin.php');
+$shp_icon_headers = (object) get_plugin_data(__FILE__, true, true);
 
 // Compatibility-Check Variables
 $min_wp_version    = '5';
 $min_php_version   = '7.1';
-$wp_compatibility  = version_compare( $wp_version, $min_wp_version, '<' );
-$php_compatibility = version_compare( PHP_VERSION, $min_php_version, '<' );
+$wp_compatibility  = version_compare($wp_version, $min_wp_version, '<');
+$php_compatibility = version_compare(PHP_VERSION, $min_php_version, '<');
 
 // Do the Compatibility-Check
-if ( $wp_compatibility || $php_compatibility ) {
+if ($wp_compatibility || $php_compatibility) {
 
-	function shp_icon_compatibility_check() {
+	function shp_icon_compatibility_check()
+	{
 		global $shp_icon_headers;
 		global $wp_version;
 		global $min_wp_version;
@@ -56,13 +57,13 @@ if ( $wp_compatibility || $php_compatibility ) {
 		echo '</p></div>';
 
 		// remove the 'Plugin activated message'
-		if ( isset( $_GET['activate'] ) ) {
-			unset( $_GET['activate'] );
+		if (isset($_GET['activate'])) {
+			unset($_GET['activate']);
 		}
 	}
 
-	add_action( 'admin_notices', 'shp_icon_compatibility_check' );
-	deactivate_plugins( plugin_basename( __FILE__ ) );
+	add_action('admin_notices', 'shp_icon_compatibility_check');
+	deactivate_plugins(plugin_basename(__FILE__));
 
 	return;
 }
@@ -85,7 +86,7 @@ require_once 'vendor/autoload.php';
 */
 
 spl_autoload_register(
-	function ( $class ) {
+	function ($class) {
 
 		// project-specific namespace prefix
 		$prefix = 'SayHello\\Plugin\\Icon\\Plugin\\';
@@ -94,22 +95,22 @@ spl_autoload_register(
 		$base_dir = __DIR__ . '/src/';
 
 		// does the class use the namespace prefix?
-		$len = strlen( $prefix );
-		if ( strncmp( $prefix, $class, $len ) !== 0 ) {
+		$len = strlen($prefix);
+		if (strncmp($prefix, $class, $len) !== 0) {
 			// no, move to the next registered autoloader
 			return;
 		}
 
 		// get the relative class name
-		$relative_class = substr( $class, $len );
+		$relative_class = substr($class, $len);
 
 		// replace the namespace prefix with the base directory, replace namespace
 		// separators with directory separators in the relative class name, append
 		// with .php
-		$file = $base_dir . str_replace( '\\', '/', $relative_class ) . '.php';
+		$file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
 
 		// if the file exists, require it
-		if ( file_exists( $file ) ) {
+		if (file_exists($file)) {
 			require $file;
 		}
 	}
