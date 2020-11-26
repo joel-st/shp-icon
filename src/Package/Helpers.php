@@ -8,16 +8,18 @@ namespace SayHello\Plugin\Icon\Plugin\Package;
  * @author Joel Stüdle <joel@sayhello.ch>
  * @since 1.0.0
  */
-class Helpers {
+class Helpers
+{
 
 	/**
 	 * Get the active admin color scheme to use within plugin admin area
 	 *
 	 * @since 1.0.0
 	 */
-	public function getAdminColors() {
+	public function getAdminColors()
+	{
 		global $_wp_admin_css_colors;
-		$admin_color = get_user_option( 'admin_color' );
+		$admin_color = get_user_option('admin_color');
 		return $_wp_admin_css_colors[ $admin_color ]->colors;
 	}
 
@@ -29,13 +31,14 @@ class Helpers {
 	 * @return array rgb(a) array
 	 * @since 1.0.0
 	 */
-	public function hexToRgb( $hex, $alpha = false ) {
-		$hex      = str_replace( '#', '', $hex );
-		$length   = strlen( $hex );
-		$rgb['r'] = hexdec( 6 === $length ? substr( $hex, 0, 2 ) : ( 3 === $length ? str_repeat( substr( $hex, 0, 1 ), 2 ) : 0 ) );
-		$rgb['g'] = hexdec( 6 === $length ? substr( $hex, 2, 2 ) : ( 3 === $length ? str_repeat( substr( $hex, 1, 1 ), 2 ) : 0 ) );
-		$rgb['b'] = hexdec( 6 === $length ? substr( $hex, 4, 2 ) : ( 3 === $length ? str_repeat( substr( $hex, 2, 1 ), 2 ) : 0 ) );
-		if ( $alpha ) {
+	public function hexToRgb($hex, $alpha = false)
+	{
+		$hex      = str_replace('#', '', $hex);
+		$length   = strlen($hex);
+		$rgb['r'] = hexdec(6 === $length ? substr($hex, 0, 2) : ( 3 === $length ? str_repeat(substr($hex, 0, 1), 2) : 0 ));
+		$rgb['g'] = hexdec(6 === $length ? substr($hex, 2, 2) : ( 3 === $length ? str_repeat(substr($hex, 1, 1), 2) : 0 ));
+		$rgb['b'] = hexdec(6 === $length ? substr($hex, 4, 2) : ( 3 === $length ? str_repeat(substr($hex, 2, 1), 2) : 0 ));
+		if ($alpha) {
 			$rgb['a'] = $alpha;
 		}
 		return $rgb;
@@ -48,8 +51,9 @@ class Helpers {
 	 * @return string formatted icon name
 	 * @since 1.0.0
 	 */
-	public function getIconNameFromFileName( $filename ) {
-		return ucwords( str_replace( str_split( '\\/:*?"<>|+-_.' ), ' ', str_replace( '.svg', '', $filename ) ) );
+	public function getIconNameFromFileName($filename)
+	{
+		return ucwords(str_replace(str_split('\\/:*?"<>|+-_.'), ' ', str_replace('.svg', '', $filename)));
 	}
 
 	/**
@@ -60,12 +64,13 @@ class Helpers {
 	 * @return string formatted file name
 	 * @since 1.0.0
 	 */
-	public function createFileName( $filename ) {
-		$new_name = sanitize_file_name( strtolower( str_replace( str_split( '\\/:*?"<>|+-_.' ), '-', str_replace( '.svg', '', $filename ) ) ) . '.svg' );
+	public function createFileName($filename)
+	{
+		$new_name = sanitize_file_name(strtolower(str_replace(str_split('\\/:*?"<>|+-_.'), '-', str_replace('.svg', '', $filename))) . '.svg');
 
-		if ( file_exists( shp_icon()->upload_dir . "/$new_name" ) ) {
+		if (file_exists(shp_icon()->upload_dir . "/$new_name")) {
 			$i = 1;
-			while ( file_exists( shp_icon()->upload_dir . "/$new_name-$i" ) ) {
+			while (file_exists(shp_icon()->upload_dir . "/$new_name-$i")) {
 				$i++;
 			}
 		}
@@ -80,16 +85,17 @@ class Helpers {
 	 * @return string svg as string with attribute
 	 * @since 1.0.0
 	 */
-	public function addIconDataName( $svg, $name ) {
-		if ( $svg && $name ) {
-			$xml_svg   = simplexml_load_string( $svg );
+	public function addIconDataName($svg, $name)
+	{
+		if ($svg && $name) {
+			$xml_svg   = simplexml_load_string($svg);
 			$data_name = $xml_svg->attributes()->{shp_icon()->prefix . '-data-name'};
 
-			if ( empty( $data_name ) ) {
-				$svg = str_replace( '<svg ', '<svg data-' . shp_icon()->prefix . '="' . $name . '" ', $svg );
+			if (empty($data_name)) {
+				$svg = str_replace('<svg ', '<svg data-' . shp_icon()->prefix . '="' . $name . '" ', $svg);
 			} else {
-				if ( $data_name !== $name ) {
-					$svg = str_replace( 'data-' . shp_icon()->prefix . '="' . $data_name . '"', 'data-' . shp_icon()->prefix . '=="' . $name . '"', $svg );
+				if ($data_name !== $name) {
+					$svg = str_replace('data-' . shp_icon()->prefix . '="' . $data_name . '"', 'data-' . shp_icon()->prefix . '=="' . $name . '"', $svg);
 				}
 			}
 		}
@@ -101,7 +107,8 @@ class Helpers {
 	 *
 	 * @since 1.0.0
 	 */
-	public function isContextEdit() {
-		return array_key_exists( 'context', $_GET ) && 'edit' === $_GET['context'];
+	public function isContextEdit()
+	{
+		return array_key_exists('context', $_GET) && 'edit' === $_GET['context'];
 	}
 }
