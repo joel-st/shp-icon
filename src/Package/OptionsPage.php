@@ -111,7 +111,7 @@ class OptionsPage
 	 *
 	 * @since 1.0.0
 	 */
-	public static function renderOptionsPage()
+	public function renderOptionsPage()
 	{
 		echo '<div class="wrap wrap-shp-icon">';
 		$this->renderOptionsPageHead();
@@ -176,7 +176,7 @@ class OptionsPage
 	 *
 	 * @since 1.0.0
 	 */
-	public static function renderIconsToolbar()
+	public function renderIconsToolbar()
 	{
 		echo '<div class="media-toolbar wp-filter">';
 
