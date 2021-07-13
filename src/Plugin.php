@@ -202,6 +202,7 @@ class Plugin
 
 					return $icon_list;
 				},
+				'permission_callback' => '__return_true',
 			]
 		);
 	}
