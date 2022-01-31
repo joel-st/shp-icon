@@ -197,8 +197,7 @@
   position: absolute;
   right: 1rem;
   top: 1rem;
-  -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
   width: 0;
   height: 0;
   opacity: 0; }
@@ -250,8 +249,7 @@
     height: 100%;
     border-radius: 2px !important;
     border: none !important;
-    -webkit-appearance: none !important;
-            appearance: none !important; }
+    appearance: none !important; }
     .shp-icon-controls__icon-list .components-radio-control__input:before {
       content: none !important; }
     .shp-icon-controls__icon-list .components-radio-control__input:checked {

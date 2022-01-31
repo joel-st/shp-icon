@@ -3,7 +3,6 @@ import { src, dest } from 'gulp';
 import cleanCSS from 'gulp-clean-css';
 import filter from 'gulp-filter';
 import sass from 'gulp-sass';
-import sassImportJson from 'gulp-sass-import-json';
 import autoprefixer from 'gulp-autoprefixer';
 import rename from 'gulp-rename';
 import livereload from 'gulp-livereload';
@@ -15,7 +14,6 @@ export const task = config => {
 	const blockFilter = filter(config.assetsBuild + 'styles/admin-editor.css', { restore: true });
 
 	return src(config.assetsBuild + 'styles/**/*.scss')
-		.pipe(sassImportJson({ isScss: true }))
 		.pipe(sourcemaps.init())
 		.pipe(sass({
 			includePaths: ['./node_modules/']

@@ -21,27 +21,26 @@
 		"verge": "^1.10.2"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.11.1",
+		"@babel/core": "^7.16.12",
 		"@babel/polyfill": "^7.10.4",
-		"@babel/preset-env": "^7.11.0",
-		"@babel/preset-react": "^7.10.4",
-		"@babel/register": "^7.10.5",
-		"@wordpress/dependency-extraction-webpack-plugin": "^2.8.0",
-		"@wordpress/i18n": "^3.14.0",
-		"babel-loader": "^8.1.0",
-		"browser-sync": "^2.26.12",
-		"classnames": "^2.2.6",
-		"css-vars-ponyfill": "^2.3.2",
+		"@babel/preset-env": "^7.16.11",
+		"@babel/preset-react": "^7.16.7",
+		"@babel/register": "^7.16.9",
+		"@wordpress/dependency-extraction-webpack-plugin": "^2.9.0",
+		"@wordpress/i18n": "^3.20.0",
+		"babel-loader": "^8.2.3",
+		"browser-sync": "^2.27.7",
+		"classnames": "^2.3.1",
+		"css-vars-ponyfill": "^2.4.7",
 		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "^7.0.1",
 		"gulp-clean-css": "^4.3.0",
 		"gulp-editor-styles": "^1.0.1",
 		"gulp-filter": "^6.0.0",
 		"gulp-livereload": "^4.0.2",
-		"gulp-modernizr": "^4.0.1",
+		"gulp-modernizr": "^4.0.2",
 		"gulp-rename": "^2.0.0",
-		"gulp-sass": "^4.1.0",
-		"gulp-sass-import-json": "^1.0.2",
+		"gulp-sass": "^4.1.1",
 		"gulp-sourcemaps": "^2.6.5",
 		"gulp-svgmin": "^3.0.0",
 		"gulp-uglify": "^3.0.2",
@@ -62,5 +61,9 @@
 	"browserslist": [
 		"> 1%",
 		"IE 11"
-	]
+	],
+	"engines": {
+		"node": "14.18.3",
+		"npm": "8.3.0"
+	}
 }
