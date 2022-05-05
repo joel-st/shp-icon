@@ -4,7 +4,7 @@ Donate link: https://joelstuedle.ch/
 Tags: SVG, Icons
 Requires at least: 5
 Requires PHP: 7.1
-Tested up to: 5.9
+Tested up to: 5.9.3
 Stable tag: trunk
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
@@ -18,6 +18,10 @@ This plugin allows you to use SVG icons within WordPress as shortcode and/or as 
 3. Read the plugins help page how to prepare your icons the right way.
 
 == Changelog ==
+
+= 1.1.0 =
+* Added the possibility to set class names and anchors
+* Remove block align support => wrap it
 
 = 1.0.9 =
 * Compatibility check.

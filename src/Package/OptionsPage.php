@@ -465,6 +465,24 @@ class OptionsPage
 		echo '</td>';
 		echo '</tr>';
 
+		echo '<tr valign="top">';
+		echo '<th scope="row">';
+		echo '<code style="' . $style . '">anchor=""</code>';
+		echo '</th>';
+		echo '<td>';
+		echo _x('Use the <i>anchor</i> attribute to set an element ID.', 'Options page help use as shortcode', 'shp-icon');
+		echo '</td>';
+		echo '</tr>';
+
+		echo '<tr valign="top">';
+		echo '<th scope="row">';
+		echo '<code style="' . $style . '">classes=""</code>';
+		echo '</th>';
+		echo '<td>';
+		echo _x('Use the <i>classes</i> attribute to add additional classes.', 'Options page help use as shortcode', 'shp-icon');
+		echo '</td>';
+		echo '</tr>';
+
 		echo '</table>';
 		echo '<br/>';
 		echo '<br/>';

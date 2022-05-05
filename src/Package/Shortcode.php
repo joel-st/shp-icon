@@ -43,6 +43,8 @@ class Shortcode
 				'background-color' => 'transparent',
 				'align'            => 'normal', // used in icon block
 				'gutenberg'        => ( in_array('gutenberg', $attr, true) ) ? true : false, // used in icon block
+				'classes'          => ( in_array('classes', $attr, true) ) ? true : false, // used in icon block
+				'anchor'           => ( in_array('anchor', $attr, true) ) ? true : false, // used in icon block
 			],
 			$attr,
 			shp_icon()->prefix
@@ -130,9 +132,20 @@ class Shortcode
 			if ($attr['gutenberg']) {
 				$class_list .= ' ' . shp_icon()->prefix . '--block align' . esc_attr($attr['align']);
 			}
+			$classNameBase = wp_get_block_default_classname(shp_icon()->prefix . '/icon');
+			if (!empty($attr['classes'])) {
+				$class_list = $attr['classes'] . ' ' . $class_list;
+			}
+			if (!empty($classNameBase)) {
+				$class_list = $classNameBase . ' ' . $class_list;
+			}
+			$id = '';
+			if ('string' == gettype($attr['anchor'])) {
+				$id = 'id="' . $attr['anchor'] . '"';
+			}
 
 			if (! empty($color_style) || ! empty($shift_style)) {
-				return '<' . esc_attr($el) . ' class="' . esc_attr($class_list) . '" style="' . esc_attr($parent_style) . '">' . $svg . '</' . esc_attr($el) . '>';
+				return '<' . esc_attr($el) . ' ' . $id . ' class="' . esc_attr($class_list) . '" style="' . esc_attr($parent_style) . '">' . $svg . '</' . esc_attr($el) . '>';
 			} else {
 				return '<' . esc_attr($el) . ' class="' . esc_attr($class_list) . '">' . $svg . '</' . esc_attr($el) . '>';
 			}
