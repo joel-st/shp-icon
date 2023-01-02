@@ -28,7 +28,7 @@
 		"@babel/register": "^7.16.9",
 		"@wordpress/dependency-extraction-webpack-plugin": "^2.9.0",
 		"@wordpress/i18n": "^3.20.0",
-		"babel-loader": "^8.2.3",
+		"babel-loader": "^8.3.0",
 		"browser-sync": "^2.27.7",
 		"classnames": "^2.3.1",
 		"css-vars-ponyfill": "^2.4.7",
@@ -45,7 +45,7 @@
 		"gulp-svgmin": "^3.0.0",
 		"gulp-uglify": "^3.0.2",
 		"gulp-wp-pot": "^2.4.3",
-		"webpack-stream": "^5.2.1"
+		"webpack-stream": "^7.0.0"
 	},
 	"author": "Say Hello GmbH - https://sayhello.ch",
 	"license": "GPL-3.0-or-later",
