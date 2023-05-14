@@ -1,4 +1,5 @@
 import { _x } from 'wp.i18n';
+import { deleteIcon } from './delete.js';
 
 (function ($) {
 	$(function () {
@@ -73,19 +74,32 @@ import { _x } from 'wp.i18n';
 						icon: icon
 					},
 					success: function (response) {
-						$('.shp-icon-list').prepend(response);
+						let $icon = $(response);
+						$('.shp-icon-list').prepend($icon);
 
-						$toggle = $($('.shp-icon-list__item')[0]).find('.shp-icon-list__actions-toggle');
+						let $toggle = $icon.find('.shp-icon-list__actions-toggle');
 						$toggle.on('click', function () {
-							$item = $toggle.parent().parent();
-							$actions = $item.find('.shp-icon-list__action-list');
-							$icon = $item.find('.shp-icon-list__icon > svg');
+							let $item = $toggle.parent().parent();
+							let $actions = $item.find('.shp-icon-list__action-list');
+							let $icon = $item.find('.shp-icon-list__icon > svg');
 
 							$actions.slideToggle('fast');
 							$item.toggleClass('shp-icon-list__item--actions-visible');
+
+							const $deleteAction = $actions.find('.shp-icon-list__action-remove');
+
+							$deleteAction.on('click', function (event) {
+								event.preventDefault();
+								const $item = $(this).closest('.shp-icon-list__item');
+								const fileName = $item.find('.shp-icon-list__icon svg').attr('data-shp-icon');
+								const iconName = $item.find('.shp-icon-list__name').text();
+
+								if(confirm(_x('Confirm Deletion of', 'Confirm deletion. Confirm deletion of [IconName]', 'shp-icon') + ' ' + iconName)) {
+									deleteIcon(fileName);
+								}
+							});
 						});
 
-						console.log(response);
 					},
 					error: function (XMLHttpRequest, textStatus, errorThrown) {
 						console.log(XMLHttpRequest);

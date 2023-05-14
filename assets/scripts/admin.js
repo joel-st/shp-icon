@@ -152,7 +152,62 @@ var icon_actions = __webpack_require__(1);
     });
   });
 })(jQuery);
+// CONCATENATED MODULE: ./.build/assets/scripts/admin/delete.js
+
+
+
+(function ($) {
+  $(function () {
+    var $deleteAction = $('.shp-icon-list__action-remove');
+    $deleteAction.on('click', function (event) {
+      event.preventDefault();
+      var $item = $(this).closest('.shp-icon-list__item');
+      var fileName = $item.find('.shp-icon-list__icon svg').attr('data-shp-icon');
+      var iconName = $item.find('.shp-icon-list__name').text();
+
+      if (confirm(Object(external_window_wp_i18n_["_x"])('Confirm Deletion of', 'Confirm deletion. Confirm deletion of [IconName]', 'shp-icon') + ' ' + iconName)) {
+        deleteIcon(fileName);
+      }
+    });
+  });
+})(jQuery);
+
+function deleteIcon(icon) {
+  (function ($) {
+    if (icon) {
+      if (!icon.includes('.svg')) {
+        icon = icon + '.svg';
+      }
+
+      $.ajax({
+        type: 'POST',
+        url: shp_icon_data.ajaxUrl,
+        data: {
+          action: 'shp_icon_delete',
+          file_name: icon
+        },
+        success: function success(response) {
+          var $icon = $('[data-shp-icon="' + response.fileName.replace('.svg', '') + '"]');
+          var $item = $icon.closest('.shp-icon-list__item');
+          var $statusElement = $('.shp-icon-upload__status');
+          var $status = $('<div class="notice notice-success"><p><b class="notice__filename">' + response.name + '</b> <span>' + Object(external_window_wp_i18n_["_x"])('deleted', 'Admin notice delete file sucessfully', 'shp-icon') + '</span></p></div>');
+          $statusElement.append($status);
+
+          if ($item) {
+            $item.remove();
+          }
+
+          console.log(response);
+        },
+        error: function error(XMLHttpRequest, textStatus, errorThrown) {
+          console.log(XMLHttpRequest);
+        }
+      });
+    }
+  })(jQuery);
+}
 // CONCATENATED MODULE: ./.build/assets/scripts/admin/upload.js
+
 
 
 (function ($) {
@@ -219,16 +274,27 @@ var icon_actions = __webpack_require__(1);
             icon: icon
           },
           success: function success(response) {
-            $('.shp-icon-list').prepend(response);
-            $toggle = $($('.shp-icon-list__item')[0]).find('.shp-icon-list__actions-toggle');
+            var $icon = $(response);
+            $('.shp-icon-list').prepend($icon);
+            var $toggle = $icon.find('.shp-icon-list__actions-toggle');
             $toggle.on('click', function () {
-              $item = $toggle.parent().parent();
-              $actions = $item.find('.shp-icon-list__action-list');
-              $icon = $item.find('.shp-icon-list__icon > svg');
+              var $item = $toggle.parent().parent();
+              var $actions = $item.find('.shp-icon-list__action-list');
+              var $icon = $item.find('.shp-icon-list__icon > svg');
               $actions.slideToggle('fast');
               $item.toggleClass('shp-icon-list__item--actions-visible');
+              var $deleteAction = $actions.find('.shp-icon-list__action-remove');
+              $deleteAction.on('click', function (event) {
+                event.preventDefault();
+                var $item = $(this).closest('.shp-icon-list__item');
+                var fileName = $item.find('.shp-icon-list__icon svg').attr('data-shp-icon');
+                var iconName = $item.find('.shp-icon-list__name').text();
+
+                if (confirm(Object(external_window_wp_i18n_["_x"])('Confirm Deletion of', 'Confirm deletion. Confirm deletion of [IconName]', 'shp-icon') + ' ' + iconName)) {
+                  deleteIcon(fileName);
+                }
+              });
             });
-            console.log(response);
           },
           error: function error(XMLHttpRequest, textStatus, errorThrown) {
             console.log(XMLHttpRequest);
@@ -238,60 +304,6 @@ var icon_actions = __webpack_require__(1);
     }
   });
 })(jQuery);
-// CONCATENATED MODULE: ./.build/assets/scripts/admin/delete.js
-
-
-
-(function ($) {
-  $(function () {
-    var $deleteAction = $('.shp-icon-list__action-remove');
-    $deleteAction.on('click', function (event) {
-      event.preventDefault();
-      var $item = $(this).closest('.shp-icon-list__item');
-      var fileName = $item.find('.shp-icon-list__icon svg').attr('data-shp-icon');
-      var iconName = $item.find('.shp-icon-list__name').text();
-
-      if (confirm(Object(external_window_wp_i18n_["_x"])('Confirm Deletion of', 'Confirm deletion. Confirm deletion of [IconName]', 'shp-icon') + ' ' + iconName)) {
-        deleteIcon(fileName);
-      }
-    });
-  });
-})(jQuery);
-
-function deleteIcon(icon) {
-  (function ($) {
-    if (icon) {
-      if (!icon.includes('.svg')) {
-        icon = icon + '.svg';
-      }
-
-      $.ajax({
-        type: 'POST',
-        url: shp_icon_data.ajaxUrl,
-        data: {
-          action: 'shp_icon_delete',
-          file_name: icon
-        },
-        success: function success(response) {
-          var $icon = $('[data-shp-icon="' + response.fileName.replace('.svg', '') + '"]');
-          var $item = $icon.closest('.shp-icon-list__item');
-          var $statusElement = $('.shp-icon-upload__status');
-          var $status = $('<div class="notice notice-success"><p><b class="notice__filename">' + response.name + '</b> <span>' + Object(external_window_wp_i18n_["_x"])('deleted', 'Admin notice delete file sucessfully', 'shp-icon') + '</span></p></div>');
-          $statusElement.append($status);
-
-          if ($item) {
-            $item.remove();
-          }
-
-          console.log(response);
-        },
-        error: function error(XMLHttpRequest, textStatus, errorThrown) {
-          console.log(XMLHttpRequest);
-        }
-      });
-    }
-  })(jQuery);
-}
 // CONCATENATED MODULE: ./.build/assets/scripts/admin/index.js
 /**
  * Scripts for WordPress Admin (not Gutenberg)
