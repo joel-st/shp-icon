@@ -32,7 +32,7 @@
 		"browser-sync": "^2.27.7",
 		"classnames": "^2.3.1",
 		"css-vars-ponyfill": "^2.4.7",
-		"gulp": "^4.0.2",
+		"gulp": "^5.0.0",
 		"gulp-autoprefixer": "^7.0.1",
 		"gulp-clean-css": "^4.3.0",
 		"gulp-editor-styles": "^1.0.1",
@@ -45,7 +45,7 @@
 		"gulp-svgmin": "^3.0.0",
 		"gulp-uglify": "^3.0.2",
 		"gulp-wp-pot": "^2.4.3",
-		"webpack-stream": "^5.2.1"
+		"webpack-stream": "^7.0.0"
 	},
 	"author": "Say Hello GmbH - https://sayhello.ch",
 	"license": "GPL-3.0-or-later",
