@@ -21,7 +21,7 @@ class Assets
 	public function run()
 	{
 		add_action('init', [ $this, 'registerScripts' ]);
-		add_action('wp_enqueue_scripts', [ $this, 'registerAssets' ]);
+		//add_action('wp_enqueue_scripts', [ $this, 'registerAssets' ]);
 		add_action('admin_enqueue_scripts', [ $this, 'registerAdminAssets' ]);
 		add_action('enqueue_block_editor_assets', [ $this, 'registerGutenbergAssets' ]);
 	}

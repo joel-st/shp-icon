@@ -61,10 +61,6 @@
 			&:hover span {
 				background-color: #444;
 			}
-
-			// &:hover + .shp-icon-list__action-list {
-			// 	display: block;
-			// }
 		}
 
 		&__action-list {
@@ -77,9 +73,9 @@
 			right: 0;
 			position: absolute;
 
-			// &:hover {
-			// 	display: block;
-			// }
+			.shp-icon-list__action:last-child {
+				margin-bottom: .25em;
+			}
 		}
 
 		&__item {
