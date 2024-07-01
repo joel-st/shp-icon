@@ -67,7 +67,7 @@ class Upload {
 			header( 'HTTP/1.1 400 Bad Request' );
 			header( 'Content-type: application/json' );
 			die(
-				json_encode(
+				wp_json_encode(
 					array(
 						'message' => _x( 'No upload ID specified', 'Upload without id', 'shp-icon' ),
 						'id'      => $upload_id,
@@ -80,7 +80,7 @@ class Upload {
 			header( 'HTTP/1.1 406 Not Acceptable' );
 			header( 'Content-type: application/json' );
 			die(
-				json_encode(
+				wp_json_encode(
 					array(
 						'message' => _x( 'No _wpnonce provided', 'Upload without nonce', 'shp-icon' ),
 						'id'      => $upload_id,
@@ -93,7 +93,7 @@ class Upload {
 			header( 'HTTP/1.1 400 Bad Request' );
 			header( 'Content-type: application/json' );
 			die(
-				json_encode(
+				wp_json_encode(
 					array(
 						'message' => _x( 'No files provided', 'Upload without files', 'shp-icon' ),
 						'id'      => $upload_id,
@@ -106,7 +106,7 @@ class Upload {
 			header( 'HTTP/1.1 400 Bad Request' );
 			header( 'Content-type: application/json' );
 			die(
-				json_encode(
+				wp_json_encode(
 					array(
 						'message' => _x( 'Invalid amount of files', 'Upload false amount of files', 'shp-icon' ),
 						'id'      => $upload_id,
@@ -124,7 +124,7 @@ class Upload {
 			header( 'HTTP/1.1 400 Bad Request' );
 			header( 'Content-type: application/json' );
 			die(
-				json_encode(
+				wp_json_encode(
 					array(
 						'message' => _x( 'Invalid file', 'Upload fals amount of files', 'shp-icon' ),
 						'id'      => $upload_id,
@@ -137,7 +137,7 @@ class Upload {
 			header( 'HTTP/1.1 400 Bad Request' );
 			header( 'Content-type: application/json' );
 			die(
-				json_encode(
+				wp_json_encode(
 					array(
 						'message' => _x( 'Invalid file type', 'Upload fals amount of files', 'shp-icon' ),
 						'id'      => $upload_id,
@@ -152,7 +152,7 @@ class Upload {
 			header( 'HTTP/1.1 500 Internal Server Error' );
 			header( 'Content-type: application/json' );
 			die(
-				json_encode(
+				wp_json_encode(
 					array(
 						'message' => _x( 'Sanitation failed', 'Upload sanitation failed', 'shp-icon' ),
 						'id'      => $upload_id,
@@ -170,7 +170,7 @@ class Upload {
 		header( 'HTTP/1.1 201 Created' );
 		header( 'Content-type: application/json' );
 		exit(
-			json_encode(
+			wp_json_encode(
 				array(
 					'upload'   => $upload,
 					'id'       => $upload_id,

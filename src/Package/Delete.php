@@ -45,7 +45,7 @@ class Delete
 		if (! isset($_POST['file_name']) && ! sanitize_file_name($file_name)) {
 			header('HTTP/1.1 404 Bad Request');
 			header('Content-type: application/json');
-			die(json_encode([ 'message' => _x('No filename provided', 'Delete without filename', 'shp-icon') ]));
+			die(wp_json_encode([ 'message' => _x('No filename provided', 'Delete without filename', 'shp-icon') ]));
 		}
 
 		$file_name = sanitize_file_name($_POST['file_name']);
@@ -53,14 +53,14 @@ class Delete
 		if (! file_exists(shp_icon()->upload_dir . '/' . $file_name)) {
 			header('HTTP/1.1 404 Icon not found');
 			header('Content-type: application/json');
-			die(json_encode([ 'message' => _x('Icon not found', 'Delete no icon found', 'shp-icon') ]));
+			die(wp_json_encode([ 'message' => _x('Icon not found', 'Delete no icon found', 'shp-icon') ]));
 		}
 
 		if (unlink(shp_icon()->upload_dir . '/' . $file_name)) {
 			header('HTTP/1.1 200 Deleted');
 			header('Content-type: application/json');
 			exit(
-				json_encode(
+				wp_json_encode(
 					[
 						'deleted'  => true,
 						'name'     => shp_icon()->Package->Helpers->getIconNameFromFileName($file_name),
@@ -71,7 +71,7 @@ class Delete
 		} else {
 			header('HTTP/1.1 500 Internal Server Error');
 			header('Content-type: application/json');
-			die(json_encode([ 'message' => _x('Deletion failed', 'Delete icon failed', 'shp-icon') ]));
+			die(wp_json_encode([ 'message' => _x('Deletion failed', 'Delete icon failed', 'shp-icon') ]));
 		}
 	}
 }
