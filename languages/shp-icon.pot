@@ -1,37 +1,42 @@
-# Copyright (C) 2022 Joel Stüdle
+# Copyright (C) 2024 joelmelon
 # This file is distributed under the same license as the SVG Icons plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: SVG Icons 1.1.0\n"
+"Project-Id-Version: SVG Icons 1.1.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/shp-icon\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-05-05T07:09:03+00:00\n"
+"POT-Creation-Date: 2024-07-01T11:32:57+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.6.0\n"
+"X-Generator: WP-CLI 2.10.0\n"
 "X-Domain: shp-icon\n"
 
 #. Plugin Name of the plugin
+#: shp-icon.php
 msgid "SVG Icons"
 msgstr ""
 
 #. Plugin URI of the plugin
+#: shp-icon.php
 msgid "https://github.com/joel-st/shp-icon"
 msgstr ""
 
 #. Description of the plugin
+#: shp-icon.php
 msgid "This plugin allows you to use SVG icons within WordPress as shortcodes and/or as Gutenberg block."
 msgstr ""
 
 #. Author of the plugin
-msgid "Joel Stüdle"
+#: shp-icon.php
+msgid "joelmelon"
 msgstr ""
 
 #. Author URI of the plugin
-msgid "https://joelstuedle.ch"
+#: shp-icon.php
+msgid "https://profiles.wordpress.org/joelmelon/"
 msgstr ""
 
 #. translators: Compatibility-Check failed Warning
@@ -469,84 +474,41 @@ msgctxt "Theme instance loadClasses() error message"
 msgid "There was a problem with the Plugin. Only one class with name “%1$s” can be use used in “%2$s”."
 msgstr ""
 
-#: src/Plugin.php:240
+#: src/Plugin.php:244
 msgctxt "Settings link in WordPress plugin list"
 msgid "Settings"
 msgstr ""
 
-#: .build/assets/gutenberg/icon/block.jsx:20
-#: assets/gutenberg/blocks.js:210
+#: assets/gutenberg/blocks.js:1
 msgctxt "SVG icon block title"
 msgid "SVG Icon"
 msgstr ""
 
-#: .build/assets/gutenberg/icon/block.jsx:21
-#: assets/gutenberg/blocks.js:211
+#: assets/gutenberg/blocks.js:1
 msgid "Use your SVG icons as Gutenberg block"
 msgstr ""
 
-#: .build/assets/gutenberg/icon/block.jsx:103
-#: assets/gutenberg/blocks.js:296
+#: assets/gutenberg/blocks.js:1
 msgctxt "SVG icon block panel title"
 msgid "Icon Collection"
 msgstr ""
 
-#: .build/assets/gutenberg/icon/block.jsx:113
-#: assets/gutenberg/blocks.js:319
+#: assets/gutenberg/blocks.js:1
 msgctxt "SVG icon block PanelColorSettings label"
 msgid "Color Settings"
 msgstr ""
 
-#: .build/assets/gutenberg/icon/block.jsx:117
-#: assets/gutenberg/blocks.js:335
+#: assets/gutenberg/blocks.js:1
 msgctxt "SVG icon block colorSettings label"
 msgid "Color"
 msgstr ""
 
-#: .build/assets/gutenberg/icon/block.jsx:122
-#: assets/gutenberg/blocks.js:351
+#: assets/gutenberg/blocks.js:1
 msgctxt "SVG icon block colorSettings label"
 msgid "Background Color"
 msgstr ""
 
-#: .build/assets/gutenberg/icon/block.jsx:125
-#: assets/gutenberg/blocks.js:357
+#: assets/gutenberg/blocks.js:1
 msgctxt "SVG icon block colorSettings notice"
 msgid "The color feature only works with SVG’s using currentColor. No currentColor value found in the selected SVG."
-msgstr ""
-
-#: .build/assets/scripts/admin/delete.js:15
-#: assets/scripts/admin.js:254
-msgctxt "Confirm deletion. Confirm deletion of [IconName]"
-msgid "Confirm Deletion of"
-msgstr ""
-
-#: .build/assets/scripts/admin/delete.js:42
-#: assets/scripts/admin.js:279
-msgctxt "Admin notice delete file sucessfully"
-msgid "deleted"
-msgstr ""
-
-#: .build/assets/scripts/admin/upload.js:19
-#: assets/scripts/admin.js:171
-msgctxt "Admin notice processing [Filename] if file is selected for upload"
-msgid "processing"
-msgstr ""
-
-#: .build/assets/scripts/admin/upload.js:43
-#: assets/scripts/admin.js:193
-msgctxt "Admin notice response.upload.error returns true"
-msgid "Something went wrong while processing the file."
-msgstr ""
-
-#: .build/assets/scripts/admin/upload.js:46
-#: assets/scripts/admin.js:196
-msgctxt "Admin notice [Icon] added successfully"
-msgid "Added successfully!"
-msgstr ""
-
-#: .build/assets/scripts/admin/upload.js:57
-#: assets/scripts/admin.js:205
-msgctxt "Admin notice upload failed"
-msgid "Upload failed!"
 msgstr ""
