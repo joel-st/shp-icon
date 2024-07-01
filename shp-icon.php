@@ -42,17 +42,17 @@ if ($wp_compatibility || $php_compatibility) {
 		echo '<div class="error"><p>';
 		echo sprintf(
 			// translators: Compatibility-Check failed Warning
-			_x(
+			esc_html(_x(
 				'%1$s requires PHP %2$s (or newer) and WordPress %3$s (or newer) to function properly. Your Site is using PHP %4$s and WordPress %5$s. Please upgrade. The Plugin has been deactivated automatically. Don’t hesitate to ask for Help @%6$s.',
 				'Compatibility-Check failed Warning',
 				'shp-icon'
-			),
-			'<strong>' . $shp_icon_headers->Name . '</strong>',
-			$min_php_version,
-			$min_wp_version,
+			)),
+			'<strong>' . esc_html($shp_icon_headers->Name) . '</strong>',
+			esc_html($min_php_version),
+			esc_html($min_wp_version),
 			PHP_VERSION,
-			$wp_version,
-			'<a href="' . $shp_icon_headers->PluginURI . '" target="_blank" title="">' . $shp_icon_headers->Author . '</a>'
+			esc_html($wp_version),
+			'<a href="' . esc_html($shp_icon_headers->PluginURI) . '" target="_blank" title="">' . esc_html($shp_icon_headers->Author) . '</a>'
 		);
 		echo '</p></div>';
 

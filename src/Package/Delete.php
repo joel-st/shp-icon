@@ -56,7 +56,7 @@ class Delete
 			die(wp_json_encode([ 'message' => _x('Icon not found', 'Delete no icon found', 'shp-icon') ]));
 		}
 
-		if (unlink(shp_icon()->upload_dir . '/' . $file_name)) {
+		if (wp_delete_file(shp_icon()->upload_dir . '/' . $file_name)) {
 			header('HTTP/1.1 200 Deleted');
 			header('Content-type: application/json');
 			exit(

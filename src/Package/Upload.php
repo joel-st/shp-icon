@@ -45,12 +45,12 @@ class Upload {
 	 * @since 1.0.0
 	 */
 	public function renderUpload() {
-		echo '<div id="' . $this->upload_element_id . '" class="' . $this->upload_element_id . '">';
+		echo '<div id="' . esc_attr($this->upload_element_id) . '" class="' . esc_attr($this->upload_element_id) . '">';
 		//echo '<form class="' . $this->upload_element_id . '__form" action="' . admin_url('admin-ajax.php') . '" method="post" enctype="multipart/form-data">';
 		wp_nonce_field( $this->upload_nonce_action, $this->upload_nonce_name );
-		echo '<input id="' . $this->upload_input_id . '" type="file" accept=".svg" multiple class="' . $this->upload_element_id . '__upload-input" style="visibility:hidden" />';
+		echo '<input id="' . esc_attr($this->upload_input_id) . '" type="file" accept=".svg" multiple class="' . esc_attr($this->upload_element_id) . '__upload-input" style="visibility:hidden" />';
 		//echo '</form>';
-		echo '<div class="' . $this->upload_element_id . '__status">';
+		echo '<div class="' . esc_attr($this->upload_element_id) . '__status">';
 		echo '</div>';
 		echo '</div>';
 	}

@@ -135,9 +135,9 @@ class OptionsPage
 	 */
 	public function renderOptionsPageHead()
 	{
-		echo '<h1 class="wp-heading-inline">' . _x('Icons', 'Options page heading', 'shp-icon') . '</h1>';
+		echo '<h1 class="wp-heading-inline">' . esc_html(_x('Icons', 'Options page heading', 'shp-icon')) . '</h1>';
 		if ('manage' === $this->current_tab) {
-			echo '<input type="button" class="page-title-action aria-button-if-js" role="button" value="' . _x('Add Icons', 'Options page title action', 'shp-icon') . '" onclick="' . esc_js('document.getElementById(`' . shp_icon()->Package->Upload->upload_input_id . '`).click()') . '" />';
+			echo '<input type="button" class="page-title-action aria-button-if-js" role="button" value="' . esc_html(_x('Add Icons', 'Options page title action', 'shp-icon')) . '" onclick="' . esc_js('document.getElementById(`' . shp_icon()->Package->Upload->upload_input_id . '`).click()') . '" />';
 			shp_icon()->Package->Upload->renderUpload();
 		}
 		echo '<hr class="wp-header-end">';
@@ -150,10 +150,10 @@ class OptionsPage
 	 */
 	public function renderOptionsPageTabs()
 	{
-		echo '<nav class="nav-tab-wrapper wp-clearfix" aria-label="' . _x('Second menu', 'Options page tab-nav aria-label', 'shp-icon') . '">';
+		echo '<nav class="nav-tab-wrapper wp-clearfix" aria-label="' . esc_html(_x('Second menu', 'Options page tab-nav aria-label', 'shp-icon')) . '">';
 		foreach ($this->setting_tabs as $tab => $name) {
 			$class = ( $tab === $this->current_tab ) ? ' nav-tab-active' : '';
-			echo "<a class='nav-tab$class' href='?page=$this->menu_slug&tab=$tab'>$name</a>";
+			echo '<a class="nav-tab'.esc_attr($class).'" href="?page='.esc_attr($this->menu_slug).'&tab='.esc_attr($tab).'">'.esc_html($name).'</a>';
 		}
 		echo '</nav>';
 	}
@@ -181,11 +181,11 @@ class OptionsPage
 		echo '<div class="media-toolbar wp-filter">';
 
 		echo '<div class="media-toolbar-secondary">';
-		echo '<h2 class="media-attachments-filter-heading">' . _x('Icon Collection', 'Options page media-toolbar title', 'shp-icon') . '</h2>';
+		echo '<h2 class="media-attachments-filter-heading">' . esc_html(_x('Icon Collection', 'Options page media-toolbar title', 'shp-icon')) . '</h2>';
 		echo '</div>';
 
 		echo '<div class="media-toolbar-primary search-form">';
-		echo '<label for="media-search-input" class="media-search-input-label">' . _x('Search by name', 'Options page media-toolbar action input label', 'shp-icon') . '</label>';
+		echo '<label for="media-search-input" class="media-search-input-label">' . esc_html(_x('Search by name', 'Options page media-toolbar action input label', 'shp-icon')) . '</label>';
 		echo '<input type="search" id="media-search-input" class="search">';
 		echo '</div>';
 
@@ -202,14 +202,14 @@ class OptionsPage
 		$base_class = shp_icon()->prefix . '-list';
 		$icons      = shp_icon()->icons;
 
-		echo '<ul class="' . $base_class . '">';
+		echo '<ul class="' . esc_attr($base_class) . '">';
 
-		echo '<li class="' . $base_class . '__item ' . $base_class . '__item--no-results" style="display:none;">';
-		echo '<div class="' . $base_class . '__icon">';
+		echo '<li class="' . esc_attr($base_class) . '__item ' . esc_attr($base_class) . '__item--no-results" style="display:none;">';
+		echo '<div class="' . esc_attr($base_class) . '__icon">';
 		echo ':(';
 		echo '</div>';
-		echo '<div class="' . $base_class . '__meta">';
-		echo '<b class="' . $base_class . '__name">' . _x('No results', 'Options page no results', 'shp-icon') . '</b>';
+		echo '<div class="' . esc_attr($base_class) . '__meta">';
+		echo '<b class="' . esc_attr($base_class) . '__name">' . esc_html(_x('No results', 'Options page no results', 'shp-icon')) . '</b>';
 		echo '</div>';
 		echo '</li>';
 
@@ -233,23 +233,23 @@ class OptionsPage
 		$shortcode = '[' . shp_icon()->prefix . ' icon="' . str_replace('.svg', '', $icon) . '"]';
 		$style     = 'background-color:rgba(' . implode(',', shp_icon()->Package->Helpers->hexToRgb(shp_icon()->Package->Helpers->getAdminColors()[2], .1)) . ');color:' . shp_icon()->Package->Helpers->getAdminColors()[2] . ';';
 
-		echo '<li class="' . $base_class . '__item">';
+		echo '<li class="' . esc_attr($base_class) . '__item">';
 
-		echo '<div class="' . $base_class . '__actions">';
-		echo '<div class="' . $base_class . '__actions-toggle"><span></span><span></span><span></span></div>';
-		echo '<ul class="' . $base_class . '__action-list">';
-		//echo '<li class="'.$base_class.'__action"><a class="'.$base_class.'__action-rename button-link">'._x('Rename', 'Options page icon action', 'shp-icon').'</a></li>';
-		echo '<li class="' . $base_class . '__action"><a class="' . $base_class . '__action-remove button-link button-link-delete">' . _x('Delete', 'Options page icon action', 'shp-icon') . '</a></li>';
+		echo '<div class="' . esc_attr($base_class) . '__actions">';
+		echo '<div class="' . esc_attr($base_class) . '__actions-toggle"><span></span><span></span><span></span></div>';
+		echo '<ul class="' . esc_attr($base_class) . '__action-list">';
+		//echo '<li class="'.esc_attr($base_class).'__action"><a class="'.esc_attr($base_class).'__action-rename button-link">'._x('Rename', 'Options page icon action', 'shp-icon').'</a></li>';
+		echo '<li class="' . esc_attr($base_class) . '__action"><a class="' . esc_attr($base_class) . '__action-remove button-link button-link-delete">' . esc_html(_x('Delete', 'Options page icon action', 'shp-icon')) . '</a></li>';
 		echo '</ul>';
 		echo '</div>';
 
-		echo '<div class="' . $base_class . '__icon">';
+		echo '<div class="' . esc_attr($base_class) . '__icon">';
 		echo do_shortcode('[' . shp_icon()->prefix . ' icon="' . str_replace('.svg', '', $icon) . '" block]');
 		echo '</div>';
-		echo '<div class="' . $base_class . '__meta">';
-		echo '<b class="' . $base_class . '__name">' . shp_icon()->Package->Helpers->getIconNameFromFileName($icon) . '</b>';
-		echo '<div class="' . $base_class . '__shortcode">';
-		echo "<input onClick='" . esc_js('this.setSelectionRange(0, this.value.length)') . "' value='" . $shortcode . "' style='" . $style . "' />";
+		echo '<div class="' . esc_attr($base_class) . '__meta">';
+		echo '<b class="' . esc_attr($base_class) . '__name">' . esc_html(shp_icon()->Package->Helpers->getIconNameFromFileName($icon)) . '</b>';
+		echo '<div class="' . esc_attr($base_class) . '__shortcode">';
+		echo "<input onClick='" . esc_js('this.setSelectionRange(0, this.value.length)') . "' value='" . esc_attr($shortcode) . "' style='" . esc_attr($style) . "' />";
 		echo '</div>';
 		echo '</div>';
 		echo '</li>';
@@ -262,7 +262,7 @@ class OptionsPage
 	 */
 	public function renderSettingsPage()
 	{
-		echo '<form method="post" action="options.php" class="' . $this->settings_group . '">';
+		echo '<form method="post" action="options.php" class="' . esc_attr($this->settings_group) . '">';
 		settings_fields($this->settings_group);
 
 		echo '<table class="form-table" role="presentation">';
@@ -279,10 +279,10 @@ class OptionsPage
 		// }
 
 		echo '<tr valign="top"><th>';
-		echo '<h2 id="' . shp_icon()->prefix . '-display-options" style="margin: 0;">' . _x('Display Options for inline icons', 'Options page settings title', 'shp-icon') . '</h2>';
+		echo '<h2 id="' . esc_attr(shp_icon()->prefix) . '-display-options" style="margin: 0;">' . esc_html(_x('Display Options for inline icons', 'Options page settings title', 'shp-icon')) . '</h2>';
 		echo '</th>';
 		echo '<td>';
-		echo '<p class="description">' . _x('This options only adapts to inline icons without the <code>block</code> attribute. Example <code>[shp-icon icon="heart"]</code>.<br/> This options takes no effect for icons insertet with the Gutenberg block.', 'Options page settings description', 'shp-icon') . '</p>';
+		echo '<p class="description">' . esc_html(_x('This options only adapts to inline icons without the <code>block</code> attribute. Example <code>[shp-icon icon="heart"]</code>.<br/> This options takes no effect for icons insertet with the Gutenberg block.', 'Options page settings description', 'shp-icon')) . '</p>';
 		echo '</td></tr>';
 
 		foreach ($this->display_settings as $name => $data) {
@@ -306,15 +306,15 @@ class OptionsPage
 			case 'boolean':
 				echo '<tr valign="top">';
 				echo '<th scope="row">';
-				echo $data['label'];
+				echo esc_html($data['label']);
 				echo '</th>';
 				echo '<td>';
 				echo '<fieldset>';
 				echo '<legend class="screen-reader-text">';
-				echo '<span>' . $data['label'] . '</span>';
+				echo '<span>' . esc_html($data['label']) . '</span>';
 				echo '</legend>';
-				echo '<label for="' . $name . '">';
-				echo '<input name="' . $name . '" type="checkbox" id="' . $name . '" ' . checked(1, get_option($name), false) . '> ' . $data['legend'];
+				echo '<label for="' . esc_attr($name) . '">';
+				echo '<input name="' . esc_attr($name) . '" type="checkbox" id="' . esc_attr($name) . '" ' . checked(1, get_option($name), false) . '> ' . esc_html($data['legend']);
 				echo '</label>';
 				echo '</fieldset>';
 				echo '</td>';
@@ -323,14 +323,14 @@ class OptionsPage
 			case 'number':
 				echo '<tr valign="top">';
 				echo '<th scope="row">';
-				echo $data['label'];
+				echo esc_html($data['label']);
 				echo '</th>';
 				echo '<td>';
 				echo '<legend class="screen-reader-text">';
-				echo '<span>' . $data['label'] . '</span>';
+				echo '<span>' . esc_html($data['label']) . '</span>';
 				echo '</legend>';
-				echo '<label for="' . $name . '">';
-				echo '<input name="' . $name . '" type="number" step="0.01" id="' . $name . '" value="' . get_option($name) . '"> ' . $data['legend'];
+				echo '<label for="' . esc_attr($name) . '">';
+				echo '<input name="' . esc_attr($name) . '" type="number" step="0.01" id="' . esc_attr($name) . '" value="' . esc_attr(get_option($name)) . '"> ' . esc_html($data['legend']);
 				echo '</label>';
 				echo '</td>';
 				echo '</tr>';
@@ -376,13 +376,13 @@ class OptionsPage
 	 */
 	public function renderHelpPage()
 	{
-		echo '<div class="' . shp_icon()->prefix . '-help ' . shp_icon()->prefix . '-help--left">';
+		echo '<div class="' . esc_attr(shp_icon()->prefix) . '-help ' . esc_attr(shp_icon()->prefix) . '-help--left">';
 		/* translators: %1$s = plugin name */
-		echo '<h2>' . sprintf(_x('Thank you for using %1$s', 'Options page help title. %1$s = plugin name.', 'shp-icon'), shp_icon()->plugin_header['Name']) . '</h2>';
+		echo '<h2>' . sprintf(esc_html(_x('Thank you for using %1$s', 'Options page help title. %1$s = plugin name.', 'shp-icon')), esc_html(shp_icon()->plugin_header['Name'])) . '</h2>';
 
 		// introduction
 		echo '<p>';
-		echo _x('Feel free to upload any SVG file to the plugin. To use SVG’s on websites is always a pain. But hey – good news – this plugin tries to support a proper use of SVG icons on your website. Any SVG uploaded to the plugin can be used with a shortcode or with a Gutenberg block.', 'Options page help introduction', 'shp-icon');
+		echo esc_html(_x('Feel free to upload any SVG file to the plugin. To use SVG’s on websites is always a pain. But hey – good news – this plugin tries to support a proper use of SVG icons on your website. Any SVG uploaded to the plugin can be used with a shortcode or with a Gutenberg block.', 'Options page help introduction', 'shp-icon'));
 		echo '</p>';
 		echo '<br/>';
 		echo '<hr/>';
@@ -391,35 +391,35 @@ class OptionsPage
 		echo '<h3 id="how-to-use-the-shortcode">';
 
 		//  how to use the icons as shortcode
-		echo _x('Use Icons as a Shortcode', 'Options page help how to use title', 'shp-icon');
+		echo esc_html(_x('Use Icons as a Shortcode', 'Options page help how to use title', 'shp-icon'));
 		echo '</h3>';
 		echo '<p>';
-		echo _x('It is best to use the shortcode in text elements. The icon will adapt to the font size to give an excellent combination.', 'Options page help use as shortcode', 'shp-icon');
+		echo esc_html(_x('It is best to use the shortcode in text elements. The icon will adapt to the font size to give an excellent combination.', 'Options page help use as shortcode', 'shp-icon'));
 		echo '</p>';
 		$style = 'background-color:rgba(' . implode(',', shp_icon()->Package->Helpers->hexToRgb(shp_icon()->Package->Helpers->getAdminColors()[2], .1)) . ');color:' . shp_icon()->Package->Helpers->getAdminColors()[2] . ';';
-		echo '<code style="' . $style . '">[' . shp_icon()->prefix . ' icon="IconName"]</code>';
+		echo '<code style="' . esc_attr($style) . '">[' . esc_attr(shp_icon()->prefix) . ' icon="IconName"]</code>';
 		echo '<br/>';
 
 		// how to use the icons shortcode options
 		echo '<h4>';
-		echo _x('Shortcode Options', 'Options page help use as shortcode', 'shp-icon');
+		echo esc_html(_x('Shortcode Options', 'Options page help use as shortcode', 'shp-icon'));
 		echo '</h4>';
 
 		echo '<table class="form-table" role="presentation">';
 
 		echo '<tr valign="top">';
 		echo '<th scope="row">';
-		echo '<code style="' . $style . '">icon=""</code>';
+		echo '<code style="' . esc_attr($style) . '">icon=""</code>';
 		echo '</th>';
 		echo '<td>';
 		/* translators: %1$s = 'Required' (other translation), %2$s = 'icon collection' (other translation) */
-		echo sprintf(_x('%1$s. Use the <i>icon</i> attribute to define which icon to display. You will find the icon name in your %2$s.', 'Options page help use as shortcode', 'shp-icon'), '<b style="color:red;">' . _x('Required', 'Options page help use as shortcode', 'shp-icon') . '</b>', '<a href="' . admin_url('themes.php?page=' . shp_icon()->prefix . '&tab=manage') . '">' . _x('icon collection', 'Options page help use as shortcode', 'shp-icon') . '</a>');
+		echo sprintf(_x('%1$s. Use the <i>icon</i> attribute to define which icon to display. You will find the icon name in your %2$s.', 'Options page help use as shortcode', 'shp-icon'), '<b style="color:red;">' . esc_html(_x('Required', 'Options page help use as shortcode', 'shp-icon')) . '</b>', '<a href="' . esc_url(admin_url('themes.php?page=' . esc_attr(shp_icon()->prefix) . '&tab=manage')) . '">' . esc_html(_x('icon collection', 'Options page help use as shortcode', 'shp-icon')) . '</a>');
 		echo '</td>';
 		echo '</tr>';
 
 		echo '<tr valign="top">';
 		echo '<th scope="row">';
-		echo '<code style="' . $style . '">block</code>';
+		echo '<code style="' . esc_attr($style) . '">block</code>';
 		echo '</th>';
 		echo '<td>';
 		echo _x('Use the <i>block</i> attribute to let a shortcode icon act like a block icon.', 'Options page help use as shortcode', 'shp-icon') . '</p>';
@@ -428,37 +428,37 @@ class OptionsPage
 
 		echo '<tr valign="top">';
 		echo '<th scope="row">';
-		echo '<code style="' . $style . '">top-shift=""</code>';
+		echo '<code style="' . esc_attr($style) . '">top-shift=""</code>';
 		echo '</th>';
 		echo '<td>';
 		/* translators: %s = Link to settings tab (other translation) */
-		echo sprintf(_x('Use the <i>top-shift</i> attribute to fine tune the vertical align of an inline icon. This is useful if the visual align of an inline icon isn’t perfect. Set the attribute to a number, the number uses then the <i>em</i> unit. You can also set a default top shift for all inline icons under the %s.', 'Options page help use as shortcode', 'shp-icon'), '<a href="' . admin_url('themes.php?page=' . shp_icon()->prefix . '&tab=settings') . '">' . _x('settings tab', 'Options page help use as shortcode', 'shp-icon') . '</a>');
+		echo sprintf(_x('Use the <i>top-shift</i> attribute to fine tune the vertical align of an inline icon. This is useful if the visual align of an inline icon isn’t perfect. Set the attribute to a number, the number uses then the <i>em</i> unit. You can also set a default top shift for all inline icons under the %s.', 'Options page help use as shortcode', 'shp-icon'), '<a href="' . esc_url(admin_url('themes.php?page=' . esc_attr(shp_icon()->prefix)) . '&tab=settings') . '">' . esc_html(_x('settings tab', 'Options page help use as shortcode', 'shp-icon')) . '</a>');
 		echo '</td>';
 		echo '</tr>';
 
 		echo '<tr valign="top">';
 		echo '<th scope="row">';
-		echo '<code style="' . $style . '">scale-factor=""</code>';
+		echo '<code style="' . esc_attr($style) . '">scale-factor=""</code>';
 		echo '</th>';
 		echo '<td>';
 		/* translators: %s = Link to settings tab (other translation) */
-		echo sprintf(_x('Use the <i>scale-factor</i> attribute to fine tune the rendered size of an inline icon. Set the attribute to a number, the number uses then the <i>em</i> unit. You can also set a default scale factor for all inline icons under the %s.', 'Options page help use as shortcode', 'shp-icon'), '<a href="' . admin_url('themes.php?page=' . shp_icon()->prefix . '&tab=settings') . '">' . _x('settings tab', 'Options page help use as shortcode', 'shp-icon') . '</a>');
+		echo sprintf(_x('Use the <i>scale-factor</i> attribute to fine tune the rendered size of an inline icon. Set the attribute to a number, the number uses then the <i>em</i> unit. You can also set a default scale factor for all inline icons under the %s.', 'Options page help use as shortcode', 'shp-icon'), '<a href="' . esc_url(admin_url('themes.php?page=' . esc_attr(shp_icon()->prefix) . '&tab=settings')) . '">' . esc_html(_x('settings tab', 'Options page help use as shortcode', 'shp-icon')) . '</a>');
 		echo '</td>';
 		echo '</tr>';
 
 		echo '<tr valign="top">';
 		echo '<th scope="row">';
-		echo '<code style="' . $style . '">color=""</code>';
+		echo '<code style="' . esc_attr($style) . '">color=""</code>';
 		echo '</th>';
 		echo '<td>';
 		/* translators: %s = fill="currentColor" (other translation) */
-		echo sprintf(_x('Use the <i>color</i> attribute to colorize an icon. The coloration only works, if your SVG is using %s.', 'Options page help use as shortcode', 'shp-icon'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#currentColor" target="_blank">' . _x('fill="currentColor"', 'Options page help use as shortcode', 'shp-icon') . '</a>');
+		echo sprintf(_x('Use the <i>color</i> attribute to colorize an icon. The coloration only works, if your SVG is using %s.', 'Options page help use as shortcode', 'shp-icon'), '<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#currentColor" target="_blank">' . esc_html(_x('fill="currentColor"', 'Options page help use as shortcode', 'shp-icon')) . '</a>');
 		echo '</td>';
 		echo '</tr>';
 
 		echo '<tr valign="top">';
 		echo '<th scope="row">';
-		echo '<code style="' . $style . '">background-color=""</code>';
+		echo '<code style="' . esc_attr($style) . '">background-color=""</code>';
 		echo '</th>';
 		echo '<td>';
 		echo _x('Use the <i>background-color</i> attribute to colorize the icons parent background. Should work everywhere.', 'Options page help use as shortcode', 'shp-icon');
@@ -467,7 +467,7 @@ class OptionsPage
 
 		echo '<tr valign="top">';
 		echo '<th scope="row">';
-		echo '<code style="' . $style . '">anchor=""</code>';
+		echo '<code style="' . esc_attr($style) . '">anchor=""</code>';
 		echo '</th>';
 		echo '<td>';
 		echo _x('Use the <i>anchor</i> attribute to set an element ID.', 'Options page help use as shortcode', 'shp-icon');
@@ -476,7 +476,7 @@ class OptionsPage
 
 		echo '<tr valign="top">';
 		echo '<th scope="row">';
-		echo '<code style="' . $style . '">classes=""</code>';
+		echo '<code style="' . esc_attr($style) . '">classes=""</code>';
 		echo '</th>';
 		echo '<td>';
 		echo _x('Use the <i>classes</i> attribute to add additional classes.', 'Options page help use as shortcode', 'shp-icon');
@@ -490,7 +490,7 @@ class OptionsPage
 
 		// how to use the icons as block
 		echo '<h3 id="how-to-use-the-block">';
-		echo _x('Use Icons as a Gutenberg Block', 'Options page help how to use title', 'shp-icon');
+		echo esc_html(_x('Use Icons as a Gutenberg Block', 'Options page help how to use title', 'shp-icon'));
 		echo '</h3>';
 		echo '<p>';
 		echo _x('Icons inserted with the Gutenberg block will fill the available space. Find the block in the Gutenberg editor in the <b>common</b> section as <b>SVG Icon</b>.', 'Options page help use as Gutenberg block', 'shp-icon');
@@ -500,85 +500,85 @@ class OptionsPage
 
 		// faq
 		echo '<h3 id="how-to-use-the-block">';
-		echo _x('FAQ', 'Options page help FAQ', 'shp-icon');
+		echo esc_html(_x('FAQ', 'Options page help FAQ', 'shp-icon'));
 		echo '</h3>';
 
 		echo '<div class="accordion">';
 
 		echo '<div class="accordion__item">';
-		echo '<h4><label class="accordion__item-head" for="optimize-svg"><b>' . _x('What can I do to optimize my SVG’s before uploading to the plugin?', 'Options page help FAQ', 'shp-icon') . '</b></label></h4>';
+		echo '<h4><label class="accordion__item-head" for="optimize-svg"><b>' . esc_html(_x('What can I do to optimize my SVG’s before uploading to the plugin?', 'Options page help FAQ', 'shp-icon')) . '</b></label></h4>';
 		echo '<input type="checkbox" class="accordion__item-checkbox" id="optimize-svg" />';
 		echo '<span class="accordion__item-state-indicator"></span>';
 		echo '<div class="accordion__content">';
-		echo '<p><b>' . _x('SVGO is sick! Props to all the developers of SVGO!', 'Options page help FAQ answer', 'shp-icon') . '</b></p>';
+		echo '<p><b>' . esc_html(_x('SVGO is sick! Props to all the developers of SVGO!', 'Options page help FAQ answer', 'shp-icon')) . '</b></p>';
 		/* translators: %s = SVGO (SVG Optimizer) (other translation) */
-		echo '<p>' . sprintf(_x('According to SVGO, SVG files, especially those exported from various editors, usually contain a lot of redundant and useless information. This can include editor metadata, comments, hidden elements, default or non-optimal values and other stuff that can be safely removed or converted without affecting the SVG rendering result. To do so you can use the %s which perfectly optimises your SVG’s. ', 'Options page help FAQ answer', 'shp-icon'), '<a target="_blank" href="https://github.com/svg/svgo">' . _x('SVGO (SVG Optimizer)', 'Options page help FAQ answer', 'shp-icon') . '</a>') . '</p>';
+		echo '<p>' . sprintf(esc_html(_x('According to SVGO, SVG files, especially those exported from various editors, usually contain a lot of redundant and useless information. This can include editor metadata, comments, hidden elements, default or non-optimal values and other stuff that can be safely removed or converted without affecting the SVG rendering result. To do so you can use the %s which perfectly optimises your SVG’s. ', 'Options page help FAQ answer', 'shp-icon')), '<a target="_blank" href="https://github.com/svg/svgo">' . _x('SVGO (SVG Optimizer)', 'Options page help FAQ answer', 'shp-icon') . '</a>') . '</p>';
 		echo '<ul>';
 		echo '<li>';
 		/* translators: %s = SVGOMG (other translation) */
-		echo sprintf(_x('Use SVGO as a web app – %s', 'Options page help FAQ answer', 'shp-icon'), '<a target="_blank" href="https://jakearchibald.github.io/svgomg/">' . _x('SVGOMG', 'Options page help FAQ answer', 'shp-icon') . '</a>');
+		echo sprintf(esc_html(_x('Use SVGO as a web app – %s', 'Options page help FAQ answer', 'shp-icon')), '<a target="_blank" href="https://jakearchibald.github.io/svgomg/">' . _x('SVGOMG', 'Options page help FAQ answer', 'shp-icon') . '</a>');
 		echo '</li>';
 		echo '<li>';
 		/* translators: %s = svgo-compressor (other translation) */
-		echo sprintf(_x('Use SVGO as a Sketch plugin – %s', 'Options page help FAQ answer', 'shp-icon'), '<a target="_blank" href="https://github.com/BohemianCoding/svgo-compressor">' . _x('svgo-compressor', 'Options page help FAQ answer', 'shp-icon') . '</a>');
+		echo sprintf(esc_html(_x('Use SVGO as a Sketch plugin – %s', 'Options page help FAQ answer', 'shp-icon')), '<a target="_blank" href="https://github.com/BohemianCoding/svgo-compressor">' . _x('svgo-compressor', 'Options page help FAQ answer', 'shp-icon') . '</a>');
 		echo '</li>';
 		echo '<li>';
 		/* translators: %s = Image Shrinker (other translation) */
-		echo sprintf(_x('Use SVGO as macOS app – %s', 'Options page help FAQ answer', 'shp-icon'), '<a target="_blank" href="https://image-shrinker.com/">' . _x('Image Shrinker', 'Options page help FAQ answer', 'shp-icon') . '</a>');
+		echo sprintf(esc_html(_x('Use SVGO as macOS app – %s', 'Options page help FAQ answer', 'shp-icon')), '<a target="_blank" href="https://image-shrinker.com/">' . _x('Image Shrinker', 'Options page help FAQ answer', 'shp-icon') . '</a>');
 		echo '</li>';
 		echo '<li>';
 		/* translators: %s = svgo-osx-folder-action (other translation) */
-		echo sprintf(_x('Use SVGO as an OSX Folder Action – %s', 'Options page help FAQ answer', 'shp-icon'), '<a target="_blank" href="https://github.com/svg/svgo-osx-folder-action">' . _x('svgo-osx-folder-action', 'Options page help FAQ answer', 'shp-icon') . '</a>');
+		echo sprintf(esc_html(_x('Use SVGO as an OSX Folder Action – %s', 'Options page help FAQ answer', 'shp-icon')), '<a target="_blank" href="https://github.com/svg/svgo-osx-folder-action">' . _x('svgo-osx-folder-action', 'Options page help FAQ answer', 'shp-icon') . '</a>');
 		echo '</li>';
 		echo '</ul>';
-		echo '<p><b>' . _x('Further you can read the following articles to optimize your SVG’s manually.', 'Options page help FAQ answer', 'shp-icon') . '</b></p>';
+		echo '<p><b>' . esc_html(_x('Further you can read the following articles to optimize your SVG’s manually.', 'Options page help FAQ answer', 'shp-icon')) . '</b></p>';
 		echo '<ul>';
 		echo '<li>';
-		echo '<a target="_blank" href="https://vecta.io/blog/guide-to-getting-sharp-and-crisp-svg-images">' . _x('A Guide to Getting Sharp and Crisp SVG Images on Screen.', 'Options page help FAQ answer', 'shp-icon') . '</a>';
+		echo '<a target="_blank" href="https://vecta.io/blog/guide-to-getting-sharp-and-crisp-svg-images">' . esc_html(_x('A Guide to Getting Sharp and Crisp SVG Images on Screen.', 'Options page help FAQ answer', 'shp-icon')) . '</a>';
 		echo '</li>';
 		echo '<li>';
-		echo '<a target="_blank" href="https://blog.ginetta.net/i-set-out-to-create-pixel-perfect-icons-heres-what-i-discovered-along-the-way-4e46378932df">' . _x('I set out to create pixel perfect icons. Here’s what I discovered along the way.', 'Options page help FAQ answer', 'shp-icon') . '</a>';
+		echo '<a target="_blank" href="https://blog.ginetta.net/i-set-out-to-create-pixel-perfect-icons-heres-what-i-discovered-along-the-way-4e46378932df">' . esc_html(_x('I set out to create pixel perfect icons. Here’s what I discovered along the way.', 'Options page help FAQ answer', 'shp-icon')) . '</a>';
 		echo '</li>';
 		echo '</ul>';
 		echo '</div>';
 		echo '</div>'; // .accordion__item
 
 		echo '<div class="accordion__item">';
-		echo '<h4><label class="accordion__item-head" for="file-changes"><b>' . _x('Is there any change on my files trough the upload?', 'Options page help FAQ', 'shp-icon') . '</b></label></h4>';
+		echo '<h4><label class="accordion__item-head" for="file-changes"><b>' . esc_html(_x('Is there any change on my files trough the upload?', 'Options page help FAQ', 'shp-icon')) . '</b></label></h4>';
 		echo '<input type="checkbox" class="accordion__item-checkbox" id="file-changes" />';
 		echo '<span class="accordion__item-state-indicator"></span>';
 		echo '<div class="accordion__content">';
 		/* translators: %s = a PHP SVG/XML Sanitizer (other translation) */
-		echo '<p>' . sprintf(_x('While uploading an SVG, it will be sanitised by %s and renamed based on the filename. Other changes to the SVG won’t happen.', 'Options page help FAQ answer', 'shp-icon'), '<a target="_blank" href="https://github.com/darylldoyle/svg-sanitizer">' . _x('a PHP SVG/XML Sanitizer', 'Options page help FAQ answer', 'shp-icon') . '</a>') . '</p>';
+		echo '<p>' . sprintf(esc_html(_x('While uploading an SVG, it will be sanitised by %s and renamed based on the filename. Other changes to the SVG won’t happen.', 'Options page help FAQ answer', 'shp-icon')), '<a target="_blank" href="https://github.com/darylldoyle/svg-sanitizer">' . _x('a PHP SVG/XML Sanitizer', 'Options page help FAQ answer', 'shp-icon') . '</a>') . '</p>';
 		echo '</div>';
 		echo '</div>'; // .accordion__item
 
 		echo '<div class="accordion__item">';
-		echo '<h4><label class="accordion__item-head" for="where-to-use-the-shortcode"><b>' . _x('Where can I use the shortcode?', 'Options page help FAQ', 'shp-icon') . '</b></label></h4>';
+		echo '<h4><label class="accordion__item-head" for="where-to-use-the-shortcode"><b>' . esc_html(_x('Where can I use the shortcode?', 'Options page help FAQ', 'shp-icon')) . '</b></label></h4>';
 		echo '<input type="checkbox" class="accordion__item-checkbox" id="where-to-use-the-shortcode" />';
 		echo '<span class="accordion__item-state-indicator"></span>';
 		echo '<div class="accordion__content">';
 		/* translators: %1$ss = link to wp ref add_filter(), %2$s = link to wp ref do_shortcode() */
-		echo '<p>' . sprintf(_x('The shortcode works within the content section (editor). By default there is no additional shortcode support. You can add shortcode support via WordPress %1$s or do the shortcode directly in your template files with %2$s. Read the following article for further information.', 'Options page help FAQ answer', 'shp-icon'), '<a target="_blank" href="https://developer.wordpress.org/reference/functions/add_filter/"><code>add_filter()</code></a>', '<a target="_blank" href="https://developer.wordpress.org/reference/functions/do_shortcode/"><code>do_shortcode()</code></a>') . '</p>';
+		echo '<p>' . sprintf(esc_html(_x('The shortcode works within the content section (editor). By default there is no additional shortcode support. You can add shortcode support via WordPress %1$s or do the shortcode directly in your template files with %2$s. Read the following article for further information.', 'Options page help FAQ answer', 'shp-icon')), '<a target="_blank" href="https://developer.wordpress.org/reference/functions/add_filter/"><code>add_filter()</code></a>', '<a target="_blank" href="https://developer.wordpress.org/reference/functions/do_shortcode/"><code>do_shortcode()</code></a>') . '</p>';
 		echo '<ul>';
 		echo '<li>';
-		echo '<a target="_blank" href="http://stephanieleary.com/2010/02/using-shortcodes-everywhere/">' . _x('Using Shortcodes everywhere.', 'Options page help FAQ answer', 'shp-icon') . '</a>';
+		echo '<a target="_blank" href="http://stephanieleary.com/2010/02/using-shortcodes-everywhere/">' . esc_html(_x('Using Shortcodes everywhere.', 'Options page help FAQ answer', 'shp-icon')) . '</a>';
 		echo '</li>';
 		echo '</ul>';
 		echo '</div>';
 		echo '</div>'; // .accordion__item
 
 		echo '<div class="accordion__item">';
-		echo '<h4><label class="accordion__item-head" for="ie-support"><b>' . _x('SVG support for Internet Explorer?', 'Options page help FAQ', 'shp-icon') . '</b></label></h4>';
+		echo '<h4><label class="accordion__item-head" for="ie-support"><b>' . esc_html(_x('SVG support for Internet Explorer?', 'Options page help FAQ', 'shp-icon')) . '</b></label></h4>';
 		echo '<input type="checkbox" class="accordion__item-checkbox" id="ie-support" />';
 		echo '<span class="accordion__item-state-indicator"></span>';
 		echo '<div class="accordion__content">';
-		echo '<p>' . _x('Yes there is a small script watching out for Internet Explorer users to fix a few problems with IE11. If you discover any problems displaying your icons in other browsers too, submit the issue in the plugin repository!', 'Options page help FAQ answer', 'shp-icon') . '</p>';
+		echo '<p>' . esc_html(_x('Yes there is a small script watching out for Internet Explorer users to fix a few problems with IE11. If you discover any problems displaying your icons in other browsers too, submit the issue in the plugin repository!', 'Options page help FAQ answer', 'shp-icon')) . '</p>';
 		echo '</div>';
 		echo '</div>'; // .accordion__item
 
 		echo '<div class="accordion__item">';
-		echo '<h4><label class="accordion__item-head" for="migrate"><b>' . _x('What do I have to consider when migrating the website?', 'Options page help FAQ', 'shp-icon') . '</b></label></h4>';
+		echo '<h4><label class="accordion__item-head" for="migrate"><b>' . esc_html(_x('What do I have to consider when migrating the website?', 'Options page help FAQ', 'shp-icon')) . '</b></label></h4>';
 		echo '<input type="checkbox" class="accordion__item-checkbox" id="migrate" />';
 		echo '<span class="accordion__item-state-indicator"></span>';
 		echo '<div class="accordion__content">';
@@ -590,13 +590,13 @@ class OptionsPage
 		echo '</div>'; // .accordion
 		echo '</div>'; // .help--left
 
-		echo '<div class="' . shp_icon()->prefix . '-help ' . shp_icon()->prefix . '-help--right">';
-		echo '<h3>' . _x('That’s it, peace.', 'Options page help title', 'shp-icon') . '</h3>';
+		echo '<div class="' . esc_attr(shp_icon()->prefix) . '-help ' . esc_attr(shp_icon()->prefix) . '-help--right">';
+		echo '<h3>' . esc_html(_x('That’s it, peace.', 'Options page help title', 'shp-icon')) . '</h3>';
 		/* translators: %s = Plugin Repository (other translation) */
-		echo '<p>' . sprintf(_x('Contribute or get help: %s', 'Options page help', 'shp-icon'), '<a target="_blank" href="' . shp_icon()->plugin_header['PluginURI'] . '">' . _x('Plugin Repository', 'Options page help FAQ answer', 'shp-icon') . '</a>') . '</p>';
+		echo '<p>' . sprintf(esc_html(_x('Contribute or get help: %s', 'Options page help', 'shp-icon')), '<a target="_blank" href="' . esc_url(shp_icon()->plugin_header['PluginURI']) . '">' . _x('Plugin Repository', 'Options page help FAQ answer', 'shp-icon') . '</a>') . '</p>';
 		/* translators: %s = Plugin Repository (other translation) */
-		echo '<p>' . sprintf(_x('Report issues: %s', 'Options page help', 'shp-icon'), '<a target="_blank" href="' . shp_icon()->plugin_header['PluginURI'] . '/issues">' . _x('Plugin Repository', 'Options page help FAQ answer', 'shp-icon') . '</a>') . '</p>';
-		echo '<h3>' . _x('Say Thank You With A Donation', 'Options page help title', 'shp-icon') . '</h3>';
+		echo '<p>' . sprintf(esc_html(_x('Report issues: %s', 'Options page help', 'shp-icon')), '<a target="_blank" href="' . esc_url(shp_icon()->plugin_header['PluginURI']) . '/issues">' . _x('Plugin Repository', 'Options page help FAQ answer', 'shp-icon') . '</a>') . '</p>';
+		echo '<h3>' . esc_html(_x('Say Thank You With A Donation', 'Options page help title', 'shp-icon')) . '</h3>';
 		echo '<p><a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CM27FZ8UYJCGJ&source=url">Paypal</a></p>';
 		echo '<p><a target="_blank" href="https://commerce.coinbase.com/checkout/99bafc19-737b-4b16-aaec-962f81a17a5d">Cryptos</a></p>';
 		echo '</div>';
