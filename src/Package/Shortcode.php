@@ -52,7 +52,9 @@ class Shortcode
 
 		if (file_exists(shp_icon()->upload_dir . '/' . $attr['icon'] . '.svg')) {
 		    // enqueue css and js
-			shp_icon()->Package->Assets->registerAssets();
+			if( !is_admin() ) {
+			    shp_icon()->Package->Assets->registerAssets();
+			}
 
 			$icon_name = shp_icon()->Package->Helpers->getIconNameFromFileName($attr['icon']);
 

@@ -22,6 +22,7 @@ This plugin allows you to use SVG icons within WordPress as shortcode and/or as 
 == Changelog ==
 
 = 1.1.2 =
+* Update vendors, update build process
 * Enqueue frontend assets only if needed
 * Compatibility check.
 

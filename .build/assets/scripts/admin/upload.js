@@ -1,4 +1,4 @@
-import { _x } from 'wp.i18n';
+import { _x } from '@wordpress/i18n';
 import { deleteIcon } from './delete.js';
 
 (function ($) {

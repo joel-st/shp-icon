@@ -1,5 +1,4 @@
-import { _x } from 'wp.i18n';
-import { __ } from 'wp.i18n';
+import { _x, __ } from '@wordpress/i18n';
 
 (function ($) {
 	$(function () {

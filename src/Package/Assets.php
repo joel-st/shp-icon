@@ -43,7 +43,7 @@ class Assets
 			];
 			wp_register_script(
 				shp_icon()->prefix . '-gutenberg-script',
-				shp_icon()->plugin_url . '/assets/gutenberg/blocks' . ( shp_icon()->debug ? '' : '.min' ) . '.js',
+				shp_icon()->plugin_url . '/assets/gutenberg/blocks.js',
 				$script_asset['dependencies'],
 				$script_asset['version'],
 				true
@@ -55,7 +55,7 @@ class Assets
 		if (file_exists(shp_icon()->plugin_dir . '/assets/scripts/admin.js')) {
 			wp_register_script(
 				shp_icon()->prefix . '-admin-script',
-				shp_icon()->plugin_url . '/assets/scripts/admin' . ( shp_icon()->debug ? '' : '.min' ) . '.js',
+				shp_icon()->plugin_url . '/assets/scripts/admin.js',
 				[ 'jquery', 'wp-i18n' ],
 				shp_icon()->version,
 				true
@@ -78,14 +78,14 @@ class Assets
 		$deps = [];
 
 		if (file_exists(shp_icon()->plugin_dir . '/assets/scripts/ui.js')) {
-			wp_enqueue_script(shp_icon()->prefix . '-ui-script', shp_icon()->plugin_url . '/assets/scripts/ui' . ( shp_icon()->debug ? '' : '.min' ) . '.js', $deps, shp_icon()->version, true);
+			wp_enqueue_script(shp_icon()->prefix . '-ui-script', shp_icon()->plugin_url . '/assets/scripts/ui.js', $deps, shp_icon()->version, true);
 		}
 
 		/**
 		 * CSS
 		 */
 		if (file_exists(shp_icon()->plugin_dir . '/assets/styles/ui.css')) {
-			wp_enqueue_style(shp_icon()->prefix . '-ui-style', shp_icon()->plugin_url . '/assets/styles/ui' . ( shp_icon()->debug ? '' : '.min' ) . '.css', [], shp_icon()->version);
+			wp_enqueue_style(shp_icon()->prefix . '-ui-style', shp_icon()->plugin_url . '/assets/styles/ui.css', [], shp_icon()->version);
 		}
 	}
 
@@ -119,7 +119,7 @@ class Assets
 		 * CSS
 		 */
 		if (file_exists(shp_icon()->plugin_dir . '/assets/styles/admin.css')) {
-			wp_enqueue_style(shp_icon()->prefix . '-admin-style', shp_icon()->plugin_url . '/assets/styles/admin' . ( shp_icon()->debug ? '' : '.min' ) . '.css', [], shp_icon()->version);
+			wp_enqueue_style(shp_icon()->prefix . '-admin-style', shp_icon()->plugin_url . '/assets/styles/admin.css', [], shp_icon()->version);
 		}
 	}
 
