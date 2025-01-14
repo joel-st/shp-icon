@@ -21,7 +21,7 @@ global $wp_version;
 
 // Get the File-Data from this File to reuse it in the Compatibility-Check on Plugin-Activation
 require_once(ABSPATH . 'wp-admin/includes/plugin.php');
-$shp_icon_headers = (object) get_plugin_data(__FILE__, true, true);
+$shp_icon_headers = (object) get_plugin_data(__FILE__, false, /* $translate */ false);
 
 // Compatibility-Check Variables
 $min_wp_version    = '6.0';
