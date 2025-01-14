@@ -45,7 +45,7 @@ class Plugin
 				include_once(ABSPATH . 'wp-admin/includes/plugin.php');
 			}
 
-			self::$instance->plugin_header = get_plugin_data($file);
+			self::$instance->plugin_header = get_plugin_data( $file, false, /* $translate */ false );
 			self::$instance->name          = self::$instance->plugin_header['Name'];
 			self::$instance->domain_path   = basename(dirname(__DIR__)) . self::$instance->plugin_header['DomainPath'];
 			self::$instance->prefix        = 'shp-icon';
