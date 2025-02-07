@@ -38,7 +38,7 @@ const store = createReduxStore("shp-icon/icon-list", {
 
     selectors: {
         getEntries(state) {
-            return state.entries ?? []; // ✅ Fix: Ensuring a valid fallback
+            return state.entries || [];
         },
     },
 
