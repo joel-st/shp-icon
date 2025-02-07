@@ -24,4 +24,18 @@
             <property name="tabIndent" value="true"/>
         </properties>
     </rule>
+
+    <!-- Restrict to PHP files only -->
+	<arg name="extensions" value="php" />
+
+	<!-- Exclude directories -->
+	<exclude-pattern>node_modules/*</exclude-pattern>
+	<exclude-pattern>vendor/*</exclude-pattern>
+
+    <!-- Set the PHPCompatibility standard and PHP version -->
+    <rule ref="PHPCompatibility">
+        <property name="testVersion" value="8.3" />
+    </rule>
+
+	<arg name="tab-width" value="4"/>
 </ruleset>
