@@ -95,13 +95,13 @@ class Plugin
 		// load classes
 		$this->loadClasses(
 			[
-				\SayHello\Plugin\Icon\Plugin\Block\Icon::class,
-				\SayHello\Plugin\Icon\Plugin\Package\Assets::class,
-				\SayHello\Plugin\Icon\Plugin\Package\Delete::class,
-				\SayHello\Plugin\Icon\Plugin\Package\Helpers::class,
-				\SayHello\Plugin\Icon\Plugin\Package\OptionsPage::class,
-				\SayHello\Plugin\Icon\Plugin\Package\Shortcode::class,
-				\SayHello\Plugin\Icon\Plugin\Package\Upload::class,
+				Plugin\Block\Icon::class,
+				Plugin\Package\Assets::class,
+				Plugin\Package\Delete::class,
+				Plugin\Package\Helpers::class,
+				Plugin\Package\OptionsPage::class,
+				Plugin\Package\Shortcode::class,
+				Plugin\Package\Upload::class,
 			]
 		);
 
