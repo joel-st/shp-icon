@@ -115,22 +115,25 @@ class Upload {
 			);
 		}
 
-		$file          = ( isset( $_FILES['file'] ) && sanitize_file_name( $_FILES['file']['name'] ) ) ? $_FILES['file'] : false;
-		$file_name     = $file ? ( isset( $file['name'] ) ) ? sanitize_file_name( $file['name'] ) : false : false;
-		$file_type     = $file ? ( isset( $file['type'] ) ) ? sanitize_mime_type( $file['type'] ) : false : false;
-		$file_tmp_name = $file ? ( isset( $file['tmp_name'] ) ) ? $file['tmp_name'] : false : false;
+		$file = $_FILES['file'] ?? false;
 
-		if ( ! $file || ! $file_name || ! $file_type || ! $file_tmp_name ) {
-			header( 'HTTP/1.1 400 Bad Request' );
-			header( 'Content-type: application/json' );
-			die(
-				wp_json_encode(
-					array(
-						'message' => _x( 'Invalid file', 'Upload fals amount of files', 'shp-icon' ),
-						'id'      => $upload_id,
-					)
+		if ($file && is_array($file)) {
+			$file_name     = !empty($file['name']) ? sanitize_file_name($file['name']) : false;
+			$file_type     = !empty($file['type']) ? sanitize_mime_type($file['type']) : false;
+			$file_tmp_name = !empty($file['tmp_name']) ? $file['tmp_name'] : false;
+		} else {
+			$file_name = $file_type = $file_tmp_name = false;
+		}
+
+		if (! $file || ! $file_name || ! $file_type || ! $file_tmp_name) {
+			header('HTTP/1.1 400 Bad Request');
+			header('Content-type: application/json');
+			die(wp_json_encode(
+				array(
+					'message' => _x('Invalid file', 'Upload fals amount of files', 'shp-icon'),
+					'id'      => $upload_id,
 				)
-			);
+			));
 		}
 
 		if ( strpos( $file_type, 'svg' ) === false ) {
