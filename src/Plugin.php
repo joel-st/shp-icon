@@ -3,6 +3,7 @@
 namespace SayHello\Plugin\Icon;
 
 use enshrined\svgSanitize\Sanitizer;
+use stdClass;
 
 /**
  * Plugin Class
@@ -13,20 +14,43 @@ use enshrined\svgSanitize\Sanitizer;
 class Plugin
 {
 
-	private static $instance;
-	public $plugin_header = '';
-	public $domain_path   = '';
-	public $name          = '';
-	public $prefix        = '';
-	public $version       = '';
-	public $file          = '';
-	public $plugin_url    = '';
-	public $plugin_path   = '';
-	public $base_path     = '';
-	public $upload_dir    = '';
-	public $upload_url    = '';
-	public $icons         = '';
-	public $debug         = '';
+	private static ?Plugin $instance = null;
+	public array $plugin_header = [];
+	public string $domain_path   = '';
+	public string $name          = '';
+	public string $prefix        = 'shp-icon';
+	public string $version       = '';
+	public string $file          = '';
+	public string $plugin_url    = '';
+	public string $plugin_dir    = '';
+	public string $plugin_path   = '';
+	public string $base_path     = '';
+	public string $upload_dir    = '';
+	public string $upload_url    = '';
+	public array $icons          = [];
+	public bool $debug           = false;
+	public array $containers     = [];
+
+	/**
+	 * Magic method for setting dynamic properties.
+	 */
+	public function __get(string $name): mixed
+	{
+		if (!isset($this->containers[$name])) {
+			// Ensure the parent container exists as an empty array.
+			$this->containers[$name] = new stdClass();
+		}
+
+		return $this->containers[$name];
+	}
+
+	/**
+	 * Magic method for setting dynamic properties.
+	 */
+	public function __set(string $name, mixed $value): void
+	{
+		$this->containers[$name] = $value;
+	}
 
 	/**
 	 * Creates an instance if one isn't already available,
@@ -36,28 +60,28 @@ class Plugin
 	 * @return object The class instance.
 	 * @since 1.0.0
 	 */
-	public static function getInstance($file)
+	public static function getInstance(string $file): Plugin
 	{
-		if (! isset(self::$instance) && ! (self::$instance instanceof Plugin)) {
+		if (!isset(self::$instance) && !(self::$instance instanceof Plugin)) {
 			self::$instance = new Plugin;
 
 			if (! function_exists('get_plugin_data')) {
 				include_once(ABSPATH . 'wp-admin/includes/plugin.php');
 			}
 
+			if (!empty($file)) {
+				self::$instance->file          = $file;
+			}
+
 			self::$instance->plugin_header = get_plugin_data($file, false, /* $translate */ false);
 			self::$instance->name          = self::$instance->plugin_header['Name'];
 			self::$instance->domain_path   = basename(dirname(__DIR__)) . self::$instance->plugin_header['DomainPath'];
-			self::$instance->prefix        = 'shp-icon';
 			self::$instance->version       = self::$instance->plugin_header['Version'];
-			self::$instance->file          = $file;
 			self::$instance->plugin_url    = plugins_url('', dirname(__FILE__));
 			self::$instance->plugin_dir    = dirname(__DIR__);
 			self::$instance->base_path     = self::$instance->prefix;
 			self::$instance->upload_dir    = untrailingslashit(wp_upload_dir()['basedir']) . '/' . self::$instance->base_path;
 			self::$instance->upload_url    = untrailingslashit(wp_upload_dir()['baseurl']) . '/' . self::$instance->base_path;
-			self::$instance->icons         = [];
-			self::$instance->debug         = true;
 
 			if (! isset($_SERVER['HTTP_HOST']) || strpos($_SERVER['HTTP_HOST'], '.site') === false && ! in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'], true)) {
 				self::$instance->debug = false;
@@ -125,26 +149,31 @@ class Plugin
 	 * @param array of classes
 	 * @since 1.0.0
 	 */
-	private function loadClasses($classes)
+	private function loadClasses(array $classes): void
 	{
+		$instance = self::getInstance('');
+
 		foreach ($classes as $class) {
 			$class_parts = explode('\\', $class);
 			$class_short = end($class_parts);
-			$class_set   = $class_parts[count($class_parts) - 2];
+			$class_set = $class_parts[count($class_parts) - 2] ?? 'Global';
 
-			if (! isset(shp_icon()->{$class_set}) || ! is_object(shp_icon()->{$class_set})) {
-				shp_icon()->{$class_set} = new \stdClass();
+			// Ensure the parent container exists as an array.
+			if (!isset($instance->containers[$class_set])) {
+				$instance->containers[$class_set] = new stdClass();
 			}
 
-			if (property_exists(shp_icon()->{$class_set}, $class_short)) {
-				/* translators: %1$s = already used class name, %2$s = plugin class */
+			// Prevent duplicate class assignments.
+			if (property_exists($instance->containers[$class_set], $class_short)) {
 				wp_die(esc_html(sprintf(_x('There was a problem with the Plugin. Only one class with name “%1$s” can be use used in “%2$s”.', 'Theme instance loadClasses() error message', 'shp-icon'), $class_short, $class_set)), 500);
 			}
 
-			shp_icon()->{$class_set}->{$class_short} = new $class();
+			// Instantiate and store the class.
+			$instance->containers[$class_set]->{$class_short} = new $class();
 
-			if (method_exists(shp_icon()->{$class_set}->{$class_short}, 'run')) {
-				shp_icon()->{$class_set}->{$class_short}->run();
+			// Run the class if it has a `run()` method.
+			if (method_exists($instance->containers[$class_set]->{$class_short}, 'run')) {
+				$instance->containers[$class_set]->{$class_short}->run();
 			}
 		}
 	}
