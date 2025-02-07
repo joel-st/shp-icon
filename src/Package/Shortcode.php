@@ -56,7 +56,7 @@ class Shortcode
 				shp_icon()->Package->Assets->registerAssets();
 			}
 
-			$icon_name = shp_icon()->Package->Helpers->getIconNameFromFileName($attr['icon']);
+			//$icon_name = shp_icon()->Package->Helpers->getIconNameFromFileName($attr['icon']);
 
 			$svg = wp_remote_get(shp_icon()->upload_url . '/' . $attr['icon'] . '.svg')['body'];
 			$svg = simplexml_load_string($svg);
