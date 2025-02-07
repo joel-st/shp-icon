@@ -219,12 +219,18 @@ class Plugin
 					$icons     = $this->icons;
 
 					foreach ($icons as $key => $icon) {
+
+						$icon_path = shp_icon()->upload_dir . '/' . $icon;
+						if (!file_exists($icon_path)) {
+							continue;
+						}
+
 						array_push(
 							$icon_list,
 							[
 								'name'     => ucwords(shp_icon()->Package->Helpers->getIconNameFromFileName($icon)),
 								'filename' => $icon,
-								'svg'      => wp_remote_get(shp_icon()->upload_url . '/' . $icon)['body'],
+								'svg'      => file_get_contents($icon_path),
 							]
 						);
 					}
