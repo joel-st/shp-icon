@@ -2,6 +2,8 @@
 
 namespace SayHello\Plugin\Icon\Plugin\Package;
 
+use SimpleXMLElement;
+
 /**
  * Shortcode functions
  *
@@ -58,8 +60,21 @@ class Shortcode
 
 			//$icon_name = shp_icon()->Package->Helpers->getIconNameFromFileName($attr['icon']);
 
-			$svg = wp_remote_get(shp_icon()->upload_url . '/' . $attr['icon'] . '.svg')['body'];
-			$svg = simplexml_load_string($svg);
+			$svg_path = shp_icon()->upload_dir . '/' . sanitize_file_name($attr['icon']) . '.svg';
+
+			if (!file_exists($svg_path)) {
+				return '';
+			}
+
+			$svg = file_get_contents($svg_path);
+
+			if ($svg !== false) {
+				$svg = simplexml_load_string($svg);
+			}
+
+			if (!$svg instanceof SimpleXMLElement) {
+				return '';
+			}
 
 			$width         = intval($svg->attributes()['width']);
 			$height        = intval($svg->attributes()['height']);
