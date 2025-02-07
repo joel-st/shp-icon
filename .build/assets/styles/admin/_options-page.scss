@@ -30,7 +30,7 @@
 	.shp-icon-list {
 		width: calc(100% + .5rem);
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
 		list-style-type: none;
 		margin-left: -.5rem;
 
@@ -53,7 +53,7 @@
 				background-color: #ddd;
 				transition: background-color .1s ease;
 
-				+ span {
+				+span {
 					margin-top: 3px;
 				}
 			}
@@ -81,7 +81,7 @@
 		&__item {
 			margin: .5rem;
 			background-color: white;
-			box-shadow: 0 1px 1px rgba(0,0,0,.04);
+			box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
 			border: 1px solid #ccd0d4;
 			padding: 2rem 1rem 1rem;
 			position: relative;
@@ -94,7 +94,7 @@
 					left: 0;
 					width: 100%;
 					height: 100%;
-					background-color: rgba(100,100,100,.4);
+					background-color: rgba(100, 100, 100, .4);
 					z-index: 50;
 				}
 			}
@@ -158,16 +158,16 @@
 		&__shortcode input {
 			font-size: .85em;
 			display: inline-block;
-			font-family: Consolas,Monaco,monospace;
+			font-family: Consolas, Monaco, monospace;
 			direction: ltr;
 			unicode-bidi: embed;
 			background: #eaeaea;
-			background: rgba(0,0,0,.07);
+			background: rgba(0, 0, 0, .07);
 			display: block;
 			padding: .3rem .5rem;
 			border: none;
 			width: 100%;
-            text-align: center;
+			text-align: center;
 			margin: 0 auto;
 		}
 	}
@@ -227,7 +227,7 @@
 		&--right {
 			margin-top: 1.5em;
 			background-color: white;
-			box-shadow: 0 1px 1px rgba(0,0,0,.04);
+			box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
 			border: 1px solid #ccd0d4;
 			padding: 1rem;
 			box-sizing: border-box;
@@ -241,10 +241,11 @@
 				width: 400px;
 			}
 
-			> *:first-child {
+			>*:first-child {
 				margin-top: 0;
 			}
-			> *:last-child {
+
+			>*:last-child {
 				margin-bottom: 0;
 			}
 		}
@@ -270,7 +271,7 @@
 
 		&__item {
 			background-color: white;
-			box-shadow: 0 1px 1px rgba(0,0,0,.04);
+			box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
 			border: 1px solid #ccd0d4;
 			box-sizing: border-box;
 			position: relative;
@@ -281,11 +282,11 @@
 				}
 			}
 
-			+ .accordion__item {
+			+.accordion__item {
 				margin-top: .5rem;
 			}
 
-			> h4 {
+			>h4 {
 				margin: 0;
 			}
 		}
@@ -308,11 +309,11 @@
 			height: 0;
 			opacity: 0;
 
-			&:checked + .accordion__item-state-indicator {
+			&:checked+.accordion__item-state-indicator {
 				transform: translateY(.15em) rotate(45deg) scale(-1);
 				border-color: #444;
 
-				+ .accordion__content {
+				+.accordion__content {
 					display: block;
 				}
 			}
@@ -336,7 +337,7 @@
 			display: none;
 			padding: 0 1rem;
 
-			> *:first-child {
+			>*:first-child {
 				margin-top: 0;
 			}
 
