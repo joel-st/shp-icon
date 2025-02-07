@@ -12,11 +12,11 @@ use enshrined\svgSanitize\Sanitizer;
  */
 class Upload {
 
-	public $upload_element_id   = '';
-	public $upload_input_id     = '';
-	public $upload_nonce_action = '';
-	public $upload_nonce_name   = '';
-	public $action              = '';
+	public string $upload_element_id   = '';
+	public string $upload_input_id     = '';
+	public string $upload_nonce_action = '';
+	public string $upload_nonce_name   = '';
+	public string $action              = '';
 
 	public function __construct() {
 		$this->upload_element_id   = shp_icon()->prefix . '-upload';
