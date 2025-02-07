@@ -1,25 +1,15 @@
 import { __, _x } from "@wordpress/i18n";
 import ServerSideRender from "@wordpress/server-side-render";
 import { registerBlockType } from "@wordpress/blocks";
-import apiFetch from "@wordpress/api-fetch";
-import { registerStore, withSelect } from "@wordpress/data";
-import { Spinner, PanelBody, RadioControl } from "@wordpress/components";
-import {
-    InspectorControls,
-    PanelColorSettings,
-    BlockControls,
-    AlignmentToolbar,
-    BlockAlignmentToolbar,
-} from "@wordpress/block-editor";
-import { withState } from "@wordpress/compose";
+import { useSelect } from "@wordpress/data";
+import { PanelBody, RadioControl } from "@wordpress/components";
+import { InspectorControls, PanelColorSettings } from "@wordpress/block-editor";
 
 import icon from "./icon.jsx";
+import "./store.jsx";
 
 const blockName = "shp-icon/icon";
 
-/**
- * Register secure block
- */
 export default registerBlockType(blockName, {
     title: _x("SVG Icon", "SVG icon block title", "shp-icon"),
     description: __("Use your SVG icons as Gutenberg block", "shp-icon"),
@@ -64,17 +54,16 @@ export default registerBlockType(blockName, {
             default: "",
         },
     },
-    edit: withSelect(select => {
-        return {
-            iconList: select("shp-icon/icon-list").recieveIcons(),
-        };
-    })(props => {
+    edit: props => {
         const {
             attributes: { icon, color, backgroundColor },
             attributes,
-            iconList,
             setAttributes,
         } = props;
+
+        const iconList = useSelect(select => {
+            return select("shp-icon/icon-list").getEntries();
+        });
 
         if (!iconList.length) {
             return (
@@ -181,56 +170,5 @@ export default registerBlockType(blockName, {
             </InspectorControls>,
             <ServerSideRender block={blockName} attributes={attributes} />,
         ];
-    }),
-});
-
-const actions = {
-    setIcons(icons) {
-        return {
-            type: "SET_ICONS",
-            icons,
-        };
-    },
-    recieveIcons(path) {
-        return {
-            type: "RECIEVE_ICONS",
-            path,
-        };
-    },
-};
-
-const store = registerStore("shp-icon/icon-list", {
-    reducer(state = { icons: {} }, action) {
-        switch (action.type) {
-            case "SET_ICONS":
-                return {
-                    ...state,
-                    icons: action.icons,
-                };
-        }
-
-        return state;
-    },
-
-    actions,
-
-    selectors: {
-        recieveIcons(state) {
-            const { icons } = state;
-            return icons;
-        },
-    },
-
-    controls: {
-        RECIEVE_ICONS(action) {
-            return apiFetch({ path: action.path });
-        },
-    },
-
-    resolvers: {
-        *recieveIcons(state) {
-            const icons = yield actions.recieveIcons("/shp-icon/v1/icons/");
-            return actions.setIcons(icons);
-        },
     },
 });
