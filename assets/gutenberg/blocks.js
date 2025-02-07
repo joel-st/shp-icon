@@ -47,18 +47,6 @@ var blockName = "shp-icon/icon";
       type: "string",
       default: null
     },
-    boxModel: {
-      type: "string",
-      default: "block"
-    },
-    scaleFactor: {
-      type: "number",
-      default: parseFloat(shp_icon_data.scaleFactor)
-    },
-    topShift: {
-      type: "number",
-      default: parseFloat(shp_icon_data.topShift)
-    },
     color: {
       type: "string",
       default: "inherit"
