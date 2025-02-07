@@ -11,9 +11,9 @@ namespace SayHello\Plugin\Icon\Plugin\Package;
 class Delete
 {
 
-	public $delete_nonce_action = '';
-	public $delete_nonce_name   = '';
-	public $action              = '';
+	public string $delete_nonce_action = '';
+	public string $delete_nonce_name   = '';
+	public string $action              = '';
 
 	public function __construct()
 	{
