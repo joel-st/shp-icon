@@ -1,5 +1,5 @@
 import { createReduxStore, register } from "@wordpress/data";
-import apiFetch from "@wordpress/api-fetch"; // ✅ Fix: Import missing apiFetch
+import apiFetch from "@wordpress/api-fetch";
 
 // Some default values
 const DEFAULT_STATE = {
@@ -22,7 +22,6 @@ const store = createReduxStore("shp-icon/icon-list", {
 
     actions: {
         setState(entries) {
-            // ✅ Fix: Removed `item` since it wasn’t used
             return {
                 type: "GET_ENTRIES",
                 entries,
@@ -44,15 +43,15 @@ const store = createReduxStore("shp-icon/icon-list", {
 
     controls: {
         FETCH_FROM_API(action) {
-            return apiFetch({ path: action.path }).then(data => data); // ✅ Fix: Ensuring API response is returned
+            return apiFetch({ path: action.path }).then(data => data);
         },
     },
 
     resolvers: {
         *getEntries() {
             const path = "/shp-icon/v1/icons/";
-            const entries = yield store.actions.fetchFromAPI(path); // ✅ Fix: Use `store.actions`
-            return store.actions.setState(entries); // ✅ Fix: Use `store.actions`
+            const entries = yield store.actions.fetchFromAPI(path);
+            return store.actions.setState(entries);
         },
     },
 });
