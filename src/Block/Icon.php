@@ -21,7 +21,7 @@ class Icon
 	 */
 	public function run()
 	{
-		add_action('init', [ $this, 'registerBlock' ]);
+		add_action('init', [$this, 'registerBlock']);
 	}
 
 	/**
@@ -38,18 +38,6 @@ class Icon
 					'icon'            => [
 						'type'    => 'string',
 						'default' => false,
-					],
-					'boxModel'        => [
-						'type'    => 'string',
-						'default' => 'block',
-					],
-					'scaleFactor'     => [
-						'type'    => 'number',
-						'default' => get_option(shp_icon()->prefix . '-display-inline-scale-factor'),
-					],
-					'topShift'        => [
-						'type'    => 'number',
-						'default' => get_option(shp_icon()->prefix . '-display-inline-top-shift'),
 					],
 					'color'           => [
 						'type'    => 'string',
@@ -95,7 +83,7 @@ class Icon
 	public function renderBock($a, $classNameBase, $additionalClasses = '', $anchor = '', $content = '')
 	{
 		if ($a['icon'] && file_exists(shp_icon()->upload_dir . '/' . $a['icon'])) {
-			return do_shortcode('[' . shp_icon()->prefix . ' icon="' . str_replace('.svg', '', $a['icon']) . '" ' . $a['boxModel'] . ' scale-factor="' . $a['scaleFactor'] . '" top-shift="' . $a['topShift'] . '" color="' . $a['color'] . '" background-color="' . $a['backgroundColor'] . '" align="' . $a['align'] . '" gutenberg anchor="' . $anchor . '" classes="' . $additionalClasses . '"]');
+			return do_shortcode('[' . shp_icon()->prefix . ' icon="' . str_replace('.svg', '', $a['icon']) . '" color="' . $a['color'] . '" background-color="' . $a['backgroundColor'] . '" align="' . $a['align'] . '" gutenberg anchor="' . $anchor . '" classes="' . $additionalClasses . '"]');
 		} else {
 			if (shp_icon()->Package->Helpers->isContextEdit()) {
 				return '<div class="' . $classNameBase . ' ' . $additionalClasses . ' shp-icon shp-icon--block"><div class="shp-icon__notice">' . _x('Choose Icon', 'Block rendering notice', 'shp-icon') . '</div></div>';

@@ -11,14 +11,15 @@ namespace SayHello\Plugin\Icon\Plugin\Package;
 class OptionsPage
 {
 
-	public $parent_slug      = '';
-	public $menu_slug        = '';
-	public $prefix           = '';
-	public $setting_tabs     = [];
-	public $current_tab      = '';
-	public $default_tab      = '';
-	public $display_settings = [];
-	public $settings_group   = '';
+	public string $parent_slug      = '';
+	public string $menu_slug        = '';
+	public string $prefix           = '';
+	public array $setting_tabs     = [];
+	public string $current_tab      = '';
+	public string $default_tab      = '';
+	public array $display_settings = [];
+	public string $settings_group   = '';
+	public string $options_prefix   = '';
 
 	public function __construct()
 	{
@@ -31,7 +32,7 @@ class OptionsPage
 			'settings'         => _x('Settings', 'Options page tab title', 'shp-icon'),
 			'help'             => _x('Information & Help', 'Options page tab title', 'shp-icon'),
 		];
-		$this->current_tab    = ( isset($_GET['tab']) && sanitize_text_field($_GET['tab']) ) ? $_GET['tab'] : $this->default_tab;
+		$this->current_tab    = (isset($_GET['tab']) && sanitize_text_field($_GET['tab'])) ? $_GET['tab'] : $this->default_tab;
 		$this->settings_group = shp_icon()->prefix . '-settings-group';
 
 		$this->display_settings = [
@@ -58,8 +59,8 @@ class OptionsPage
 	 */
 	public function run()
 	{
-		add_action('admin_menu', [ $this, 'registerSubmenuOptionsPage' ]);
-		add_action('admin_init', [ $this, 'registerSettings' ]);
+		add_action('admin_menu', [$this, 'registerSubmenuOptionsPage']);
+		add_action('admin_init', [$this, 'registerSettings']);
 	}
 
 	/**
@@ -75,7 +76,7 @@ class OptionsPage
 			_x('SVG Icons', 'Plugins option menu title', 'shp-icon'),
 			'manage_options',
 			$this->menu_slug,
-			[ $this, 'renderOptionsPage' ]
+			[$this, 'renderOptionsPage']
 		);
 	}
 
@@ -95,11 +96,11 @@ class OptionsPage
 			];
 
 			if ('boolean' === $data['type']) {
-				$args['sanitize_callback'] = [ $this, 'sanitizeCheckbox' ];
+				$args['sanitize_callback'] = [$this, 'sanitizeCheckbox'];
 			}
 
 			if ('number' === $data['type']) {
-				$args['sanitize_callback'] = [ $this, 'sanitizeNumber' ];
+				$args['sanitize_callback'] = [$this, 'sanitizeNumber'];
 			}
 
 			register_setting($this->settings_group, $name, $args);
@@ -152,8 +153,8 @@ class OptionsPage
 	{
 		echo '<nav class="nav-tab-wrapper wp-clearfix" aria-label="' . esc_html(_x('Second menu', 'Options page tab-nav aria-label', 'shp-icon')) . '">';
 		foreach ($this->setting_tabs as $tab => $name) {
-			$class = ( $tab === $this->current_tab ) ? ' nav-tab-active' : '';
-			echo '<a class="nav-tab'.esc_attr($class).'" href="?page='.esc_attr($this->menu_slug).'&tab='.esc_attr($tab).'">'.esc_html($name).'</a>';
+			$class = ($tab === $this->current_tab) ? ' nav-tab-active' : '';
+			echo '<a class="nav-tab' . esc_attr($class) . '" href="?page=' . esc_attr($this->menu_slug) . '&tab=' . esc_attr($tab) . '">' . esc_html($name) . '</a>';
 		}
 		echo '</nav>';
 	}

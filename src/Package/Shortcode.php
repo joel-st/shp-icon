@@ -2,6 +2,8 @@
 
 namespace SayHello\Plugin\Icon\Plugin\Package;
 
+use SimpleXMLElement;
+
 /**
  * Shortcode functions
  *
@@ -18,10 +20,10 @@ class Shortcode
 	 */
 	public function run()
 	{
-		add_shortcode(shp_icon()->prefix, [ $this, 'shortcode' ]);
-		// add_filter('wp_nav_menu_items', 'do_shortcode');
-		// add_filter('widget_text', 'do_shortcode');
-		// add_filter('widget_title', 'do_shortcode');
+		add_shortcode(shp_icon()->prefix, [$this, 'shortcode']);
+		// add_filter('wp_nav_menu_items', 'shortcode');
+		// add_filter('widget_text', 'shortcode');
+		// add_filter('widget_title', 'shortcode');
 	}
 
 	/**
@@ -36,30 +38,43 @@ class Shortcode
 		$attr = shortcode_atts(
 			[
 				'icon'             => false,
-				'box-model'        => ( in_array('block', $attr, true) ) ? true : false,
+				'box-model'        => (in_array('block', $attr, true)) ? true : false,
 				'top-shift'        => sanitize_option(shp_icon()->prefix . '-display-inline-top-shift', get_option(shp_icon()->prefix . '-display-inline-top-shift')),
 				'scale-factor'     => sanitize_option(shp_icon()->prefix . '-display-inline-scale-factor', get_option(shp_icon()->prefix . '-display-inline-scale-factor')),
 				'color'            => 'inherit',
 				'background-color' => 'transparent',
 				'align'            => 'normal', // used in icon block
-				'gutenberg'        => ( in_array('gutenberg', $attr, true) ) ? true : false, // used in icon block
-				'classes'          => ( in_array('classes', $attr, true) ) ? true : false, // used in icon block
-				'anchor'           => ( in_array('anchor', $attr, true) ) ? true : false, // used in icon block
+				'gutenberg'        => (in_array('gutenberg', $attr, true)) ? true : false, // used in icon block
+				'classes'          => (in_array('classes', $attr, true)) ? true : false, // used in icon block
+				'anchor'           => (in_array('anchor', $attr, true)) ? true : false, // used in icon block
 			],
 			$attr,
 			shp_icon()->prefix
 		);
 
 		if (file_exists(shp_icon()->upload_dir . '/' . $attr['icon'] . '.svg')) {
-		    // enqueue css and js
-			if( !is_admin() ) {
-			    shp_icon()->Package->Assets->registerAssets();
+			// enqueue css and js
+			if (!is_admin()) {
+				shp_icon()->Package->Assets->registerAssets();
 			}
 
-			$icon_name = shp_icon()->Package->Helpers->getIconNameFromFileName($attr['icon']);
+			//$icon_name = shp_icon()->Package->Helpers->getIconNameFromFileName($attr['icon']);
 
-			$svg = wp_remote_get(shp_icon()->upload_url . '/' . $attr['icon'] . '.svg')['body'];
-			$svg = simplexml_load_string($svg);
+			$svg_path = shp_icon()->upload_dir . '/' . sanitize_file_name($attr['icon']) . '.svg';
+
+			if (!file_exists($svg_path)) {
+				return '';
+			}
+
+			$svg = file_get_contents($svg_path);
+
+			if ($svg !== false) {
+				$svg = simplexml_load_string($svg);
+			}
+
+			if (!$svg instanceof SimpleXMLElement) {
+				return '';
+			}
 
 			$width         = intval($svg->attributes()['width']);
 			$height        = intval($svg->attributes()['height']);
@@ -70,7 +85,7 @@ class Shortcode
 				$viewbox_array = array_map('intval', explode(' ', $viewbox));
 			} else {
 				if ($width && $height) {
-					$viewbox_array = [ 0, 0, $width, $height ];
+					$viewbox_array = [0, 0, $width, $height];
 				}
 			}
 
@@ -84,7 +99,7 @@ class Shortcode
 				$height = $viewbox_array[3];
 			}
 
-			$svg_style = ( ! empty($svg->attributes()['style']) ) ? $svg->attributes()['style'] : false;
+			$svg_style = (! empty($svg->attributes()['style'])) ? $svg->attributes()['style'] : false;
 			if ($svg_style) {
 				$svg_style                = preg_replace('%((width: ?[^;]+;)+)(.*?)%', '', $svg_style);
 				$svg_style                = preg_replace('%((height: ?[^;]+;)+)(.*?)%', '', $svg_style);
@@ -93,12 +108,12 @@ class Shortcode
 				$svg_style                = preg_replace('%((max-height: ?[^;]+;)+)(.*?)%', '', $svg_style);
 				$svg_style                = preg_replace('%((min-width: ?[^;]+;)+)(.*?)%', '', $svg_style);
 				$svg_style                = preg_replace('%((min-height: ?[^;]+;)+)(.*?)%', '', $svg_style);
-				$svg_style                = ( substr($svg_style, -1) === ';' ) ? $svg_style : $svg_style . ';';
+				$svg_style                = (substr($svg_style, -1) === ';') ? $svg_style : $svg_style . ';';
 				$svg->attributes()->style = $svg_style;
 			}
 
 			if (! $attr['box-model'] && $height && $width) {
-				$style_width  = ( 1 * $width / $height ) * $attr['scale-factor'];
+				$style_width  = (1 * $width / $height) * $attr['scale-factor'];
 				$style_height = 1 * $attr['scale-factor'];
 				$style        = 'width:' . esc_attr($style_width) . 'em;height:' . esc_attr($style_height) . 'em;';
 				$style       .= 'top:' . esc_attr($attr['top-shift']) . 'em;';
@@ -133,7 +148,7 @@ class Shortcode
 			$svg = preg_replace('/<\\?xml.*\\?>/', '', $svg, 1);
 
 			$el         = $attr['gutenberg'] ? 'div' : 'i';
-			$class_list = ( ! $attr['box-model'] ) ? shp_icon()->prefix . ' ' . shp_icon()->prefix . '--inline' : shp_icon()->prefix;
+			$class_list = (! $attr['box-model']) ? shp_icon()->prefix . ' ' . shp_icon()->prefix . '--inline' : shp_icon()->prefix;
 			if ($attr['gutenberg']) {
 				$class_list .= ' ' . shp_icon()->prefix . '--block align' . esc_attr($attr['align']);
 			}

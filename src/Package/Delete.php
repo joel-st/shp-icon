@@ -11,9 +11,9 @@ namespace SayHello\Plugin\Icon\Plugin\Package;
 class Delete
 {
 
-	public $delete_nonce_action = '';
-	public $delete_nonce_name   = '';
-	public $action              = '';
+	public string $delete_nonce_action = '';
+	public string $delete_nonce_name   = '';
+	public string $action              = '';
 
 	public function __construct()
 	{
@@ -42,7 +42,7 @@ class Delete
 	public function delete()
 	{
 
-		if (! isset($_POST['file_name']) && ! sanitize_file_name($file_name)) {
+		if (! isset($_POST['file_name']) && ! sanitize_file_name($_POST['file_name'])) {
 			header('HTTP/1.1 404 Bad Request');
 			header('Content-type: application/json');
 			die(wp_json_encode([ 'message' => _x('No filename provided', 'Delete without filename', 'shp-icon') ]));
