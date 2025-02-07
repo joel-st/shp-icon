@@ -70,24 +70,24 @@ class Assets
 	 *
 	 * @since 1.0.0
 	 */
-	public function registerAssets()
-	{
-		/**
-		 * Javascript
-		 */
-		$deps = [];
+	// public function registerAssets()
+	// {
+	// 	/**
+	// 	 * Javascript
+	// 	 */
+	// 	$deps = [];
 
-		if (file_exists(shp_icon()->plugin_dir . '/assets/scripts/ui.js')) {
-			wp_enqueue_script(shp_icon()->prefix . '-ui-script', shp_icon()->plugin_url . '/assets/scripts/ui.js', $deps, shp_icon()->version, true);
-		}
+	// 	if (file_exists(shp_icon()->plugin_dir . '/assets/scripts/ui.js')) {
+	// 		wp_enqueue_script(shp_icon()->prefix . '-ui-script', shp_icon()->plugin_url . '/assets/scripts/ui.js', $deps, shp_icon()->version, true);
+	// 	}
 
-		/**
-		 * CSS
-		 */
-		if (file_exists(shp_icon()->plugin_dir . '/assets/styles/ui.css')) {
-			wp_enqueue_style(shp_icon()->prefix . '-ui-style', shp_icon()->plugin_url . '/assets/styles/ui.css', [], shp_icon()->version);
-		}
-	}
+	// 	/**
+	// 	 * CSS
+	// 	 */
+	// 	if (file_exists(shp_icon()->plugin_dir . '/assets/styles/ui.css')) {
+	// 		wp_enqueue_style(shp_icon()->prefix . '-ui-style', shp_icon()->plugin_url . '/assets/styles/ui.css', [], shp_icon()->version);
+	// 	}
+	// }
 
 	/**
 	 * Register assets for admin area
