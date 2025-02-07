@@ -1,18 +1,22 @@
 <?xml version="1.0"?>
 <ruleset name="Davon">
-    <description>Custom Ruleset</description>
+    <description>Custom Ruleset for WordPress Development</description>
 
-    <!-- Use WPCS as a base -->
-    <rule ref="WordPress-Core">
+    <!-- Use Full WordPress Coding Standards -->
+    <rule ref="WordPress">
         <exclude name="Generic.WhiteSpace.DisallowTabIndent"/>
-		<exclude name="WordPress.WP.I18n.NonSingularStringLiteralDomain" />
-		<exclude name="WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar" />
-		<exclude name="WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase" />
-		<exclude name="WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid" />
-		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
-		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
-		<exclude name="WordPress.WP.I18n.MissingTranslatorsComment" />
+        <exclude name="WordPress.WP.I18n.NonSingularStringLiteralDomain"/>
+        <exclude name="WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar"/>
+        <exclude name="WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase"/>
+        <exclude name="WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid"/>
+        <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+        <exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+        <exclude name="WordPress.WP.I18n.MissingTranslatorsComment"/>
     </rule>
+
+    <!-- Include WordPress-Extra & WordPress-Docs -->
+    <rule ref="WordPress-Extra"/>
+    <rule ref="WordPress-Docs"/>
 
     <!-- Disallow spaces as tabs -->
     <rule ref="Generic.WhiteSpace.DisallowSpaceIndent"/>
@@ -26,16 +30,17 @@
     </rule>
 
     <!-- Restrict to PHP files only -->
-	<arg name="extensions" value="php" />
+    <arg name="extensions" value="php"/>
 
-	<!-- Exclude directories -->
-	<exclude-pattern>node_modules/*</exclude-pattern>
-	<exclude-pattern>vendor/*</exclude-pattern>
+    <!-- Exclude directories (but allow vendor/wp-coding-standards/) -->
+    <exclude-pattern>node_modules/*</exclude-pattern>
+    <exclude-pattern>vendor/*</exclude-pattern>
+    <include-pattern>vendor/wp-coding-standards/wpcs/*</include-pattern>
 
     <!-- Set the PHPCompatibility standard and PHP version -->
     <rule ref="PHPCompatibility">
-        <property name="testVersion" value="8.3" />
+        <property name="testVersion" value="8.3"/>
     </rule>
 
-	<arg name="tab-width" value="4"/>
+    <arg name="tab-width" value="4"/>
 </ruleset>
