@@ -1,1 +1,30 @@
-.shp-icon{display:block;font-size:inherit;position:relative;color:inherit;background-color:rgba(0,0,0,0)}.shp-icon svg{display:block;vertical-align:top;font-size:inherit;position:relative;width:100%;height:auto}.shp-icon--inline{vertical-align:baseline;display:inline-block}.shp-icon--inline svg{height:1em;width:auto}.shp-icon--block.aligncenter svg{width:10vw;margin:0 auto}
+/*!***********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./.build/assets/styles/ui.scss ***!
+  \***********************************************************************************************************************/
+.shp-icon {
+  display: block;
+  font-size: inherit;
+  position: relative;
+  color: inherit;
+  background-color: transparent;
+}
+.shp-icon svg {
+  display: block;
+  vertical-align: top;
+  font-size: inherit;
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.shp-icon--inline {
+  vertical-align: baseline;
+  display: inline-block;
+}
+.shp-icon--inline svg {
+  height: 1em;
+  width: auto;
+}
+.shp-icon--block.aligncenter svg {
+  width: 10vw;
+  margin: 0 auto;
+}
