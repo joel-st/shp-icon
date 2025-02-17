@@ -4,9 +4,11 @@ import { registerBlockType } from "@wordpress/blocks";
 import { useSelect } from "@wordpress/data";
 import { PanelBody, RadioControl, Spinner } from "@wordpress/components";
 import { InspectorControls, PanelColorSettings } from "@wordpress/block-editor";
-import { useState, useEffect } from "react"; // Import useState and useEffect
+import { useState, useEffect } from "@wordpress/element";
+import apiFetch from '@wordpress/api-fetch';
 
 import icon from "./icon.jsx";
+import "./store.jsx";
 
 const blockName = "shp-icon/icon";
 
@@ -49,25 +51,12 @@ export default registerBlockType(blockName, {
             setAttributes,
         } = props;
 
-        const [iconList, setIcons] = useState([]);
-
-        //console.log('shp-icon', attributes)
+        const [iconList, setIconList] = useState([]);
 
         useEffect(() => {
-            const fetchIcons = async () => {
-                try {
-                    const response = await fetch('/wp-json/shp-icon/v1/icons/');
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    const data = await response.json();
-                    setIcons(data);
-                } catch (err) {
-                    console.error("Error fetching icons:", err);
-                }
-            };
-
-            fetchIcons();
+            apiFetch({ path: '/shp-icon/v1/icons' }).then((icons) => {
+                setIconList(icons)
+            });
         }, []);
 
         if (!iconList.length) {
@@ -91,6 +80,7 @@ export default registerBlockType(blockName, {
                 hasCurrentColor = true;
             }
         }
+
 
         return [
             <InspectorControls className='shp-icon-controls'>
@@ -162,7 +152,7 @@ export default registerBlockType(blockName, {
                             ),
                         },
                     ]}>
-                    {!hasCurrentColor && (
+                    {icon && !hasCurrentColor && (
                         <i style={{ color: "red" }}>
                             {_x(
                                 "The color feature only works with SVG’s using currentColor. No currentColor value found in the selected SVG.",

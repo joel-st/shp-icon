@@ -73,6 +73,7 @@ $unit: 3rem;
 				width: 100% !important;
 				height: auto !important;
 				top: 0 !important;
+			    vertical-align: top;
 			}
 		}
 	}
@@ -94,10 +95,14 @@ $unit: 3rem;
 
 	.wp-block[data-type="shp-icon/icon"] {
 		.components-placeholder {
-			height: 2em;
+			//height: 2em;
 			width: 100%;
 			min-height: auto;
 			margin-bottom: 0;
+
+			&__fieldset {
+			    justify-content: center;
+			}
 
 			&__label {
 				position: absolute;
@@ -106,7 +111,7 @@ $unit: 3rem;
 
 			.components-spinner {
 				margin-top: 0 !important;
-				margin-bottom: 3rem !important;
+				margin-bottom: 0 !important;
 			}
 		}
 	}
