@@ -53,6 +53,8 @@ export default registerBlockType(blockName, {
             return select("shp-icon/icon-list").getEntries();
         });
 
+        console.log('shp-icon', iconList);
+
         if (!iconList.length) {
             return (
                 <div className='components-placeholder'>
@@ -69,7 +71,7 @@ export default registerBlockType(blockName, {
             if (
                 -1 !== index &&
                 -1 !==
-                    iconList[index]["svg"].toLowerCase().search("currentcolor")
+                iconList[index]["svg"].toLowerCase().search("currentcolor")
             ) {
                 hasCurrentColor = true;
             }
