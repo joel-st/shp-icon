@@ -1,10 +1,10 @@
 === SVG Icons ===
 Contributors: joelmelon
 Tags: SVG, Icons
-Requires at least: 6.0
-Requires PHP: 7.1
-Tested up to: 6.7
-Stable tag: 1.1.3
+Requires at least: 6.1.7
+Requires PHP: 8.1
+Tested up to: 6.7.2
+Stable tag: 1.2.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -20,6 +20,11 @@ This plugin allows you to use SVG icons within WordPress as shortcode and/or as 
 1. A preview of the icon upload and the use of the SVG Icon gutenberg block
 
 == Changelog ==
+
+= 1.2.0 =
+* Compatibility check.
+* Build process and dependency updates.
+* Add store for gutenberg block.
 
 = 1.1.3 =
 * Compatibility check.

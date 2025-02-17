@@ -4,7 +4,7 @@ Plugin Name: SVG Icons
 Plugin URI: https://github.com/joel-st/shp-icon
 Description: This plugin allows you to use SVG icons within WordPress as shortcodes and/or as Gutenberg block.
 Author: joelmelon
-Version: 1.1.3
+Version: 1.2.0
 Author URI: https://profiles.wordpress.org/joelmelon/
 Text Domain: shp-icon
 Domain Path: /languages
@@ -24,8 +24,8 @@ require_once(ABSPATH . 'wp-admin/includes/plugin.php');
 $shp_icon_headers = (object) get_plugin_data(__FILE__, false, /* $translate */ false);
 
 // Compatibility-Check Variables
-$min_wp_version    = '6.0';
-$min_php_version   = '7.1';
+$min_wp_version    = '6.1.7';
+$min_php_version   = '8.1';
 $wp_compatibility  = version_compare($wp_version, $min_wp_version, '<');
 $php_compatibility = version_compare(PHP_VERSION, $min_php_version, '<');
 
