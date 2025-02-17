@@ -1,67 +1,58 @@
 $unit: 3rem;
 
 .shp-icon-controls__icon-list {
-	display: block;
-	width: 100%;
+    .components-base-control__label { display: none; }
+    .components-flex {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(2.5rem, 1fr));
+        position: relative;
+    }
 
-	.components-base-control__field {
-		display: block;
+    .components-radio-control__option {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        aspect-ratio: 1;
+    }
 
-		.components-flex {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax($unit, 1fr));
-			position: relative;
-			width: calc(100% + 1rem);
-			margin-left: -.5rem;
-		}
-	}
+    .components-radio-control__input {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        max-width: none;
 
-	.components-radio-control__option {
-		margin: .5rem;
-		position: relative;
-		width: calc(100% - 1rem);
-		height: $unit - 1rem;
-	}
-
-	.components-radio-control__input {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		border-radius: 2px !important;
-		border: none !important;
-		appearance: none !important;
+        border-radius: 2px;
+		border: none;
+        appearance: none;
+        background: none;
+        z-index: -1;
 
 		&:before {
-			content: none !important;
+			content: none;
 		}
 
 		&:checked {
-			background-color: #eee !important;
+			background-color: #eee;
 			box-shadow: 0 0 0 2px #555d66;
 		}
-	}
+    }
 
-	.shp-icon {
-		position: relative;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		height: 100%;
+    .components-radio-control__label {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding: 0.5rem;
+        align-items: center;
+        justify-content: center;
 
-		svg {
-			position: relative;
-			display: block;
-			height: 80%;
-			width: auto;
-		}
-	}
-
-	.components-radio-control__input + label {
-		position: relative;
-		width: 100%;
-		height: 100%;
-	}
+        .shp-icon {
+            width: 100%;
+        }
+    }
 }
 
 .editor-styles-wrapper {
@@ -76,6 +67,12 @@ $unit: 3rem;
 				width: 10vw;
 				display: inline-block;
 				text-align: center;
+			}
+
+			svg {
+				width: 100% !important;
+				height: auto !important;
+				top: 0 !important;
 			}
 		}
 	}
@@ -109,6 +106,7 @@ $unit: 3rem;
 
 			.components-spinner {
 				margin-top: 0 !important;
+				margin-bottom: 3rem !important;
 			}
 		}
 	}

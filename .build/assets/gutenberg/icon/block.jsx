@@ -2,11 +2,11 @@ import { __, _x } from "@wordpress/i18n";
 import ServerSideRender from "@wordpress/server-side-render";
 import { registerBlockType } from "@wordpress/blocks";
 import { useSelect } from "@wordpress/data";
-import { PanelBody, RadioControl } from "@wordpress/components";
+import { PanelBody, RadioControl, Spinner } from "@wordpress/components";
 import { InspectorControls, PanelColorSettings } from "@wordpress/block-editor";
+import { useState, useEffect } from "react"; // Import useState and useEffect
 
 import icon from "./icon.jsx";
-import "./store.jsx";
 
 const blockName = "shp-icon/icon";
 
@@ -49,17 +49,32 @@ export default registerBlockType(blockName, {
             setAttributes,
         } = props;
 
-        const iconList = useSelect(select => {
-            return select("shp-icon/icon-list").getEntries();
-        });
+        const [iconList, setIcons] = useState([]);
 
-        console.log('shp-icon', iconList);
+        //console.log('shp-icon', attributes)
+
+        useEffect(() => {
+            const fetchIcons = async () => {
+                try {
+                    const response = await fetch('/wp-json/shp-icon/v1/icons/');
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const data = await response.json();
+                    setIcons(data);
+                } catch (err) {
+                    console.error("Error fetching icons:", err);
+                }
+            };
+
+            fetchIcons();
+        }, []);
 
         if (!iconList.length) {
             return (
                 <div className='components-placeholder'>
                     <div className='components-placeholder__fieldset'>
-                        <div className='components-spinner'></div>
+                        <Spinner />
                     </div>
                 </div>
             );

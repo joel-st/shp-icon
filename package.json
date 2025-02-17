@@ -45,8 +45,8 @@
         "mini-css-extract-plugin": "^2.9.0",
         "react-textarea-autosize": "^8.5.7",
         "regenerator-runtime": "^0.14.1",
-        "sass": "^1.77.6",
-        "sass-loader": "^14.2.1",
+        "sass": "^1.85.0",
+        "sass-loader": "^16.0.5",
         "webpack-cli": "^5.1.4"
     }
 }

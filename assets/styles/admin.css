@@ -285,59 +285,52 @@
   margin-left: 1rem;
 }
 
-.shp-icon-controls__icon-list {
-  display: block;
-  width: 100%;
+.shp-icon-controls__icon-list .components-base-control__label {
+  display: none;
 }
-.shp-icon-controls__icon-list .components-base-control__field {
-  display: block;
-}
-.shp-icon-controls__icon-list .components-base-control__field .components-flex {
+.shp-icon-controls__icon-list .components-flex {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(2.5rem, 1fr));
   position: relative;
-  width: calc(100% + 1rem);
-  margin-left: -0.5rem;
 }
 .shp-icon-controls__icon-list .components-radio-control__option {
-  margin: 0.5rem;
+  display: block;
+  width: 100%;
+  height: 100%;
   position: relative;
-  width: calc(100% - 1rem);
-  height: 2rem;
+  aspect-ratio: 1;
 }
 .shp-icon-controls__icon-list .components-radio-control__input {
+  display: block;
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 2px !important;
-  border: none !important;
-  appearance: none !important;
+  max-width: none;
+  border-radius: 2px;
+  border: none;
+  appearance: none;
+  background: none;
+  z-index: -1;
 }
 .shp-icon-controls__icon-list .components-radio-control__input:before {
-  content: none !important;
+  content: none;
 }
 .shp-icon-controls__icon-list .components-radio-control__input:checked {
-  background-color: #eee !important;
+  background-color: #eee;
   box-shadow: 0 0 0 2px #555d66;
 }
-.shp-icon-controls__icon-list .shp-icon {
-  position: relative;
+.shp-icon-controls__icon-list .components-radio-control__label {
   display: flex;
-  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  justify-content: center;
 }
-.shp-icon-controls__icon-list .shp-icon svg {
-  position: relative;
-  display: block;
-  height: 80%;
-  width: auto;
-}
-.shp-icon-controls__icon-list .components-radio-control__input + label {
-  position: relative;
+.shp-icon-controls__icon-list .components-radio-control__label .shp-icon {
   width: 100%;
-  height: 100%;
 }
 
 .editor-styles-wrapper .shp-icon--block.alignleft, .editor-styles-wrapper .shp-icon--block.alignright {
@@ -347,6 +340,11 @@
   width: 10vw;
   display: inline-block;
   text-align: center;
+}
+.editor-styles-wrapper .shp-icon--block svg {
+  width: 100% !important;
+  height: auto !important;
+  top: 0 !important;
 }
 .editor-styles-wrapper .shp-icon__notice {
   width: 100%;
@@ -374,4 +372,5 @@
 }
 .editor-styles-wrapper .wp-block[data-type="shp-icon/icon"] .components-placeholder .components-spinner {
   margin-top: 0 !important;
+  margin-bottom: 3rem !important;
 }

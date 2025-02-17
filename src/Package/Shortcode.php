@@ -148,9 +148,10 @@ class Shortcode
 			$svg = preg_replace('/<\\?xml.*\\?>/', '', $svg, 1);
 
 			$el         = $attr['gutenberg'] ? 'div' : 'i';
-			$class_list = (! $attr['box-model']) ? shp_icon()->prefix . ' ' . shp_icon()->prefix . '--inline' : shp_icon()->prefix;
 			if ($attr['gutenberg']) {
-				$class_list .= ' ' . shp_icon()->prefix . '--block align' . esc_attr($attr['align']);
+				$class_list =  shp_icon()->prefix . ' ' . shp_icon()->prefix . '--block align' . esc_attr($attr['align']);
+			} else {
+			    $class_list = (! $attr['box-model']) ? shp_icon()->prefix . ' ' . shp_icon()->prefix . '--inline' : shp_icon()->prefix;
 			}
 			$classNameBase = wp_get_block_default_classname(shp_icon()->prefix . '/icon');
 			if (!empty($attr['classes'])) {

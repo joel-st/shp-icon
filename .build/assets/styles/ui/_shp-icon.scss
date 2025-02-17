@@ -24,9 +24,17 @@
 		}
 	}
 
+	&--block {
+		svg {
+			width: 100% !important;
+			height: auto !important;
+			top: 0 !important;
+		}
+	}
+
 	&--block.aligncenter {
 		svg {
-			width: 10vw;
+			width: 10vw !important;
 			margin: 0 auto;
 		}
 	}

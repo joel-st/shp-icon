@@ -24,7 +24,12 @@
   height: 1em;
   width: auto;
 }
+.shp-icon--block svg {
+  width: 100% !important;
+  height: auto !important;
+  top: 0 !important;
+}
 .shp-icon--block.aligncenter svg {
-  width: 10vw;
+  width: 10vw !important;
   margin: 0 auto;
 }
