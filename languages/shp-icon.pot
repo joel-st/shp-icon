@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the SVG Icons plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: SVG Icons 1.2.0\n"
+"Project-Id-Version: SVG Icons 1.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/git\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-17T17:33:09+00:00\n"
+"POT-Creation-Date: 2025-02-22T14:20:46+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: shp-icon\n"
@@ -37,12 +37,6 @@ msgstr ""
 #. Author URI of the plugin
 #: shp-icon.php
 msgid "https://profiles.wordpress.org/joelmelon/"
-msgstr ""
-
-#. translators: Compatibility-Check failed Warning
-#: shp-icon.php:45
-msgctxt "Compatibility-Check failed Warning"
-msgid "%1$s requires PHP %2$s (or newer) and WordPress %3$s (or newer) to function properly. Your Site is using PHP %4$s and WordPress %5$s. Please upgrade. The Plugin has been deactivated automatically. Don’t hesitate to ask for Help @%6$s."
 msgstr ""
 
 #: src/Block/Icon.php:89

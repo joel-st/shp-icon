@@ -4,68 +4,18 @@ Plugin Name: SVG Icons
 Plugin URI: https://github.com/joel-st/shp-icon
 Description: This plugin allows you to use SVG icons within WordPress as shortcodes and/or as Gutenberg block.
 Author: joelmelon
-Version: 1.2.0
+Version: 1.2.1
+Requires at least: 6.1.7
+Requires PHP: 8.1
 Author URI: https://profiles.wordpress.org/joelmelon/
 Text Domain: shp-icon
 Domain Path: /languages
- */
+*/
 
 
 // If this file is called directly, abort.
 if (! defined('WPINC')) {
 	die;
-}
-
-// Use the global $wp_version Variable to make the Compatibility-Check on Plugin-Activation
-global $wp_version;
-
-// Get the File-Data from this File to reuse it in the Compatibility-Check on Plugin-Activation
-require_once(ABSPATH . 'wp-admin/includes/plugin.php');
-$shp_icon_headers = (object) get_plugin_data(__FILE__, false, /* $translate */ false);
-
-// Compatibility-Check Variables
-$min_wp_version    = '6.1.7';
-$min_php_version   = '8.1';
-$wp_compatibility  = version_compare($wp_version, $min_wp_version, '<');
-$php_compatibility = version_compare(PHP_VERSION, $min_php_version, '<');
-
-// Do the Compatibility-Check
-if ($wp_compatibility || $php_compatibility) {
-
-	function shp_icon_compatibility_check()
-	{
-		global $shp_icon_headers;
-		global $wp_version;
-		global $min_wp_version;
-		global $min_php_version;
-
-		echo '<div class="error"><p>';
-		echo sprintf(
-			// translators: Compatibility-Check failed Warning
-			esc_html(_x(
-				'%1$s requires PHP %2$s (or newer) and WordPress %3$s (or newer) to function properly. Your Site is using PHP %4$s and WordPress %5$s. Please upgrade. The Plugin has been deactivated automatically. Don’t hesitate to ask for Help @%6$s.',
-				'Compatibility-Check failed Warning',
-				'shp-icon'
-			)),
-			'<strong>' . esc_html($shp_icon_headers->Name) . '</strong>',
-			esc_html($min_php_version),
-			esc_html($min_wp_version),
-			PHP_VERSION,
-			esc_html($wp_version),
-			'<a href="' . esc_html($shp_icon_headers->PluginURI) . '" target="_blank" title="">' . esc_html($shp_icon_headers->Author) . '</a>'
-		);
-		echo '</p></div>';
-
-		// remove the 'Plugin activated message'
-		if (isset($_GET['activate'])) {
-			unset($_GET['activate']);
-		}
-	}
-
-	add_action('admin_notices', 'shp_icon_compatibility_check');
-	deactivate_plugins(plugin_basename(__FILE__));
-
-	return;
 }
 
 /**
