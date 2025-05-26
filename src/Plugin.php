@@ -53,6 +53,14 @@ class Plugin
 	}
 
 	/**
+	 * Constructor
+	 */
+	public function __construct()
+	{
+		// Empty constructor - initialization happens in getInstance
+	}
+
+	/**
 	 * Creates an instance if one isn't already available,
 	 * then return the current instance.
 	 *
@@ -75,7 +83,7 @@ class Plugin
 
 			self::$instance->plugin_header = get_plugin_data($file, false, /* $translate */ false);
 			self::$instance->name          = self::$instance->plugin_header['Name'];
-			self::$instance->domain_path   = basename(dirname(__DIR__)) . self::$instance->plugin_header['DomainPath'];
+			self::$instance->domain_path   = self::$instance->plugin_header['DomainPath'];
 			self::$instance->version       = self::$instance->plugin_header['Version'];
 			self::$instance->plugin_url    = plugins_url('', dirname(__FILE__));
 			self::$instance->plugin_dir    = dirname(__DIR__);
@@ -87,7 +95,11 @@ class Plugin
 				self::$instance->debug = false;
 			}
 
+			// Run the plugin initialization
 			self::$instance->run();
+
+			// Add textdomain loading to init hook with a later priority
+			add_action('init', [self::$instance, 'loadTextdomain'], 30);
 		}
 
 		return self::$instance;
@@ -101,7 +113,6 @@ class Plugin
 	 */
 	public function run()
 	{
-
 		// Recursive directory creation based on full path.
 		wp_mkdir_p($this->upload_dir);
 
@@ -136,9 +147,6 @@ class Plugin
 		// Create rest route
 		add_action('rest_api_init', [$this, 'registerRoute']);
 
-		// Load the textdomain
-		add_action('init', [$this, 'loadTextdomain']);
-
 		// Add the settings link to the plugin list
 		add_filter('plugin_action_links_' . basename($this->base_path) . '/' . basename($this->file), [$this, 'addSettingsLink']);
 	}
@@ -165,7 +173,7 @@ class Plugin
 
 			// Prevent duplicate class assignments.
 			if (property_exists($instance->containers[$class_set], $class_short)) {
-				wp_die(esc_html(sprintf(_x('There was a problem with the Plugin. Only one class with name “%1$s” can be use used in “%2$s”.', 'Theme instance loadClasses() error message', 'shp-icon'), $class_short, $class_set)), 500);
+				wp_die(esc_html(sprintf(_x('There was a problem with the Plugin. Only one class with name "%1$s" can be use used in "%2$s".', 'Theme instance loadClasses() error message', 'shp-icon'), $class_short, $class_set)), 500);
 			}
 
 			// Instantiate and store the class.
@@ -185,7 +193,17 @@ class Plugin
 	 */
 	public function loadTextdomain()
 	{
-		load_plugin_textdomain(shp_icon()->prefix, false, $this->domain_path);
+		// Only load textdomain if we're in the init hook or later
+		if (!did_action('init')) {
+			return;
+		}
+		
+		// Load the textdomain
+		load_plugin_textdomain(
+			$this->prefix,
+			false,
+			dirname(plugin_basename($this->file)) . $this->plugin_header['DomainPath']
+		);
 	}
 
 	/**

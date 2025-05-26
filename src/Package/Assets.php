@@ -48,9 +48,12 @@ class Assets
 				$script_asset['version'],
 				true
 			);
-		}
 
-		wp_set_script_translations(shp_icon()->prefix . '-gutenberg-script', 'shp-icon', shp_icon()->plugin_dir . '/languages');
+			// Set script translations after init
+			add_action('init', function() {
+				wp_set_script_translations(shp_icon()->prefix . '-gutenberg-script', 'shp-icon', shp_icon()->plugin_dir . '/languages');
+			}, 30);
+		}
 
 		if (file_exists(shp_icon()->plugin_dir . '/assets/scripts/admin.js')) {
 			wp_register_script(
@@ -60,9 +63,12 @@ class Assets
 				shp_icon()->version,
 				true
 			);
-		}
 
-		wp_set_script_translations(shp_icon()->prefix . '-admin-script', 'shp-icon', shp_icon()->plugin_dir . '/languages');
+			// Set script translations after init
+			add_action('init', function() {
+				wp_set_script_translations(shp_icon()->prefix . '-admin-script', 'shp-icon', shp_icon()->plugin_dir . '/languages');
+			}, 30);
+		}
 	}
 
 	/**

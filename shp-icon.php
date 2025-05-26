@@ -1,30 +1,26 @@
 <?php
-/*
-Plugin Name: SVG Icons
-Plugin URI: https://github.com/joel-st/shp-icon
-Description: This plugin allows you to use SVG icons within WordPress as shortcodes and/or as Gutenberg block.
-Author: joelmelon
-Version: 1.2.1
-Requires at least: 6.1.7
-Requires PHP: 8.1
-Author URI: https://profiles.wordpress.org/joelmelon/
-Text Domain: shp-icon
-Domain Path: /languages
-*/
-
+/**
+ * Plugin Name: SVG Icons
+ * Plugin URI: https://github.com/joel-st/shp-icon
+ * Description: This plugin allows you to use SVG icons within WordPress as shortcodes and/or as Gutenberg block.
+ * Author: joelmelon
+ * Version: 1.2.2
+ * Requires at least: 6.1.7
+ * Requires PHP: 8.1
+ * Author URI: https://profiles.wordpress.org/joelmelon/
+ * Text Domain: shp-icon
+ * Domain Path: /languages
+ *
+ * @package           shp-icon
+ */
 
 // If this file is called directly, abort.
-if (! defined('WPINC')) {
+if (!defined('WPINC')) {
 	die;
 }
 
-/**
- * Load the core plugin class
- *
- * @since    1.0.0
- */
-
-require_once 'vendor/autoload.php';
+// Require the core plugin class.
+require_once plugin_dir_path(__FILE__) . 'vendor/autoload.php';
 
 /*
 * This lot auto-loads a class or trait just when you need it. You don't need to
@@ -66,10 +62,17 @@ spl_autoload_register(
 	}
 );
 
-require_once 'src/Plugin.php';
+// Require the main plugin class.
+require_once plugin_dir_path(__FILE__) . 'src/Plugin.php';
 
-function shp_icon()
-{
+/**
+ * Begins execution of the plugin.
+ *
+ * @since    1.0.0
+ */
+function shp_icon() {
 	return SayHello\Plugin\Icon\Plugin::getInstance(__FILE__);
 }
-shp_icon();
+
+// Initialize the plugin after all plugins are loaded
+add_action('plugins_loaded', 'shp_icon', 20);

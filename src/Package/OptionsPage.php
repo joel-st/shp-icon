@@ -27,7 +27,17 @@ class OptionsPage
 		$this->menu_slug      = shp_icon()->prefix;
 		$this->options_prefix = shp_icon()->prefix . '-options';
 		$this->default_tab    = 'manage';
-		$this->setting_tabs   = [
+		
+		// Move translation-dependent initialization to init hook
+		add_action('init', [$this, 'initializeTranslations'], 20);
+	}
+
+	/**
+	 * Initialize translations and related settings
+	 */
+	public function initializeTranslations()
+	{
+		$this->setting_tabs = [
 			$this->default_tab => _x('Icon Collection', 'Options page tab title', 'shp-icon'),
 			'settings'         => _x('Settings', 'Options page tab title', 'shp-icon'),
 			'help'             => _x('Information & Help', 'Options page tab title', 'shp-icon'),
@@ -383,7 +393,16 @@ class OptionsPage
 
 		// introduction
 		echo '<p>';
-		echo esc_html(_x('Feel free to upload any SVG file to the plugin. To use SVG’s on websites is always a pain. But hey – good news – this plugin tries to support a proper use of SVG icons on your website. Any SVG uploaded to the plugin can be used with a shortcode or with a Gutenberg block.', 'Options page help introduction', 'shp-icon'));
+		echo esc_html(
+			_x(
+					'Feel free to upload any SVG file to the plugin. ' .
+					'To use SVGs on websites is always a pain. ' .
+					'But hey – good news – this plugin tries to support a proper use of SVG icons on your website. ' .
+					'Any SVG uploaded to the plugin can be used with a shortcode or with a Gutenberg block.',
+					'Options page help introduction',
+					'shp-icon'
+			)
+		);
 		echo '</p>';
 		echo '<br/>';
 		echo '<hr/>';
@@ -432,8 +451,19 @@ class OptionsPage
 		echo '<code style="' . esc_attr($style) . '">top-shift=""</code>';
 		echo '</th>';
 		echo '<td>';
-		/* translators: %s = Link to settings tab (other translation) */
-		echo sprintf(_x('Use the <i>top-shift</i> attribute to fine tune the vertical align of an inline icon. This is useful if the visual align of an inline icon isn’t perfect. Set the attribute to a number, the number uses then the <i>em</i> unit. You can also set a default top shift for all inline icons under the %s.', 'Options page help use as shortcode', 'shp-icon'), '<a href="' . esc_url(admin_url('themes.php?page=' . esc_attr(shp_icon()->prefix)) . '&tab=settings') . '">' . esc_html(_x('settings tab', 'Options page help use as shortcode', 'shp-icon')) . '</a>');
+		$settings_link_text = _x('settings tab', 'Options page help use as shortcode', 'shp-icon');
+		$settings_page_slug = shp_icon()->prefix; // Assuming this method exists and returns the slug
+		$settings_url = admin_url('themes.php?page=' . esc_attr($settings_page_slug) . '&tab=settings');
+		$settings_link = '<a href="' . esc_url($settings_url) . '">' . esc_html($settings_link_text) . '</a>';
+
+		echo sprintf(
+				_x(
+						'Use the <i>top-shift</i> attribute to fine tune the vertical align of an inline icon. This is useful if the visual align of an inline icon isn\'t perfect. Set the attribute to a number, the number uses then the <i>em</i> unit. You can also set a default top shift for all inline icons under the %s.',
+						'Options page help use as shortcode',
+						'shp-icon'
+				),
+				$settings_link
+		);
 		echo '</td>';
 		echo '</tr>';
 
@@ -507,13 +537,32 @@ class OptionsPage
 		echo '<div class="accordion">';
 
 		echo '<div class="accordion__item">';
-		echo '<h4><label class="accordion__item-head" for="optimize-svg"><b>' . esc_html(_x('What can I do to optimize my SVG’s before uploading to the plugin?', 'Options page help FAQ', 'shp-icon')) . '</b></label></h4>';
+		$faq_question_text = _x(
+			'What can I do to optimize my SVG\'s before uploading to the plugin?',
+			'Options page help FAQ',
+			'shp-icon'
+		);
+		
+		echo '<h4><label class="accordion__item-head" for="optimize-svg"><b>' . esc_html( $faq_question_text ) . '</b></label></h4>';
 		echo '<input type="checkbox" class="accordion__item-checkbox" id="optimize-svg" />';
 		echo '<span class="accordion__item-state-indicator"></span>';
 		echo '<div class="accordion__content">';
 		echo '<p><b>' . esc_html(_x('SVGO is sick! Props to all the developers of SVGO!', 'Options page help FAQ answer', 'shp-icon')) . '</b></p>';
-		/* translators: %s = SVGO (SVG Optimizer) (other translation) */
-		echo '<p>' . sprintf(esc_html(_x('According to SVGO, SVG files, especially those exported from various editors, usually contain a lot of redundant and useless information. This can include editor metadata, comments, hidden elements, default or non-optimal values and other stuff that can be safely removed or converted without affecting the SVG rendering result. To do so you can use the %s which perfectly optimises your SVG’s. ', 'Options page help FAQ answer', 'shp-icon')), '<a target="_blank" href="https://github.com/svg/svgo">' . _x('SVGO (SVG Optimizer)', 'Options page help FAQ answer', 'shp-icon') . '</a>') . '</p>';
+		$faq_answer_text_template = _x(
+			'According to SVGO, SVG files, especially those exported from various editors, usually contain a lot of redundant and useless information. This can include editor metadata, comments, hidden elements, default or non-optimal values and other stuff that can be safely removed or converted without affecting the SVG rendering result. To do so you can use the %s which perfectly optimises your SVG\'s. ',
+			'Options page help FAQ answer',
+			'shp-icon'
+		);
+		
+		$svgo_link_text = _x('SVGO (SVG Optimizer)', 'Options page help FAQ answer', 'shp-icon');
+		$svgo_link_url = 'https://github.com/svg/svgo';
+		
+		$svgo_link = '<a target="_blank" href="' . esc_url($svgo_link_url) . '">' . esc_html($svgo_link_text) . '</a>'; // esc_html here is crucial for the link text
+		
+		// We esc_html the *template* string, then sprintf will insert the *already HTML-escaped* link
+		$final_message = sprintf( esc_html($faq_answer_text_template), $svgo_link );
+		
+		echo '<p>' . $final_message . '</p>';
 		echo '<ul>';
 		echo '<li>';
 		/* translators: %s = SVGOMG (other translation) */
@@ -532,13 +581,30 @@ class OptionsPage
 		echo sprintf(esc_html(_x('Use SVGO as an OSX Folder Action – %s', 'Options page help FAQ answer', 'shp-icon')), '<a target="_blank" href="https://github.com/svg/svgo-osx-folder-action">' . _x('svgo-osx-folder-action', 'Options page help FAQ answer', 'shp-icon') . '</a>');
 		echo '</li>';
 		echo '</ul>';
-		echo '<p><b>' . esc_html(_x('Further you can read the following articles to optimize your SVG’s manually.', 'Options page help FAQ answer', 'shp-icon')) . '</b></p>';
+		$faq_manual_optimization_text = _x(
+			'Further you can read the following articles to optimize your SVG\'s manually.',
+			'Options page help FAQ answer',
+			'shp-icon'
+		);
+		echo '<p><b>' . esc_html( $faq_manual_optimization_text ) . '</b></p>';
 		echo '<ul>';
 		echo '<li>';
 		echo '<a target="_blank" href="https://vecta.io/blog/guide-to-getting-sharp-and-crisp-svg-images">' . esc_html(_x('A Guide to Getting Sharp and Crisp SVG Images on Screen.', 'Options page help FAQ answer', 'shp-icon')) . '</a>';
 		echo '</li>';
 		echo '<li>';
-		echo '<a target="_blank" href="https://blog.ginetta.net/i-set-out-to-create-pixel-perfect-icons-heres-what-i-discovered-along-the-way-4e46378932df">' . esc_html(_x('I set out to create pixel perfect icons. Here’s what I discovered along the way.', 'Options page help FAQ answer', 'shp-icon')) . '</a>';
+		$article_url = 'https://blog.ginetta.net/i-set-out-to-create-pixel-perfect-icons-heres-what-i-discovered-along-the-way-4e46378932df';
+
+		$article_link_text = _x(
+				'I set out to create pixel perfect icons. Here\'s what I discovered along the way.',
+				'Options page help FAQ answer',
+				'shp-icon'
+		);
+		
+		// Always escape URLs and HTML content for security
+		$safe_article_url = esc_url( $article_url );
+		$safe_article_link_text = esc_html( $article_link_text );
+		
+		echo '<a target="_blank" href="' . $safe_article_url . '">' . $safe_article_link_text . '</a>';
 		echo '</li>';
 		echo '</ul>';
 		echo '</div>';
@@ -549,8 +615,31 @@ class OptionsPage
 		echo '<input type="checkbox" class="accordion__item-checkbox" id="file-changes" />';
 		echo '<span class="accordion__item-state-indicator"></span>';
 		echo '<div class="accordion__content">';
-		/* translators: %s = a PHP SVG/XML Sanitizer (other translation) */
-		echo '<p>' . sprintf(esc_html(_x('While uploading an SVG, it will be sanitised by %s and renamed based on the filename. Other changes to the SVG won’t happen.', 'Options page help FAQ answer', 'shp-icon')), '<a target="_blank" href="https://github.com/darylldoyle/svg-sanitizer">' . _x('a PHP SVG/XML Sanitizer', 'Options page help FAQ answer', 'shp-icon') . '</a>') . '</p>';
+		// Define the main text with a placeholder for the link
+		$faq_answer_template = _x(
+			'While uploading an SVG, it will be sanitised by %s and renamed based on the filename. Other changes to the SVG won\'t happen.',
+			'Options page help FAQ answer',
+			'shp-icon'
+		);
+
+		// Define the link text
+		$sanitizer_link_text = _x(
+			'a PHP SVG/XML Sanitizer',
+			'Options page help FAQ answer',
+			'shp-icon'
+		);
+
+		// Define the URL for the sanitizer
+		$sanitizer_url = 'https://github.com/darylldoyle/svg-sanitizer';
+
+		// Construct the full HTML link, ensuring both URL and text are properly escaped
+		$sanitizer_html_link = '<a target="_blank" href="' . esc_url($sanitizer_url) . '">' . esc_html($sanitizer_link_text) . '</a>';
+
+		// Combine the template and the link using sprintf, escaping the template content
+		$final_output = sprintf(esc_html($faq_answer_template), $sanitizer_html_link);
+
+		// Echo the final string within paragraph tags
+		echo '<p>' . $final_output . '</p>';
 		echo '</div>';
 		echo '</div>'; // .accordion__item
 
@@ -583,8 +672,8 @@ class OptionsPage
 		echo '<input type="checkbox" class="accordion__item-checkbox" id="migrate" />';
 		echo '<span class="accordion__item-state-indicator"></span>';
 		echo '<div class="accordion__content">';
-		/* translators: %s = plugin textomain */
-		echo '<p>' . sprintf(_x('The uploaded SVG’s are saved in <code>/wp-content/uploads/%s</code>. Migrate this folder too to keep the your icons working.', 'Options page help FAQ answer', 'shp-icon'), shp_icon()->prefix) . '</p>';
+		/* translators: %s = plugin textdomain */
+		echo '<p>' . sprintf(_x('The uploaded SVG\'s are saved in <code>/wp-content/uploads/%s</code>. Migrate this folder too to keep the your icons working.', 'Options page help FAQ answer', 'shp-icon'), shp_icon()->prefix) . '</p>';
 		echo '</div>';
 		echo '</div>'; // .accordion__item
 
@@ -592,7 +681,14 @@ class OptionsPage
 		echo '</div>'; // .help--left
 
 		echo '<div class="' . esc_attr(shp_icon()->prefix) . '-help ' . esc_attr(shp_icon()->prefix) . '-help--right">';
-		echo '<h3>' . esc_html(_x('That’s it, peace.', 'Options page help title', 'shp-icon')) . '</h3>';
+		$page_title_text = esc_html(
+			_x(
+					'That\'s it, peace.',
+					'Options page help title',
+					'shp-icon'
+			)
+		);
+		echo '<h3>' . $page_title_text . '</h3>';
 		/* translators: %s = Plugin Repository (other translation) */
 		echo '<p>' . sprintf(esc_html(_x('Contribute or get help: %s', 'Options page help', 'shp-icon')), '<a target="_blank" href="' . esc_url(shp_icon()->plugin_header['PluginURI']) . '">' . _x('Plugin Repository', 'Options page help FAQ answer', 'shp-icon') . '</a>') . '</p>';
 		/* translators: %s = Plugin Repository (other translation) */
